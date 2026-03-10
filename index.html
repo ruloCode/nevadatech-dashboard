@@ -9,1598 +9,943 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-primary: #06080C;
-      --bg-secondary: #0C1017;
-      --bg-card: #111620;
-      --bg-card-hover: #161D2A;
-      --bg-sidebar: #090D13;
-      --border: rgba(255,255,255,0.06);
-      --border-active: rgba(99,179,237,0.3);
-      --text-primary: #E8ECF1;
-      --text-secondary: #6B7A90;
-      --text-muted: #3D4A5C;
-      --accent-blue: #63B3ED;
-      --accent-cyan: #4FD1C5;
-      --accent-purple: #B794F4;
-      --accent-green: #68D391;
-      --accent-orange: #F6AD55;
-      --accent-red: #FC8181;
-      --accent-pink: #F687B3;
-      --accent-yellow: #FAF089;
-      --gradient-blue: linear-gradient(135deg, #63B3ED, #4299E1);
-      --gradient-green: linear-gradient(135deg, #68D391, #38A169);
-      --gradient-purple: linear-gradient(135deg, #B794F4, #805AD5);
-      --gradient-orange: linear-gradient(135deg, #F6AD55, #DD6B20);
-      --shadow-lg: 0 20px 60px rgba(0,0,0,0.5);
-      --radius: 12px;
-      --radius-sm: 8px;
-      --radius-xs: 6px;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { font-size: 14px; }
-
-    body {
-      font-family: 'Outfit', sans-serif;
-      background: var(--bg-primary);
-      color: var(--text-primary);
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* ═══ LAYOUT ═══ */
-    .app {
-      display: grid;
-      grid-template-columns: 260px 1fr;
-      min-height: 100vh;
-    }
-
-    /* ═══ SIDEBAR ═══ */
-    .sidebar {
-      background: var(--bg-sidebar);
-      border-right: 1px solid var(--border);
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      position: fixed;
-      width: 260px;
-      height: 100vh;
-      overflow-y: auto;
-      z-index: 50;
-    }
-
-    .sidebar-brand {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 0.5rem 0 2rem;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 1.5rem;
-    }
-
-    .brand-icon {
-      width: 40px;
-      height: 40px;
-      background: var(--gradient-blue);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      font-weight: 800;
-      color: var(--bg-primary);
-    }
-
-    .brand-name {
-      font-size: 1.15rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-
-    .brand-name span {
-      font-weight: 400;
-      color: var(--text-secondary);
-      font-size: 0.75rem;
-      display: block;
-      letter-spacing: 0.05em;
-    }
-
-    .sidebar-section {
-      margin-bottom: 2rem;
-    }
-
-    .sidebar-label {
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 0.75rem;
-      padding-left: 0.75rem;
+      --bg-0: #060910;
+      --bg-1: #0B0F18;
+      --bg-2: #111827;
+      --bg-3: #1A2236;
+      --bg-hover: #1E2942;
+      --border: rgba(148,163,194,0.08);
+      --border-hover: rgba(148,163,194,0.16);
+      --text-1: #F0F4F8;
+      --text-2: #94A3B8;
+      --text-3: #475569;
+      --blue: #60A5FA;
+      --blue-dim: rgba(96,165,250,0.12);
+      --cyan: #22D3EE;
+      --cyan-dim: rgba(34,211,238,0.12);
+      --green: #4ADE80;
+      --green-dim: rgba(74,222,128,0.12);
+      --purple: #A78BFA;
+      --purple-dim: rgba(167,139,250,0.12);
+      --orange: #FB923C;
+      --orange-dim: rgba(251,146,60,0.12);
+      --pink: #F472B6;
+      --pink-dim: rgba(244,114,182,0.12);
+      --red: #F87171;
+      --red-dim: rgba(248,113,113,0.12);
+      --yellow: #FACC15;
+      --yellow-dim: rgba(250,204,21,0.12);
+      --r: 14px;
+      --r-sm: 10px;
+      --r-xs: 6px;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box}
+
+    body{
+      font-family:'Outfit',system-ui,sans-serif;
+      background:var(--bg-0);
+      color:var(--text-1);
+      -webkit-font-smoothing:antialiased;
+      overflow-x:hidden;
+      font-size:15px;
+    }
+
+    /* ═══ TOPBAR ═══ */
+    .topbar{
+      position:sticky;top:0;z-index:100;
+      background:rgba(6,9,16,0.85);
+      backdrop-filter:blur(24px) saturate(180%);
+      border-bottom:1px solid var(--border);
+      padding:0 2rem;
+      height:64px;
+      display:flex;align-items:center;justify-content:space-between;
+    }
+
+    .topbar-left{display:flex;align-items:center;gap:1.25rem}
+
+    .brand{
+      display:flex;align-items:center;gap:0.7rem;
+      text-decoration:none;color:var(--text-1);
+    }
+
+    .brand-mark{
+      width:36px;height:36px;
+      background:linear-gradient(135deg,var(--blue),var(--cyan));
+      border-radius:10px;
+      display:flex;align-items:center;justify-content:center;
+      font-weight:800;font-size:1rem;color:var(--bg-0);
+    }
+
+    .brand-text{font-weight:700;font-size:1.05rem;letter-spacing:-0.02em}
+    .brand-text span{font-weight:400;color:var(--text-3);font-size:0.75rem;display:block}
+
+    .topbar-nav{display:flex;gap:0.25rem;margin-left:2rem}
+
+    .topbar-nav a{
+      padding:0.45rem 1rem;border-radius:8px;
+      font-size:0.85rem;font-weight:500;
+      color:var(--text-2);text-decoration:none;
+      transition:all 0.15s;
+    }
+    .topbar-nav a:hover{background:var(--bg-2);color:var(--text-1)}
+    .topbar-nav a.active{background:var(--blue-dim);color:var(--blue)}
+
+    .topbar-right{display:flex;align-items:center;gap:1rem}
+
+    .team-pills{display:flex;gap:-4px}
+    .pill{
+      width:32px;height:32px;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      font-size:0.65rem;font-weight:700;color:var(--bg-0);
+      border:2px solid var(--bg-0);
+      margin-left:-8px;
+      position:relative;
+    }
+    .pill:first-child{margin-left:0}
+    .pill::after{
+      content:'';position:absolute;bottom:0;right:0;
+      width:9px;height:9px;border-radius:50%;
+      background:var(--green);border:2px solid var(--bg-0);
+    }
+
+    .btn{
+      padding:0.55rem 1.2rem;border-radius:9px;
+      font-family:'Outfit',sans-serif;font-size:0.85rem;font-weight:600;
+      border:none;cursor:pointer;transition:all 0.2s;
+      display:inline-flex;align-items:center;gap:0.4rem;
     }
+    .btn-primary{background:var(--blue);color:var(--bg-0)}
+    .btn-primary:hover{filter:brightness(1.15);transform:translateY(-1px);box-shadow:0 8px 24px rgba(96,165,250,0.25)}
+    .btn-ghost{background:var(--bg-2);color:var(--text-2);border:1px solid var(--border)}
+    .btn-ghost:hover{background:var(--bg-3);color:var(--text-1)}
 
-    .sidebar-nav {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
+    /* ═══ MAIN ═══ */
+    .main{max-width:1440px;margin:0 auto;padding:1.75rem 2rem}
 
-    .sidebar-nav li a {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 0.65rem 0.75rem;
-      border-radius: var(--radius-sm);
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: all 0.2s;
-      cursor: pointer;
+    /* ═══ KPI ROW ═══ */
+    .kpi-row{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;
+      margin-bottom:1.75rem;
     }
 
-    .sidebar-nav li a:hover {
-      background: rgba(255,255,255,0.04);
-      color: var(--text-primary);
+    .kpi{
+      background:var(--bg-1);border:1px solid var(--border);border-radius:var(--r);
+      padding:1.25rem 1.5rem;
+      display:flex;justify-content:space-between;align-items:flex-start;
+      transition:all 0.2s;position:relative;overflow:hidden;
     }
+    .kpi:hover{border-color:var(--border-hover);transform:translateY(-2px)}
 
-    .sidebar-nav li a.active {
-      background: rgba(99,179,237,0.1);
-      color: var(--accent-blue);
+    .kpi::after{
+      content:'';position:absolute;top:0;left:0;right:0;height:2px;
     }
+    .kpi:nth-child(1)::after{background:linear-gradient(90deg,var(--blue),transparent)}
+    .kpi:nth-child(2)::after{background:linear-gradient(90deg,var(--green),transparent)}
+    .kpi:nth-child(3)::after{background:linear-gradient(90deg,var(--purple),transparent)}
+    .kpi:nth-child(4)::after{background:linear-gradient(90deg,var(--orange),transparent)}
 
-    .sidebar-nav li a .nav-icon {
-      width: 20px;
-      text-align: center;
-      font-size: 1rem;
-    }
-
-    .sidebar-nav li a .badge {
-      margin-left: auto;
-      background: rgba(99,179,237,0.15);
-      color: var(--accent-blue);
-      font-size: 0.7rem;
-      font-weight: 600;
-      padding: 0.15rem 0.5rem;
-      border-radius: 10px;
-      font-family: 'JetBrains Mono', monospace;
+    .kpi-info{}
+    .kpi-label{font-size:0.8rem;color:var(--text-2);margin-bottom:0.6rem;font-weight:500}
+    .kpi-val{
+      font-family:'JetBrains Mono',monospace;font-size:1.9rem;font-weight:700;
+      letter-spacing:-0.03em;line-height:1;margin-bottom:0.5rem;
     }
+    .kpi:nth-child(1) .kpi-val{color:var(--blue)}
+    .kpi:nth-child(2) .kpi-val{color:var(--green)}
+    .kpi:nth-child(3) .kpi-val{color:var(--purple)}
+    .kpi:nth-child(4) .kpi-val{color:var(--orange)}
 
-    .sidebar-team {
-      margin-top: auto;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--border);
+    .kpi-tag{
+      display:inline-flex;align-items:center;gap:0.3rem;
+      font-size:0.72rem;font-weight:600;
+      padding:0.2rem 0.55rem;border-radius:5px;
     }
+    .kpi-tag.up{background:var(--green-dim);color:var(--green)}
+    .kpi-tag.neutral{background:var(--blue-dim);color:var(--blue)}
 
-    .team-member {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      padding: 0.5rem 0;
+    .kpi-icon{
+      width:44px;height:44px;border-radius:12px;
+      display:flex;align-items:center;justify-content:center;
+      font-size:1.3rem;flex-shrink:0;
     }
+    .kpi:nth-child(1) .kpi-icon{background:var(--blue-dim)}
+    .kpi:nth-child(2) .kpi-icon{background:var(--green-dim)}
+    .kpi:nth-child(3) .kpi-icon{background:var(--purple-dim)}
+    .kpi:nth-child(4) .kpi-icon{background:var(--orange-dim)}
 
-    .team-avatar {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: var(--bg-primary);
-    }
-
-    .team-name {
-      font-size: 0.85rem;
-      font-weight: 500;
-    }
-
-    .team-role {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-    }
-
-    .team-status {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      margin-left: auto;
-      background: var(--accent-green);
-      box-shadow: 0 0 8px rgba(104,211,145,0.5);
-    }
-
-    /* ═══ MAIN CONTENT ═══ */
-    .main {
-      margin-left: 260px;
-      padding: 2rem;
-      min-height: 100vh;
-    }
-
-    /* ═══ HEADER ═══ */
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 2rem;
-    }
-
-    .header-left h1 {
-      font-size: 1.8rem;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      margin-bottom: 0.25rem;
-    }
-
-    .header-left p {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-    }
-
-    .header-actions {
-      display: flex;
-      gap: 0.75rem;
-    }
-
-    .btn {
-      padding: 0.6rem 1.2rem;
-      border-radius: var(--radius-sm);
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-      border: none;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .btn-primary {
-      background: var(--gradient-blue);
-      color: var(--bg-primary);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 8px 25px rgba(99,179,237,0.3);
-    }
-
-    .btn-ghost {
-      background: rgba(255,255,255,0.04);
-      color: var(--text-secondary);
-      border: 1px solid var(--border);
-    }
-
-    .btn-ghost:hover {
-      background: rgba(255,255,255,0.08);
-      color: var(--text-primary);
-    }
-
-    /* ═══ KPI CARDS ═══ */
-    .kpi-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    .kpi-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.3s;
-    }
-
-    .kpi-card:hover {
-      border-color: var(--border-active);
-      transform: translateY(-2px);
-    }
-
-    .kpi-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-    }
-
-    .kpi-card:nth-child(1)::before { background: var(--gradient-blue); }
-    .kpi-card:nth-child(2)::before { background: var(--gradient-green); }
-    .kpi-card:nth-child(3)::before { background: var(--gradient-purple); }
-    .kpi-card:nth-child(4)::before { background: var(--gradient-orange); }
-
-    .kpi-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1rem;
-    }
-
-    .kpi-label {
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-    }
-
-    .kpi-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-    }
-
-    .kpi-card:nth-child(1) .kpi-icon { background: rgba(99,179,237,0.1); }
-    .kpi-card:nth-child(2) .kpi-icon { background: rgba(104,211,145,0.1); }
-    .kpi-card:nth-child(3) .kpi-icon { background: rgba(183,148,244,0.1); }
-    .kpi-card:nth-child(4) .kpi-icon { background: rgba(246,173,85,0.1); }
-
-    .kpi-value {
-      font-size: 2rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      font-family: 'JetBrains Mono', monospace;
-      margin-bottom: 0.5rem;
-    }
-
-    .kpi-card:nth-child(1) .kpi-value { color: var(--accent-blue); }
-    .kpi-card:nth-child(2) .kpi-value { color: var(--accent-green); }
-    .kpi-card:nth-child(3) .kpi-value { color: var(--accent-purple); }
-    .kpi-card:nth-child(4) .kpi-value { color: var(--accent-orange); }
-
-    .kpi-change {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 0.2rem 0.5rem;
-      border-radius: 4px;
-    }
-
-    .kpi-change.up {
-      background: rgba(104,211,145,0.1);
-      color: var(--accent-green);
-    }
-
-    .kpi-change.down {
-      background: rgba(252,129,129,0.1);
-      color: var(--accent-red);
-    }
-
-    /* ═══ PIPELINE KANBAN ═══ */
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.25rem;
-    }
-
-    .section-title {
-      font-size: 1.15rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-
-    .pipeline {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    .pipeline-col {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1rem;
-      min-height: 400px;
-    }
-
-    .pipeline-col-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1rem;
-      padding-bottom: 0.75rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .pipeline-col-title {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.8rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .pipeline-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-    }
-
-    .col-identified .pipeline-dot { background: var(--text-secondary); }
-    .col-contacted .pipeline-dot { background: var(--accent-blue); }
-    .col-demo .pipeline-dot { background: var(--accent-purple); }
-    .col-negotiating .pipeline-dot { background: var(--accent-orange); }
-    .col-closed .pipeline-dot { background: var(--accent-green); }
-
-    .pipeline-count {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
-      font-weight: 600;
-      background: rgba(255,255,255,0.06);
-      padding: 0.15rem 0.5rem;
-      border-radius: 10px;
-      color: var(--text-secondary);
-    }
-
-    .lead-card {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 1rem;
-      margin-bottom: 0.5rem;
-      cursor: grab;
-      transition: all 0.2s;
-      position: relative;
-    }
-
-    .lead-card:hover {
-      border-color: rgba(255,255,255,0.12);
-      transform: translateY(-1px);
-      background: var(--bg-card-hover);
-    }
+    /* ═══ SPLIT LAYOUT ═══ */
+    .split{display:grid;grid-template-columns:1fr 340px;gap:1.25rem;margin-bottom:1.75rem}
 
-    .lead-card-type {
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 0.4rem;
-      display: inline-flex;
-      padding: 0.15rem 0.5rem;
-      border-radius: 4px;
+    /* ═══ PIPELINE ═══ */
+    .pipeline-wrap{
+      background:var(--bg-1);border:1px solid var(--border);border-radius:var(--r);
+      overflow:hidden;
     }
 
-    .type-peluqueria {
-      background: rgba(246,135,179,0.1);
-      color: var(--accent-pink);
+    .panel-head{
+      padding:1.25rem 1.5rem;
+      display:flex;align-items:center;justify-content:space-between;
+      border-bottom:1px solid var(--border);
     }
 
-    .type-odontologia {
-      background: rgba(99,179,237,0.1);
-      color: var(--accent-blue);
-    }
-
-    .type-spa {
-      background: rgba(183,148,244,0.1);
-      color: var(--accent-purple);
-    }
-
-    .type-barberia {
-      background: rgba(246,173,85,0.1);
-      color: var(--accent-orange);
-    }
-
-    .type-veterinaria {
-      background: rgba(104,211,145,0.1);
-      color: var(--accent-green);
-    }
-
-    .type-estetica {
-      background: rgba(250,240,137,0.1);
-      color: var(--accent-yellow);
-    }
+    .panel-title{font-size:1.05rem;font-weight:700;display:flex;align-items:center;gap:0.5rem}
 
-    .lead-card-name {
-      font-size: 0.95rem;
-      font-weight: 600;
-      margin-bottom: 0.25rem;
+    .pipeline-scroll{
+      display:flex;gap:0;overflow-x:auto;
+      scrollbar-width:none;
     }
+    .pipeline-scroll::-webkit-scrollbar{display:none}
 
-    .lead-card-address {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-bottom: 0.75rem;
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
+    .pipe-col{
+      min-width:240px;flex:1;
+      border-right:1px solid var(--border);
+      padding:1rem;
     }
+    .pipe-col:last-child{border-right:none}
 
-    .lead-card-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .pipe-col-head{
+      display:flex;align-items:center;justify-content:space-between;
+      margin-bottom:1rem;padding-bottom:0.75rem;
+      border-bottom:1px solid var(--border);
     }
 
-    .lead-card-value {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--accent-green);
+    .pipe-col-label{
+      display:flex;align-items:center;gap:0.5rem;
+      font-size:0.75rem;font-weight:700;
+      text-transform:uppercase;letter-spacing:0.08em;
+      color:var(--text-2);
     }
 
-    .lead-card-owner {
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.55rem;
-      font-weight: 700;
-      color: var(--bg-primary);
-    }
-
-    .lead-card-date {
-      font-size: 0.65rem;
-      color: var(--text-muted);
-      font-family: 'JetBrains Mono', monospace;
-    }
+    .dot{width:8px;height:8px;border-radius:50%}
+    .dot-gray{background:var(--text-3)}
+    .dot-blue{background:var(--blue)}
+    .dot-purple{background:var(--purple)}
+    .dot-orange{background:var(--orange)}
+    .dot-green{background:var(--green)}
 
-    /* ═══ BOTTOM GRID ═══ */
-    .bottom-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin-bottom: 2rem;
+    .pipe-count{
+      font-family:'JetBrains Mono',monospace;
+      font-size:0.7rem;font-weight:600;
+      background:var(--bg-3);padding:0.15rem 0.5rem;border-radius:6px;
+      color:var(--text-2);
     }
 
-    .panel {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.5rem;
+    .lead{
+      background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r-sm);
+      padding:0.85rem 1rem;margin-bottom:0.5rem;
+      cursor:grab;transition:all 0.15s;
     }
+    .lead:hover{border-color:var(--border-hover);background:var(--bg-hover);transform:translateY(-1px)}
 
-    .panel-title {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 1.25rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+    .lead-type{
+      font-size:0.6rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
+      display:inline-block;padding:0.15rem 0.5rem;border-radius:4px;margin-bottom:0.4rem;
     }
+    .t-pelu{background:var(--pink-dim);color:var(--pink)}
+    .t-odonto{background:var(--blue-dim);color:var(--blue)}
+    .t-spa{background:var(--purple-dim);color:var(--purple)}
+    .t-barber{background:var(--orange-dim);color:var(--orange)}
+    .t-vet{background:var(--green-dim);color:var(--green)}
+    .t-estet{background:var(--yellow-dim);color:var(--yellow)}
 
-    /* ═══ ACTIVITY FEED ═══ */
-    .activity-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-    }
+    .lead-name{font-size:0.9rem;font-weight:600;margin-bottom:0.2rem}
+    .lead-addr{font-size:0.72rem;color:var(--text-3);margin-bottom:0.65rem}
 
-    .activity-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
-      padding: 0.75rem;
-      border-radius: var(--radius-xs);
-      transition: background 0.2s;
-    }
+    .lead-foot{display:flex;align-items:center;justify-content:space-between}
+    .lead-val{font-family:'JetBrains Mono',monospace;font-size:0.78rem;font-weight:600;color:var(--green)}
+    .lead-mrr{font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:var(--text-3)}
 
-    .activity-item:hover {
-      background: rgba(255,255,255,0.02);
+    .lead-owner{
+      width:24px;height:24px;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      font-size:0.55rem;font-weight:700;color:var(--bg-0);
     }
 
-    .activity-avatar {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.65rem;
-      font-weight: 700;
-      color: var(--bg-primary);
-      min-width: 32px;
-    }
+    /* ═══ RIGHT SIDEBAR ═══ */
+    .right-col{display:flex;flex-direction:column;gap:1.25rem}
 
-    .activity-content {
-      flex: 1;
+    .card{
+      background:var(--bg-1);border:1px solid var(--border);border-radius:var(--r);
+      padding:1.25rem 1.5rem;
     }
 
-    .activity-text {
-      font-size: 0.85rem;
-      line-height: 1.4;
+    .card-title{
+      font-size:0.95rem;font-weight:700;margin-bottom:1rem;
+      display:flex;align-items:center;gap:0.5rem;
     }
 
-    .activity-text strong {
-      color: var(--text-primary);
-      font-weight: 600;
+    /* MRR */
+    .mrr-big{
+      font-family:'JetBrains Mono',monospace;
+      font-size:2.2rem;font-weight:800;
+      text-align:center;margin:0.75rem 0 0.25rem;
+      background:linear-gradient(135deg,var(--green),var(--cyan));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
     }
 
-    .activity-text {
-      color: var(--text-secondary);
-    }
+    .mrr-sub{text-align:center;font-size:0.78rem;color:var(--text-3);margin-bottom:1.25rem}
 
-    .activity-time {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      font-family: 'JetBrains Mono', monospace;
-      margin-top: 0.2rem;
+    .goal-bar-wrap{
+      background:var(--bg-2);border-radius:8px;padding:0.85rem 1rem;
     }
 
-    /* ═══ ZONE MAP ═══ */
-    .zone-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
+    .goal-labels{display:flex;justify-content:space-between;margin-bottom:0.4rem}
+    .goal-labels span{font-size:0.72rem;color:var(--text-2)}
+    .goal-labels strong{font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--blue);font-weight:600}
 
-    .zone-item {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 0.85rem 1rem;
-      background: rgba(255,255,255,0.02);
-      border-radius: var(--radius-xs);
-      border: 1px solid var(--border);
-      transition: all 0.2s;
-    }
+    .goal-track{height:8px;background:var(--bg-3);border-radius:4px;overflow:hidden;margin-bottom:0.35rem}
+    .goal-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--green),var(--cyan));transition:width 1.5s cubic-bezier(.16,1,.3,1)}
 
-    .zone-item:hover {
-      border-color: rgba(255,255,255,0.1);
-      background: rgba(255,255,255,0.04);
-    }
+    .goal-hint{font-size:0.68rem;color:var(--text-3);text-align:right}
 
-    .zone-name {
-      font-weight: 600;
-      font-size: 0.9rem;
-      min-width: 120px;
+    /* PACKAGES */
+    .pkg{
+      display:flex;align-items:center;gap:0.85rem;
+      padding:0.85rem 0;border-bottom:1px solid var(--border);
     }
+    .pkg:last-child{border-bottom:none}
 
-    .zone-bar-container {
-      flex: 1;
-      height: 6px;
-      background: rgba(255,255,255,0.06);
-      border-radius: 3px;
-      overflow: hidden;
+    .pkg-icon{
+      width:38px;height:38px;border-radius:10px;
+      display:flex;align-items:center;justify-content:center;
+      font-size:1.1rem;flex-shrink:0;
     }
 
-    .zone-bar {
-      height: 100%;
-      border-radius: 3px;
-      transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+    .pkg-name{font-size:0.88rem;font-weight:600}
+    .pkg-desc{font-size:0.7rem;color:var(--text-3)}
+    .pkg-price{
+      margin-left:auto;text-align:right;
+      font-family:'JetBrains Mono',monospace;
     }
+    .pkg-price .setup{font-size:0.82rem;font-weight:600;color:var(--green)}
+    .pkg-price .monthly{font-size:0.65rem;color:var(--text-3)}
 
-    .zone-count {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
-      font-weight: 600;
-      min-width: 50px;
-      text-align: right;
-    }
+    /* ACTIVITY */
+    .act{display:flex;align-items:flex-start;gap:0.7rem;padding:0.6rem 0}
 
-    .zone-owner {
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.55rem;
-      font-weight: 700;
-      color: var(--bg-primary);
+    .act-dot{
+      width:28px;height:28px;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      font-size:0.6rem;font-weight:700;color:var(--bg-0);
+      flex-shrink:0;margin-top:2px;
     }
 
-    /* ═══ SERVICES TABLE ═══ */
-    .services-breakdown {
-      margin-bottom: 2rem;
-    }
+    .act-text{font-size:0.82rem;color:var(--text-2);line-height:1.4}
+    .act-text strong{color:var(--text-1);font-weight:600}
+    .act-time{font-size:0.65rem;color:var(--text-3);font-family:'JetBrains Mono',monospace;margin-top:0.15rem}
 
-    .service-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.85rem 0;
-      border-bottom: 1px solid var(--border);
+    /* ZONES */
+    .zone{
+      display:flex;align-items:center;gap:0.85rem;
+      padding:0.65rem 0;
     }
 
-    .service-row:last-child { border-bottom: none; }
+    .zone-name{font-size:0.85rem;font-weight:600;min-width:90px}
 
-    .service-info {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .service-icon-box {
-      width: 36px;
-      height: 36px;
-      border-radius: var(--radius-xs);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-    }
+    .zone-track{flex:1;height:6px;background:var(--bg-3);border-radius:3px;overflow:hidden}
+    .zone-fill{height:100%;border-radius:3px;transition:width 1.2s cubic-bezier(.16,1,.3,1)}
 
-    .service-name {
-      font-weight: 600;
-      font-size: 0.9rem;
+    .zone-num{
+      font-family:'JetBrains Mono',monospace;font-size:0.78rem;font-weight:600;
+      min-width:28px;text-align:right;
     }
 
-    .service-desc {
-      font-size: 0.75rem;
-      color: var(--text-muted);
+    .zone-who{
+      width:22px;height:22px;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      font-size:0.5rem;font-weight:700;color:var(--bg-0);
     }
 
-    .service-price {
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 600;
-      color: var(--accent-green);
-    }
+    /* ═══ BOTTOM ROW ═══ */
+    .bottom{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:2rem}
 
     /* ═══ QUICK ACTIONS ═══ */
-    .quick-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      margin-bottom: 2rem;
+    .actions-row{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;
+      margin-bottom:1.75rem;
     }
 
-    .quick-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.3s;
+    .action{
+      background:var(--bg-1);border:1px solid var(--border);border-radius:var(--r);
+      padding:1.25rem;text-align:center;cursor:pointer;transition:all 0.2s;
     }
+    .action:hover{border-color:var(--border-hover);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,0.4)}
 
-    .quick-card:hover {
-      border-color: var(--border-active);
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .quick-icon {
-      font-size: 2rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .quick-label {
-      font-weight: 600;
-      font-size: 0.9rem;
-      margin-bottom: 0.25rem;
-    }
-
-    .quick-desc {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
-
-    /* ═══ MRR TRACKER ═══ */
-    .mrr-display {
-      text-align: center;
-      padding: 2rem 0 1rem;
-    }
-
-    .mrr-amount {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 2.5rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, var(--accent-green), var(--accent-cyan));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 0.25rem;
-    }
-
-    .mrr-label {
-      font-size: 0.8rem;
-      color: var(--text-secondary);
-      margin-bottom: 1.5rem;
-    }
-
-    .mrr-goal {
-      background: rgba(255,255,255,0.03);
-      border-radius: var(--radius-sm);
-      padding: 1rem;
-    }
-
-    .mrr-goal-header {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 0.5rem;
-      font-size: 0.8rem;
-    }
-
-    .mrr-goal-label { color: var(--text-secondary); }
-    .mrr-goal-value {
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 600;
-      color: var(--accent-blue);
-    }
-
-    .mrr-bar {
-      height: 8px;
-      background: rgba(255,255,255,0.06);
-      border-radius: 4px;
-      overflow: hidden;
-      margin-bottom: 0.5rem;
-    }
-
-    .mrr-bar-fill {
-      height: 100%;
-      background: var(--gradient-green);
-      border-radius: 4px;
-      transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .mrr-goal-footer {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      text-align: right;
-    }
+    .action-icon{font-size:1.8rem;margin-bottom:0.6rem}
+    .action-label{font-size:0.88rem;font-weight:600;margin-bottom:0.15rem}
+    .action-hint{font-size:0.72rem;color:var(--text-3)}
 
     /* ═══ MODAL ═══ */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(6,8,12,0.9);
-      backdrop-filter: blur(10px);
-      z-index: 200;
-      display: none;
-      align-items: center;
-      justify-content: center;
+    .overlay{
+      position:fixed;inset:0;background:rgba(6,9,16,0.88);backdrop-filter:blur(12px);
+      z-index:200;display:none;align-items:center;justify-content:center;
+    }
+    .overlay.open{display:flex}
+
+    .modal{
+      background:var(--bg-1);border:1px solid var(--border);border-radius:var(--r);
+      padding:2rem;width:520px;max-width:92vw;max-height:88vh;overflow-y:auto;
+      animation:modalIn 0.25s ease;
     }
 
-    .modal-overlay.active { display: flex; }
+    @keyframes modalIn{from{opacity:0;transform:scale(0.96) translateY(12px)}to{opacity:1;transform:none}}
 
-    .modal-box {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 2rem;
-      width: 500px;
-      max-width: 90vw;
-      max-height: 85vh;
-      overflow-y: auto;
+    .modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem}
+    .modal-head h2{font-size:1.15rem;font-weight:700}
+    .modal-close{background:none;border:none;color:var(--text-3);font-size:1.5rem;cursor:pointer}
+
+    .field{margin-bottom:1rem}
+    .field label{
+      display:block;font-size:0.7rem;font-weight:600;
+      letter-spacing:0.1em;text-transform:uppercase;
+      color:var(--text-2);margin-bottom:0.35rem;
     }
-
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.5rem;
+    .field input,.field select,.field textarea{
+      width:100%;padding:0.65rem 0.85rem;
+      background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r-xs);
+      color:var(--text-1);font-family:'Outfit',sans-serif;font-size:0.9rem;outline:none;
+      transition:border-color 0.15s;
     }
+    .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--blue)}
+    .field select option{background:var(--bg-2)}
 
-    .modal-header h2 {
-      font-size: 1.2rem;
-      font-weight: 700;
-    }
-
-    .modal-close {
-      background: none;
-      border: none;
-      color: var(--text-muted);
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-
-    .form-field {
-      margin-bottom: 1rem;
-    }
-
-    .form-field label {
-      display: block;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-secondary);
-      margin-bottom: 0.4rem;
-    }
-
-    .form-field input,
-    .form-field select,
-    .form-field textarea {
-      width: 100%;
-      padding: 0.7rem 0.85rem;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-xs);
-      color: var(--text-primary);
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.9rem;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
-    .form-field input:focus,
-    .form-field select:focus,
-    .form-field textarea:focus {
-      border-color: var(--accent-blue);
-    }
-
-    .form-field select option {
-      background: var(--bg-card);
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.75rem;
-    }
-
-    /* ═══ ANIMATIONS ═══ */
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .animate-in {
-      animation: slideUp 0.5s ease forwards;
-    }
-
-    .animate-in:nth-child(1) { animation-delay: 0.05s; }
-    .animate-in:nth-child(2) { animation-delay: 0.1s; }
-    .animate-in:nth-child(3) { animation-delay: 0.15s; }
-    .animate-in:nth-child(4) { animation-delay: 0.2s; }
-
-    /* ═══ SCROLLBAR ═══ */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
-    ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+    .field-row{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}
 
     /* ═══ RESPONSIVE ═══ */
-    @media (max-width: 1200px) {
-      .pipeline { grid-template-columns: repeat(3, 1fr); }
-      .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    @media(max-width:1100px){
+      .split{grid-template-columns:1fr}
+      .right-col{flex-direction:row;flex-wrap:wrap}
+      .right-col .card{flex:1;min-width:280px}
+    }
+    @media(max-width:768px){
+      .kpi-row{grid-template-columns:1fr 1fr}
+      .actions-row{grid-template-columns:1fr 1fr}
+      .bottom{grid-template-columns:1fr}
+      .topbar-nav{display:none}
+      .topbar{padding:0 1rem}
+      .main{padding:1.25rem 1rem}
+    }
+    @media(max-width:480px){
+      .kpi-row{grid-template-columns:1fr}
+      .actions-row{grid-template-columns:1fr}
     }
 
-    @media (max-width: 768px) {
-      .app { grid-template-columns: 1fr; }
-      .sidebar { display: none; }
-      .main { margin-left: 0; }
-      .pipeline { grid-template-columns: 1fr; }
-      .bottom-grid { grid-template-columns: 1fr; }
-      .quick-grid { grid-template-columns: 1fr; }
-    }
+    /* ═══ SCROLLBAR ═══ */
+    ::-webkit-scrollbar{width:5px;height:5px}
+    ::-webkit-scrollbar-track{background:transparent}
+    ::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.08);border-radius:3px}
+
+    /* ═══ ANIM ═══ */
+    .fade{opacity:0;transform:translateY(16px);animation:fadeUp 0.5s ease forwards}
+    @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+    .fade:nth-child(1){animation-delay:.05s}
+    .fade:nth-child(2){animation-delay:.1s}
+    .fade:nth-child(3){animation-delay:.15s}
+    .fade:nth-child(4){animation-delay:.2s}
   </style>
 </head>
 <body>
-  <div class="app">
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-      <div class="sidebar-brand">
-        <div class="brand-icon">N</div>
-        <div class="brand-name">
-          NevadaTech
-          <span>Command Center</span>
-        </div>
-      </div>
 
-      <div class="sidebar-section">
-        <div class="sidebar-label">Principal</div>
-        <ul class="sidebar-nav">
-          <li><a class="active" href="#"><span class="nav-icon">📊</span> Dashboard <span class="badge">Live</span></a></li>
-          <li><a href="#"><span class="nav-icon">🎯</span> Pipeline</a></li>
-          <li><a href="#"><span class="nav-icon">👥</span> Prospectos <span class="badge">47</span></a></li>
-          <li><a href="#"><span class="nav-icon">💰</span> Clientes</a></li>
-        </ul>
-      </div>
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="topbar-left">
+    <a class="brand" href="#">
+      <div class="brand-mark">N</div>
+      <div class="brand-text">NevadaTech<span>Command Center</span></div>
+    </a>
+    <nav class="topbar-nav">
+      <a class="active" href="#">Dashboard</a>
+      <a href="#">Pipeline</a>
+      <a href="#">Prospectos</a>
+      <a href="#">Reportes</a>
+    </nav>
+  </div>
+  <div class="topbar-right">
+    <div class="team-pills">
+      <div class="pill" style="background:linear-gradient(135deg,var(--blue),var(--cyan))" title="Rulo">RS</div>
+      <div class="pill" style="background:linear-gradient(135deg,var(--green),#059669)" title="David">DV</div>
+      <div class="pill" style="background:linear-gradient(135deg,var(--purple),#7C3AED)" title="Camilo">CM</div>
+    </div>
+    <button class="btn btn-ghost" onclick="exportCSV()">📥 Exportar</button>
+    <button class="btn btn-primary" onclick="openModal()">+ Prospecto</button>
+  </div>
+</header>
 
-      <div class="sidebar-section">
-        <div class="sidebar-label">Herramientas</div>
-        <ul class="sidebar-nav">
-          <li><a href="#"><span class="nav-icon">🗺️</span> Mapa de Zonas</a></li>
-          <li><a href="#"><span class="nav-icon">📋</span> Cotizaciones</a></li>
-          <li><a href="#"><span class="nav-icon">📦</span> Paquetes</a></li>
-          <li><a href="#"><span class="nav-icon">📈</span> Reportes</a></li>
-        </ul>
-      </div>
+<!-- MAIN -->
+<main class="main">
 
-      <div class="sidebar-section">
-        <div class="sidebar-label">Configuración</div>
-        <ul class="sidebar-nav">
-          <li><a href="#"><span class="nav-icon">⚙️</span> Ajustes</a></li>
-          <li><a href="#"><span class="nav-icon">🔗</span> Integraciones</a></li>
-        </ul>
+  <!-- KPIs -->
+  <section class="kpi-row">
+    <div class="kpi fade">
+      <div class="kpi-info">
+        <div class="kpi-label">Total Prospectos</div>
+        <div class="kpi-val">47</div>
+        <span class="kpi-tag up">↑ 12 esta semana</span>
       </div>
-
-      <div class="sidebar-team">
-        <div class="sidebar-label">Equipo Online</div>
-        <div class="team-member">
-          <div class="team-avatar" style="background: var(--gradient-blue)">RS</div>
-          <div>
-            <div class="team-name">Rulo</div>
-            <div class="team-role">CEO / CTO</div>
-          </div>
-          <div class="team-status"></div>
-        </div>
-        <div class="team-member">
-          <div class="team-avatar" style="background: var(--gradient-green)">DV</div>
-          <div>
-            <div class="team-name">David</div>
-            <div class="team-role">Sales / Ops</div>
-          </div>
-          <div class="team-status"></div>
-        </div>
-        <div class="team-member">
-          <div class="team-avatar" style="background: var(--gradient-purple)">CM</div>
-          <div>
-            <div class="team-name">Camilo</div>
-            <div class="team-role">Sales / Ops</div>
-          </div>
-          <div class="team-status"></div>
-        </div>
+      <div class="kpi-icon">🎯</div>
+    </div>
+    <div class="kpi fade">
+      <div class="kpi-info">
+        <div class="kpi-label">Demos Agendadas</div>
+        <div class="kpi-val">8</div>
+        <span class="kpi-tag up">↑ 3 nuevas</span>
       </div>
-    </aside>
-
-    <!-- MAIN CONTENT -->
-    <main class="main">
-      <!-- HEADER -->
-      <div class="header">
-        <div class="header-left">
-          <h1>⚡ Command Center</h1>
-          <p>NevadaTech — Agendamiento & Automatización para negocios locales</p>
-        </div>
-        <div class="header-actions">
-          <button class="btn btn-ghost" onclick="exportData()">📥 Exportar</button>
-          <button class="btn btn-primary" onclick="openModal()">+ Nuevo Prospecto</button>
-        </div>
+      <div class="kpi-icon">🖥️</div>
+    </div>
+    <div class="kpi fade">
+      <div class="kpi-info">
+        <div class="kpi-label">Tasa Conversión</div>
+        <div class="kpi-val">23%</div>
+        <span class="kpi-tag up">↑ 5pp vs anterior</span>
       </div>
-
-      <!-- KPI CARDS -->
-      <div class="kpi-grid">
-        <div class="kpi-card animate-in">
-          <div class="kpi-header">
-            <span class="kpi-label">Total Prospectos</span>
-            <div class="kpi-icon">🎯</div>
-          </div>
-          <div class="kpi-value" id="kpiProspectos">47</div>
-          <span class="kpi-change up">↑ 12 esta semana</span>
-        </div>
-        <div class="kpi-card animate-in">
-          <div class="kpi-header">
-            <span class="kpi-label">Demos Agendadas</span>
-            <div class="kpi-icon">🖥️</div>
-          </div>
-          <div class="kpi-value" id="kpiDemos">8</div>
-          <span class="kpi-change up">↑ 3 pendientes</span>
-        </div>
-        <div class="kpi-card animate-in">
-          <div class="kpi-header">
-            <span class="kpi-label">Tasa Conversión</span>
-            <div class="kpi-icon">📈</div>
-          </div>
-          <div class="kpi-value">23%</div>
-          <span class="kpi-change up">↑ 5% vs semana pasada</span>
-        </div>
-        <div class="kpi-card animate-in">
-          <div class="kpi-header">
-            <span class="kpi-label">Pipeline Total</span>
-            <div class="kpi-icon">💰</div>
-          </div>
-          <div class="kpi-value">$14.2M</div>
-          <span class="kpi-change up">↑ $3.5M nuevos</span>
-        </div>
+      <div class="kpi-icon">📈</div>
+    </div>
+    <div class="kpi fade">
+      <div class="kpi-info">
+        <div class="kpi-label">Pipeline Total</div>
+        <div class="kpi-val">$14.2M</div>
+        <span class="kpi-tag neutral">💰 en negociación</span>
       </div>
+      <div class="kpi-icon">💎</div>
+    </div>
+  </section>
 
-      <!-- PIPELINE KANBAN -->
-      <div class="section-header">
-        <h2 class="section-title">🔄 Pipeline de Ventas</h2>
-        <button class="btn btn-ghost" style="font-size:0.8rem">Filtrar por zona ▾</button>
+  <!-- QUICK ACTIONS -->
+  <section class="actions-row">
+    <div class="action fade" onclick="openModal()">
+      <div class="action-icon">🎯</div>
+      <div class="action-label">Nuevo Prospecto</div>
+      <div class="action-hint">Agregar lead al pipeline</div>
+    </div>
+    <div class="action fade">
+      <div class="action-icon">🗺️</div>
+      <div class="action-label">Buscar en Maps</div>
+      <div class="action-hint">Encontrar negocios por zona</div>
+    </div>
+    <div class="action fade">
+      <div class="action-icon">📄</div>
+      <div class="action-label">Cotización</div>
+      <div class="action-hint">Generar propuesta PDF</div>
+    </div>
+    <div class="action fade">
+      <div class="action-icon">🌐</div>
+      <div class="action-label">Crear Demo</div>
+      <div class="action-hint">Landing page para prospecto</div>
+    </div>
+  </section>
+
+  <!-- PIPELINE + SIDEBAR -->
+  <section class="split">
+    <div class="pipeline-wrap fade">
+      <div class="panel-head">
+        <div class="panel-title">🔄 Pipeline de Ventas</div>
+        <button class="btn btn-ghost" style="font-size:0.78rem;padding:0.4rem 0.85rem">Filtrar ▾</button>
       </div>
-
-      <div class="pipeline">
+      <div class="pipeline-scroll">
         <!-- IDENTIFIED -->
-        <div class="pipeline-col col-identified">
-          <div class="pipeline-col-header">
-            <div class="pipeline-col-title">
-              <div class="pipeline-dot"></div>
-              Identificados
-            </div>
-            <span class="pipeline-count">24</span>
+        <div class="pipe-col">
+          <div class="pipe-col-head">
+            <div class="pipe-col-label"><div class="dot dot-gray"></div>Identificados</div>
+            <span class="pipe-count">24</span>
           </div>
-          <div class="lead-card">
-            <span class="lead-card-type type-peluqueria">Peluquería</span>
-            <div class="lead-card-name">Joss Peluquería</div>
-            <div class="lead-card-address">📍 Villas de Granada, Engativá</div>
-            <div class="lead-card-footer">
-              <span class="lead-card-value">$900K</span>
-              <div class="lead-card-owner" style="background:var(--gradient-blue)" title="Rulo">RS</div>
+          <div class="lead">
+            <span class="lead-type t-pelu">Peluquería</span>
+            <div class="lead-name">Joss Peluquería</div>
+            <div class="lead-addr">📍 Villas de Granada, Engativá</div>
+            <div class="lead-foot">
+              <span class="lead-val">$900K</span>
+              <div class="lead-owner" style="background:linear-gradient(135deg,var(--blue),var(--cyan))" title="Rulo">RS</div>
             </div>
           </div>
-          <div class="lead-card">
-            <span class="lead-card-type type-peluqueria">Peluquería</span>
-            <div class="lead-card-name">Rochell Peluquería</div>
-            <div class="lead-card-address">📍 Villas de Granada I</div>
-            <div class="lead-card-footer">
-              <span class="lead-card-value">$900K</span>
-              <div class="lead-card-owner" style="background:var(--gradient-green)" title="David">DV</div>
+          <div class="lead">
+            <span class="lead-type t-pelu">Peluquería</span>
+            <div class="lead-name">Rochell Peluquería</div>
+            <div class="lead-addr">📍 Villas de Granada I</div>
+            <div class="lead-foot">
+              <span class="lead-val">$900K</span>
+              <div class="lead-owner" style="background:linear-gradient(135deg,var(--green),#059669)" title="David">DV</div>
             </div>
           </div>
-          <div class="lead-card">
-            <span class="lead-card-type type-estetica">Estética</span>
-            <div class="lead-card-name">Centro Estética Stella Durán</div>
-            <div class="lead-card-address">📍 Villas de Granada I</div>
-            <div class="lead-card-footer">
-              <span class="lead-card-value">$1.5M</span>
-              <div class="lead-card-owner" style="background:var(--gradient-purple)" title="Camilo">CM</div>
+          <div class="lead">
+            <span class="lead-type t-estet">Estética</span>
+            <div class="lead-name">Stella Durán</div>
+            <div class="lead-addr">📍 Villas de Granada I</div>
+            <div class="lead-foot">
+              <span class="lead-val">$1.5M</span>
+              <div class="lead-owner" style="background:linear-gradient(135deg,var(--purple),#7C3AED)" title="Camilo">CM</div>
             </div>
           </div>
-          <div class="lead-card">
-            <span class="lead-card-type type-peluqueria">Peluquería</span>
-            <div class="lead-card-name">Valeria Torres Peluquería</div>
-            <div class="lead-card-address">📍 Villas de Granada</div>
-            <div class="lead-card-footer">
-              <span class="lead-card-value">$900K</span>
-              <div class="lead-card-owner" style="background:var(--gradient-blue)" title="Rulo">RS</div>
+          <div class="lead">
+            <span class="lead-type t-pelu">Peluquería</span>
+            <div class="lead-name">Valeria Torres</div>
+            <div class="lead-addr">📍 Villas de Granada</div>
+            <div class="lead-foot">
+              <span class="lead-val">$900K</span>
+              <div class="lead-owner" style="background:linear-gradient(135deg,var(--blue),var(--cyan))" title="Rulo">RS</div>
             </div>
           </div>
         </div>
 
         <!-- CONTACTED -->
-        <div class="pipeline-col col-contacted">
-          <div class="pipeline-col-header">
-            <div class="pipeline-col-title">
-              <div class="pipeline-dot"></div>
-              Contactados
-            </div>
-            <span class="pipeline-count">11</span>
+        <div class="pipe-col">
+          <div class="pipe-col-head">
+            <div class="pipe-col-label"><div class="dot dot-blue"></div>Contactados</div>
+            <span class="pipe-count">11</span>
           </div>
-          <div class="lead-card">
-            <span class="lead-card-type type-peluqueria">Peluquería</span>
-            <div class="lead-card-name">Amazing Peluquería</div>
-            <div class="lead-card-address">📍 Villas de Granada</div>
-            <div class="lead-card-footer">
-              <span class="lead-card-value">$900K</span>
-              <div class="lead-card-owner" style="background:var(--gradient-green)" title="David">DV</div>
+          <div class="lead">
+            <span class="lead-type t-pelu">Peluquería</span>
+            <div class="lead-name">Amazing Peluquería</div>
+            <div class="lead-addr">📍 Villas de Granada</div>
+            <div class="lead-foot">
+              <span class="lead-val">$900K</span>
+              <div class="lead-owner" style="background:linear-gradient(135deg,var(--green),#059669)" title="David">DV</div>
             </div>
           </div>
-          <div class="lead-card">
-            <span class="lead-card-type type-barberia">Barbería</span>
-            <div class="lead-card-name">Edward y Charly</div>
-            <div class="lead-card-address">📍 Cra 112A #79B-27</div>
-            <div class="lead-card-footer">
-              <span class="lead-card-value">$900K</span>
-              <div class="lead-card-owner" style="background:var(--gradient-purple)" title="Camilo">CM</div>
+          <div class="lead">
+            <span class="lead-type t-barber">Barbería</span>
+            <div class="lead-name">Edward y Charly</div>
+            <div class="lead-addr">📍 Cra 112A #79B-27</div>
+            <div class="lead-foot">
+              <span class="lead-val">$900K</span>
+              <div class="lead-owner" style="background:linear-gradient(135deg,var(--purple),#7C3AED)" title="Camilo">CM</div>
             </div>
           </div>
-          <div class="lead-card">
-            <span class="lead-card-type type-odontologia">Odontología</span>
-            <div class="lead-card-name">Dental Plus Engativá</div>
-            <div class="lead-card-address">📍 Bolivia, Engativá</div>
-            <div class="lead-card-footer">
-              <span class="lead-card-value">$2M</span>
-              <div class="lead-card-owner" style="background:var(--gradient-blue)" title="Rulo">RS</div>
+          <div class="lead">
+            <span class="lead-type t-odonto">Odontología</span>
+            <div class="lead-name">Dental Plus</div>
+            <div class="lead-addr">📍 Bolivia, Engativá</div>
+            <div class="lead-foot">
+              <span class="lead-val">$2M</span>
+              <div class="lead-owner" style="background:linear-gradient(135deg,var(--blue),var(--cyan))" title="Rulo">RS</div>
             </div>
           </div>
         </div>
 
         <!-- DEMO -->
-        <div class="pipeline-col col-demo">
-          <div class="pipeline-col-header">
-            <div class="pipeline-col-title">
-              <div class="pipeline-dot"></div>
-              Demo Mostrada
-            </div>
-            <span class="pipeline-count">6</span>
+        <div class="pipe-col">
+          <div class="pipe-col-head">
+            <div class="pipe-col-label"><div class="dot dot-purple"></div>Demo</div>
+            <span class="pipe-count">6</span>
           </div>
-          <div class="lead-card">
-            <span class="lead-card-type type-spa">Spa</span>
-            <div class="lead-card-name">Spa Renacer</div>
-            <div class="lead-card-address">📍 Álamos, Engativá</div>
-            <div class="lead-card-footer">
-              <span class="lead-card-value">$1.5M</span>
-              <div class="lead-card-owner" style="background:var(--gradient-green)" title="David">DV</div>
+          <div class="lead">
+            <span class="lead-type t-spa">Spa</span>
+            <div class="lead-name">Spa Renacer</div>
+            <div class="lead-addr">📍 Álamos, Engativá</div>
+            <div class="lead-foot">
+              <span class="lead-val">$1.5M</span>
+              <div class="lead-owner" style="background:linear-gradient(135deg,var(--green),#059669)" title="David">DV</div>
             </div>
           </div>
-          <div class="lead-card">
-            <span class="lead-card-type type-peluqueria">Peluquería</span>
-            <div class="lead-card-name">Sala de Belleza Wesly</div>
-            <div class="lead-card-address">📍 Villas de Granada</div>
-            <div class="lead-card-footer">
-              <span class="lead-card-value">$900K</span>
-              <div class="lead-card-owner" style="background:var(--gradient-blue)" title="Rulo">RS</div>
+          <div class="lead">
+            <span class="lead-type t-pelu">Peluquería</span>
+            <div class="lead-name">Sala Wesly</div>
+            <div class="lead-addr">📍 Villas de Granada</div>
+            <div class="lead-foot">
+              <span class="lead-val">$900K</span>
+              <div class="lead-owner" style="background:linear-gradient(135deg,var(--blue),var(--cyan))" title="Rulo">RS</div>
             </div>
           </div>
         </div>
 
         <!-- NEGOTIATING -->
-        <div class="pipeline-col col-negotiating">
-          <div class="pipeline-col-header">
-            <div class="pipeline-col-title">
-              <div class="pipeline-dot"></div>
-              Negociando
-            </div>
-            <span class="pipeline-count">4</span>
+        <div class="pipe-col">
+          <div class="pipe-col-head">
+            <div class="pipe-col-label"><div class="dot dot-orange"></div>Negociando</div>
+            <span class="pipe-count">4</span>
           </div>
-          <div class="lead-card">
-            <span class="lead-card-type type-veterinaria">Veterinaria</span>
-            <div class="lead-card-name">VetPaws Engativá</div>
-            <div class="lead-card-address">📍 Garcés Navas</div>
-            <div class="lead-card-footer">
-              <span class="lead-card-value">$2M</span>
-              <div class="lead-card-owner" style="background:var(--gradient-purple)" title="Camilo">CM</div>
+          <div class="lead">
+            <span class="lead-type t-vet">Veterinaria</span>
+            <div class="lead-name">VetPaws</div>
+            <div class="lead-addr">📍 Garcés Navas</div>
+            <div class="lead-foot">
+              <span class="lead-val">$2M</span>
+              <div class="lead-owner" style="background:linear-gradient(135deg,var(--purple),#7C3AED)" title="Camilo">CM</div>
             </div>
           </div>
-          <div class="lead-card">
-            <span class="lead-card-type type-peluqueria">Peluquería</span>
-            <div class="lead-card-name">Theos Peluquería</div>
-            <div class="lead-card-address">📍 Cra 113 #72f-17</div>
-            <div class="lead-card-footer">
-              <span class="lead-card-value">$1.2M</span>
-              <div class="lead-card-owner" style="background:var(--gradient-green)" title="David">DV</div>
+          <div class="lead">
+            <span class="lead-type t-pelu">Peluquería</span>
+            <div class="lead-name">Theos Peluquería</div>
+            <div class="lead-addr">📍 Cra 113 #72f-17</div>
+            <div class="lead-foot">
+              <span class="lead-val">$1.2M</span>
+              <div class="lead-owner" style="background:linear-gradient(135deg,var(--green),#059669)" title="David">DV</div>
             </div>
           </div>
         </div>
 
         <!-- CLOSED -->
-        <div class="pipeline-col col-closed">
-          <div class="pipeline-col-header">
-            <div class="pipeline-col-title">
-              <div class="pipeline-dot"></div>
-              Cerrados ✓
-            </div>
-            <span class="pipeline-count">2</span>
+        <div class="pipe-col">
+          <div class="pipe-col-head">
+            <div class="pipe-col-label"><div class="dot dot-green"></div>Cerrados ✓</div>
+            <span class="pipe-count">2</span>
           </div>
-          <div class="lead-card" style="border-color: rgba(104,211,145,0.2);">
-            <span class="lead-card-type type-peluqueria">Peluquería</span>
-            <div class="lead-card-name">D'yineli Peluquería</div>
-            <div class="lead-card-address">📍 Villas de Granada</div>
-            <div class="lead-card-footer">
-              <span class="lead-card-value" style="color:var(--accent-green)">$900K ✓</span>
-              <span class="lead-card-date">+$100K/mes</span>
+          <div class="lead" style="border-color:rgba(74,222,128,0.15)">
+            <span class="lead-type t-pelu">Peluquería</span>
+            <div class="lead-name">D'yineli</div>
+            <div class="lead-addr">📍 Villas de Granada</div>
+            <div class="lead-foot">
+              <span class="lead-val">$900K ✓</span>
+              <span class="lead-mrr">+$100K/mes</span>
             </div>
           </div>
-          <div class="lead-card" style="border-color: rgba(104,211,145,0.2);">
-            <span class="lead-card-type type-odontologia">Odontología</span>
-            <div class="lead-card-name">Sonría Dental</div>
-            <div class="lead-card-address">📍 Normandía, Engativá</div>
-            <div class="lead-card-footer">
-              <span class="lead-card-value" style="color:var(--accent-green)">$2M ✓</span>
-              <span class="lead-card-date">+$200K/mes</span>
+          <div class="lead" style="border-color:rgba(74,222,128,0.15)">
+            <span class="lead-type t-odonto">Odontología</span>
+            <div class="lead-name">Sonría Dental</div>
+            <div class="lead-addr">📍 Normandía</div>
+            <div class="lead-foot">
+              <span class="lead-val">$2M ✓</span>
+              <span class="lead-mrr">+$200K/mes</span>
             </div>
           </div>
         </div>
       </div>
-
-      <!-- QUICK ACTIONS -->
-      <div class="section-header">
-        <h2 class="section-title">⚡ Acciones Rápidas</h2>
-      </div>
-      <div class="quick-grid">
-        <div class="quick-card" onclick="openModal()">
-          <div class="quick-icon">🎯</div>
-          <div class="quick-label">Buscar Prospectos</div>
-          <div class="quick-desc">Buscar negocios por zona en Google Maps</div>
-        </div>
-        <div class="quick-card">
-          <div class="quick-icon">📄</div>
-          <div class="quick-label">Generar Cotización</div>
-          <div class="quick-desc">Crear propuesta personalizada PDF</div>
-        </div>
-        <div class="quick-card">
-          <div class="quick-icon">🌐</div>
-          <div class="quick-label">Crear Demo</div>
-          <div class="quick-desc">Generar landing page para prospecto</div>
-        </div>
-      </div>
-
-      <!-- BOTTOM PANELS -->
-      <div class="bottom-grid">
-        <!-- ACTIVITY FEED -->
-        <div class="panel">
-          <div class="panel-title">🔔 Actividad Reciente</div>
-          <div class="activity-list">
-            <div class="activity-item">
-              <div class="activity-avatar" style="background:var(--gradient-blue)">RS</div>
-              <div class="activity-content">
-                <div class="activity-text"><strong>Rulo</strong> identificó <strong>Joss Peluquería</strong> como prospecto</div>
-                <div class="activity-time">Hace 5 min</div>
-              </div>
-            </div>
-            <div class="activity-item">
-              <div class="activity-avatar" style="background:var(--gradient-green)">DV</div>
-              <div class="activity-content">
-                <div class="activity-text"><strong>David</strong> contactó a <strong>Amazing Peluquería</strong> por WhatsApp</div>
-                <div class="activity-time">Hace 1h</div>
-              </div>
-            </div>
-            <div class="activity-item">
-              <div class="activity-avatar" style="background:var(--gradient-purple)">CM</div>
-              <div class="activity-content">
-                <div class="activity-text"><strong>Camilo</strong> mostró demo a <strong>VetPaws</strong> — interesados</div>
-                <div class="activity-time">Hace 2h</div>
-              </div>
-            </div>
-            <div class="activity-item">
-              <div class="activity-avatar" style="background:var(--gradient-green)">DV</div>
-              <div class="activity-content">
-                <div class="activity-text"><strong>David</strong> cerró venta con <strong>Theos Peluquería</strong> 🎉</div>
-                <div class="activity-time">Ayer 4:30pm</div>
-              </div>
-            </div>
-            <div class="activity-item">
-              <div class="activity-avatar" style="background:var(--gradient-blue)">RS</div>
-              <div class="activity-content">
-                <div class="activity-text"><strong>Rulo</strong> generó demo para <strong>Sala de Belleza Wesly</strong></div>
-                <div class="activity-time">Ayer 2:15pm</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- MRR + ZONES -->
-        <div class="panel">
-          <div class="panel-title">💰 MRR — Ingreso Recurrente Mensual</div>
-          <div class="mrr-display">
-            <div class="mrr-amount">$300K</div>
-            <div class="mrr-label">COP / mes recurrente</div>
-          </div>
-          <div class="mrr-goal">
-            <div class="mrr-goal-header">
-              <span class="mrr-goal-label">Meta mensual</span>
-              <span class="mrr-goal-value">$2.000.000</span>
-            </div>
-            <div class="mrr-bar">
-              <div class="mrr-bar-fill" style="width: 15%"></div>
-            </div>
-            <div class="mrr-goal-footer">15% — Faltan $1.700.000</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ZONES + PACKAGES -->
-      <div class="bottom-grid">
-        <div class="panel">
-          <div class="panel-title">🗺️ Zonas de Bogotá</div>
-          <div class="zone-list">
-            <div class="zone-item">
-              <div class="zone-name">Engativá</div>
-              <div class="zone-bar-container">
-                <div class="zone-bar" style="width:78%; background: var(--gradient-blue)"></div>
-              </div>
-              <div class="zone-count" style="color:var(--accent-blue)">28</div>
-              <div class="zone-owner" style="background:var(--gradient-blue)" title="Rulo">RS</div>
-            </div>
-            <div class="zone-item">
-              <div class="zone-name">Suba</div>
-              <div class="zone-bar-container">
-                <div class="zone-bar" style="width:42%; background: var(--gradient-green)"></div>
-              </div>
-              <div class="zone-count" style="color:var(--accent-green)">12</div>
-              <div class="zone-owner" style="background:var(--gradient-green)" title="David">DV</div>
-            </div>
-            <div class="zone-item">
-              <div class="zone-name">Kennedy</div>
-              <div class="zone-bar-container">
-                <div class="zone-bar" style="width:22%; background: var(--gradient-purple)"></div>
-              </div>
-              <div class="zone-count" style="color:var(--accent-purple)">7</div>
-              <div class="zone-owner" style="background:var(--gradient-purple)" title="Camilo">CM</div>
-            </div>
-            <div class="zone-item">
-              <div class="zone-name">Fontibón</div>
-              <div class="zone-bar-container">
-                <div class="zone-bar" style="width:0%; background: var(--gradient-orange)"></div>
-              </div>
-              <div class="zone-count" style="color:var(--text-muted)">0</div>
-              <div class="zone-owner" style="background:rgba(255,255,255,0.1)">—</div>
-            </div>
-            <div class="zone-item">
-              <div class="zone-name">Chapinero</div>
-              <div class="zone-bar-container">
-                <div class="zone-bar" style="width:0%; background: var(--gradient-orange)"></div>
-              </div>
-              <div class="zone-count" style="color:var(--text-muted)">0</div>
-              <div class="zone-owner" style="background:rgba(255,255,255,0.1)">—</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="panel">
-          <div class="panel-title">📦 Paquetes de Servicio</div>
-          <div class="services-breakdown">
-            <div class="service-row">
-              <div class="service-info">
-                <div class="service-icon-box" style="background:rgba(99,179,237,0.1)">🌐</div>
-                <div>
-                  <div class="service-name">Básico — Landing + Citas</div>
-                  <div class="service-desc">Página web + formulario agendamiento</div>
-                </div>
-              </div>
-              <div>
-                <div class="service-price">$900K</div>
-                <div class="service-desc" style="text-align:right">+$100K/mes</div>
-              </div>
-            </div>
-            <div class="service-row">
-              <div class="service-info">
-                <div class="service-icon-box" style="background:rgba(183,148,244,0.1)">🤖</div>
-                <div>
-                  <div class="service-name">Pro — Landing + Chatbot IA</div>
-                  <div class="service-desc">Todo básico + chatbot WhatsApp + recordatorios</div>
-                </div>
-              </div>
-              <div>
-                <div class="service-price">$1.5M</div>
-                <div class="service-desc" style="text-align:right">+$200K/mes</div>
-              </div>
-            </div>
-            <div class="service-row">
-              <div class="service-info">
-                <div class="service-icon-box" style="background:rgba(246,173,85,0.1)">🚀</div>
-                <div>
-                  <div class="service-name">Enterprise — Full Digital</div>
-                  <div class="service-desc">Todo Pro + redes sociales IA + Google Ads + CRM</div>
-                </div>
-              </div>
-              <div>
-                <div class="service-price">$3M</div>
-                <div class="service-desc" style="text-align:right">+$400K/mes</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
-  </div>
-
-  <!-- ADD PROSPECT MODAL -->
-  <div class="modal-overlay" id="addModal">
-    <div class="modal-box">
-      <div class="modal-header">
-        <h2>🎯 Nuevo Prospecto</h2>
-        <button class="modal-close" onclick="closeModal()">&times;</button>
-      </div>
-      <form onsubmit="addProspect(event)">
-        <div class="form-field">
-          <label>Nombre del negocio</label>
-          <input type="text" placeholder="Ej: Joss Peluquería" required>
-        </div>
-        <div class="form-row">
-          <div class="form-field">
-            <label>Tipo de negocio</label>
-            <select required>
-              <option value="">Seleccionar...</option>
-              <option>Peluquería</option>
-              <option>Barbería</option>
-              <option>Spa / Estética</option>
-              <option>Odontología</option>
-              <option>Veterinaria</option>
-              <option>Consultorio Médico</option>
-              <option>Fisioterapia</option>
-              <option>Psicología</option>
-              <option>Gimnasio / Fitness</option>
-              <option>Otro</option>
-            </select>
-          </div>
-          <div class="form-field">
-            <label>Zona</label>
-            <select required>
-              <option value="">Seleccionar...</option>
-              <option>Engativá</option>
-              <option>Suba</option>
-              <option>Kennedy</option>
-              <option>Fontibón</option>
-              <option>Chapinero</option>
-              <option>Usaquén</option>
-              <option>Teusaquillo</option>
-              <option>Otra</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-field">
-          <label>Dirección / Barrio</label>
-          <input type="text" placeholder="Ej: Villas de Granada, Cra 112A #79B-27">
-        </div>
-        <div class="form-row">
-          <div class="form-field">
-            <label>Nombre del dueño</label>
-            <input type="text" placeholder="Ej: María García">
-          </div>
-          <div class="form-field">
-            <label>WhatsApp</label>
-            <input type="tel" placeholder="Ej: 310 123 4567">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-field">
-            <label>Link Google Maps</label>
-            <input type="url" placeholder="https://maps.google.com/...">
-          </div>
-          <div class="form-field">
-            <label>Instagram / Facebook</label>
-            <input type="text" placeholder="@negocio">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-field">
-            <label>Paquete interesado</label>
-            <select>
-              <option value="">Sin definir</option>
-              <option>Básico — $900K</option>
-              <option>Pro — $1.5M</option>
-              <option>Enterprise — $3M</option>
-            </select>
-          </div>
-          <div class="form-field">
-            <label>Asignado a</label>
-            <select required>
-              <option value="">Seleccionar...</option>
-              <option>Rulo</option>
-              <option>David</option>
-              <option>Camilo</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-field">
-          <label>Notas</label>
-          <textarea rows="3" placeholder="¿Tienen web? ¿Cómo agendan? ¿Qué dolor mencionaron?"></textarea>
-        </div>
-        <div style="display:flex; gap:0.75rem; margin-top:0.5rem;">
-          <button type="button" class="btn btn-ghost" style="flex:1" onclick="closeModal()">Cancelar</button>
-          <button type="submit" class="btn btn-primary" style="flex:1">Agregar Prospecto</button>
-        </div>
-      </form>
     </div>
+
+    <!-- RIGHT COL -->
+    <div class="right-col">
+      <!-- MRR -->
+      <div class="card fade">
+        <div class="card-title">💰 MRR</div>
+        <div class="mrr-big">$300K</div>
+        <div class="mrr-sub">COP / mes recurrente</div>
+        <div class="goal-bar-wrap">
+          <div class="goal-labels">
+            <span>Meta mensual</span>
+            <strong>$2.000.000</strong>
+          </div>
+          <div class="goal-track">
+            <div class="goal-fill" id="goalFill" style="width:0%"></div>
+          </div>
+          <div class="goal-hint">15% — Faltan $1.7M</div>
+        </div>
+      </div>
+
+      <!-- PACKAGES -->
+      <div class="card fade">
+        <div class="card-title">📦 Paquetes</div>
+        <div class="pkg">
+          <div class="pkg-icon" style="background:var(--blue-dim)">🌐</div>
+          <div>
+            <div class="pkg-name">Básico</div>
+            <div class="pkg-desc">Landing + agendamiento</div>
+          </div>
+          <div class="pkg-price">
+            <div class="setup">$900K</div>
+            <div class="monthly">+$100K/mes</div>
+          </div>
+        </div>
+        <div class="pkg">
+          <div class="pkg-icon" style="background:var(--purple-dim)">🤖</div>
+          <div>
+            <div class="pkg-name">Pro</div>
+            <div class="pkg-desc">+ Chatbot IA + recordatorios</div>
+          </div>
+          <div class="pkg-price">
+            <div class="setup">$1.5M</div>
+            <div class="monthly">+$200K/mes</div>
+          </div>
+        </div>
+        <div class="pkg">
+          <div class="pkg-icon" style="background:var(--orange-dim)">🚀</div>
+          <div>
+            <div class="pkg-name">Enterprise</div>
+            <div class="pkg-desc">+ Redes IA + Ads + CRM</div>
+          </div>
+          <div class="pkg-price">
+            <div class="setup">$3M</div>
+            <div class="monthly">+$400K/mes</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTTOM -->
+  <section class="bottom">
+    <!-- ACTIVITY -->
+    <div class="card fade">
+      <div class="card-title">🔔 Actividad Reciente</div>
+      <div class="act">
+        <div class="act-dot" style="background:linear-gradient(135deg,var(--blue),var(--cyan))">RS</div>
+        <div>
+          <div class="act-text"><strong>Rulo</strong> identificó <strong>Joss Peluquería</strong> como prospecto</div>
+          <div class="act-time">Hace 5 min</div>
+        </div>
+      </div>
+      <div class="act">
+        <div class="act-dot" style="background:linear-gradient(135deg,var(--green),#059669)">DV</div>
+        <div>
+          <div class="act-text"><strong>David</strong> contactó a <strong>Amazing Peluquería</strong> por WhatsApp</div>
+          <div class="act-time">Hace 1h</div>
+        </div>
+      </div>
+      <div class="act">
+        <div class="act-dot" style="background:linear-gradient(135deg,var(--purple),#7C3AED)">CM</div>
+        <div>
+          <div class="act-text"><strong>Camilo</strong> mostró demo a <strong>VetPaws</strong> — interesados 🎯</div>
+          <div class="act-time">Hace 2h</div>
+        </div>
+      </div>
+      <div class="act">
+        <div class="act-dot" style="background:linear-gradient(135deg,var(--green),#059669)">DV</div>
+        <div>
+          <div class="act-text"><strong>David</strong> cerró venta con <strong>D'yineli</strong> 🎉</div>
+          <div class="act-time">Ayer 4:30pm</div>
+        </div>
+      </div>
+      <div class="act">
+        <div class="act-dot" style="background:linear-gradient(135deg,var(--blue),var(--cyan))">RS</div>
+        <div>
+          <div class="act-text"><strong>Rulo</strong> generó landing demo para <strong>Sala Wesly</strong></div>
+          <div class="act-time">Ayer 2:15pm</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ZONES -->
+    <div class="card fade">
+      <div class="card-title">🗺️ Zonas de Bogotá</div>
+      <div class="zone">
+        <div class="zone-name">Engativá</div>
+        <div class="zone-track"><div class="zone-fill" data-w="78%" style="width:0%;background:linear-gradient(90deg,var(--blue),var(--cyan))"></div></div>
+        <div class="zone-num" style="color:var(--blue)">28</div>
+        <div class="zone-who" style="background:linear-gradient(135deg,var(--blue),var(--cyan))">RS</div>
+      </div>
+      <div class="zone">
+        <div class="zone-name">Suba</div>
+        <div class="zone-track"><div class="zone-fill" data-w="42%" style="width:0%;background:linear-gradient(90deg,var(--green),#059669)"></div></div>
+        <div class="zone-num" style="color:var(--green)">12</div>
+        <div class="zone-who" style="background:linear-gradient(135deg,var(--green),#059669)">DV</div>
+      </div>
+      <div class="zone">
+        <div class="zone-name">Kennedy</div>
+        <div class="zone-track"><div class="zone-fill" data-w="22%" style="width:0%;background:linear-gradient(90deg,var(--purple),#7C3AED)"></div></div>
+        <div class="zone-num" style="color:var(--purple)">7</div>
+        <div class="zone-who" style="background:linear-gradient(135deg,var(--purple),#7C3AED)">CM</div>
+      </div>
+      <div class="zone">
+        <div class="zone-name">Fontibón</div>
+        <div class="zone-track"><div class="zone-fill" data-w="0%" style="width:0%;background:var(--text-3)"></div></div>
+        <div class="zone-num" style="color:var(--text-3)">0</div>
+        <div class="zone-who" style="background:var(--bg-3)">—</div>
+      </div>
+      <div class="zone">
+        <div class="zone-name">Chapinero</div>
+        <div class="zone-track"><div class="zone-fill" data-w="0%" style="width:0%;background:var(--text-3)"></div></div>
+        <div class="zone-num" style="color:var(--text-3)">0</div>
+        <div class="zone-who" style="background:var(--bg-3)">—</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- MODAL -->
+<div class="overlay" id="modal">
+  <div class="modal">
+    <div class="modal-head">
+      <h2>🎯 Nuevo Prospecto</h2>
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+    </div>
+    <form onsubmit="addLead(event)">
+      <div class="field">
+        <label>Nombre del negocio</label>
+        <input type="text" placeholder="Ej: Joss Peluquería" required>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Tipo</label>
+          <select required>
+            <option value="">Seleccionar...</option>
+            <option>Peluquería</option><option>Barbería</option>
+            <option>Spa / Estética</option><option>Odontología</option>
+            <option>Veterinaria</option><option>Consultorio Médico</option>
+            <option>Fisioterapia</option><option>Psicología</option>
+            <option>Gimnasio</option><option>Otro</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Zona</label>
+          <select required>
+            <option value="">Seleccionar...</option>
+            <option>Engativá</option><option>Suba</option>
+            <option>Kennedy</option><option>Fontibón</option>
+            <option>Chapinero</option><option>Usaquén</option>
+            <option>Teusaquillo</option><option>Otra</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label>Dirección / Barrio</label>
+        <input type="text" placeholder="Ej: Villas de Granada, Cra 112A #79B-27">
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Dueño / Contacto</label>
+          <input type="text" placeholder="Ej: María García">
+        </div>
+        <div class="field">
+          <label>WhatsApp</label>
+          <input type="tel" placeholder="310 123 4567">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Google Maps</label>
+          <input type="url" placeholder="https://maps.google.com/...">
+        </div>
+        <div class="field">
+          <label>Instagram / Facebook</label>
+          <input type="text" placeholder="@negocio">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Paquete</label>
+          <select>
+            <option value="">Sin definir</option>
+            <option>Básico — $900K</option>
+            <option>Pro — $1.5M</option>
+            <option>Enterprise — $3M</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Asignado a</label>
+          <select required>
+            <option value="">Seleccionar...</option>
+            <option>Rulo</option><option>David</option><option>Camilo</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label>Notas</label>
+        <textarea rows="2" placeholder="¿Tienen web? ¿Cómo agendan? ¿Qué dolor tienen?"></textarea>
+      </div>
+      <div style="display:flex;gap:0.75rem;margin-top:0.5rem">
+        <button type="button" class="btn btn-ghost" style="flex:1" onclick="closeModal()">Cancelar</button>
+        <button type="submit" class="btn btn-primary" style="flex:1">Agregar</button>
+      </div>
+    </form>
   </div>
+</div>
 
-  <script>
-    // Modal
-    function openModal() {
-      document.getElementById('addModal').classList.add('active');
-    }
-    function closeModal() {
-      document.getElementById('addModal').classList.remove('active');
-    }
+<script>
+  function openModal(){document.getElementById('modal').classList.add('open')}
+  function closeModal(){document.getElementById('modal').classList.remove('open')}
+  function addLead(e){e.preventDefault();alert('✅ Prospecto agregado');closeModal()}
+  function exportCSV(){alert('📥 Exportando CSV...')}
 
-    // Add prospect
-    function addProspect(e) {
-      e.preventDefault();
-      // In real app: save to backend
-      alert('✅ Prospecto agregado al pipeline!');
-      closeModal();
-    }
+  document.getElementById('modal').addEventListener('click',e=>{if(e.target===e.currentTarget)closeModal()});
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape')closeModal();
+    if(e.key==='n'&&(e.metaKey||e.ctrlKey)){e.preventDefault();openModal()}
+  });
 
-    // Export data
-    function exportData() {
-      alert('📥 Exportando datos a CSV...');
-    }
-
-    // Close modal on overlay click
-    document.getElementById('addModal').addEventListener('click', (e) => {
-      if (e.target === e.currentTarget) closeModal();
-    });
-
-    // Animate bars on load
-    setTimeout(() => {
-      document.querySelectorAll('.zone-bar').forEach(bar => {
-        const w = bar.style.width;
-        bar.style.width = '0%';
-        setTimeout(() => { bar.style.width = w; }, 100);
-      });
-      document.querySelector('.mrr-bar-fill').style.width = '0%';
-      setTimeout(() => {
-        document.querySelector('.mrr-bar-fill').style.width = '15%';
-      }, 100);
-    }, 300);
-
-    // Keyboard shortcut
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeModal();
-      if (e.key === 'n' && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault();
-        openModal();
-      }
-    });
-  </script>
+  // Animate bars
+  setTimeout(()=>{
+    document.getElementById('goalFill').style.width='15%';
+    document.querySelectorAll('.zone-fill').forEach(b=>{b.style.width=b.dataset.w});
+  },400);
+</script>
 </body>
 </html>
