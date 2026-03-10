@@ -6,9 +6,10 @@
   <title>NevadaTech — Reporte Ejecutivo</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    :root{--bg:#FFFFFF;--bg-2:#F7F6F3;--bg-3:#F1F1EF;--bg-code:#F7F6F3;--text:#37352F;--text-2:#6B6B6B;--text-3:#9B9A97;--blue:#2F80ED;--green:#0F7B6C;--green-bg:#DBEDDB;--red:#E03E3E;--red-bg:#FBE4E4;--orange:#D9730D;--orange-bg:#FADEC9;--purple:#6940A5;--purple-bg:#E8DEEE;--yellow:#DFAB01;--yellow-bg:#FFF3BF;--pink:#AD1A72;--cyan:#0B6E99;--border:#E9E9E7;--r:6px}
+    :root{--bg:#0D1117;--bg-2:#161B22;--bg-3:#1C2333;--bg-code:#1C2333;--text:#E6EDF3;--text-2:#8B949E;--text-3:#6E7681;--blue:#58A6FF;--green:#3FB950;--green-bg:rgba(63,185,80,0.1);--red:#F85149;--red-bg:rgba(248,81,73,0.1);--orange:#D29922;--orange-bg:rgba(210,153,34,0.1);--purple:#BC8CFF;--purple-bg:rgba(188,140,255,0.1);--yellow:#D29922;--yellow-bg:rgba(210,153,34,0.1);--pink:#F778BA;--cyan:#39D2E0;--border:rgba(240,246,252,0.1);--r:6px}
     *{margin:0;padding:0;box-sizing:border-box}
     body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);font-size:16px;line-height:1.7}
+    ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.1);border-radius:3px}
     .page{max-width:900px;margin:0 auto;padding:4rem 2rem 6rem}
 
     /* COVER */
@@ -33,13 +34,13 @@
     .callout{display:flex;gap:0.85rem;padding:1rem 1.25rem;border-radius:var(--r);margin:1.25rem 0}
     .callout-icon{font-size:1.3rem;flex-shrink:0;margin-top:2px}
     .callout-text{font-size:0.95rem;line-height:1.6}
-    .callout-blue{background:#E7F3FF}.callout-green{background:var(--green-bg)}.callout-orange{background:var(--orange-bg)}.callout-red{background:var(--red-bg)}.callout-purple{background:var(--purple-bg)}.callout-yellow{background:var(--yellow-bg)}
+    .callout-blue{background:rgba(88,166,255,0.08);border:1px solid rgba(88,166,255,0.15)}.callout-green{background:rgba(63,185,80,0.08);border:1px solid rgba(63,185,80,0.15)}.callout-orange{background:rgba(210,153,34,0.08);border:1px solid rgba(210,153,34,0.15)}.callout-red{background:rgba(248,81,73,0.08);border:1px solid rgba(248,81,73,0.15)}.callout-purple{background:rgba(188,140,255,0.08);border:1px solid rgba(188,140,255,0.15)}.callout-yellow{background:rgba(210,153,34,0.08);border:1px solid rgba(210,153,34,0.15)}
 
     /* TABLE */
     table{width:100%;border-collapse:collapse;margin:1rem 0 1.5rem;font-size:0.9rem}
     th{text-align:left;padding:0.6rem 0.85rem;background:var(--bg-2);font-weight:600;font-size:0.8rem;color:var(--text-2);border-bottom:1px solid var(--border)}
     td{padding:0.6rem 0.85rem;border-bottom:1px solid var(--border);vertical-align:top}
-    tr:hover td{background:var(--bg-3)}
+    tr:hover td{background:rgba(255,255,255,0.03)}
     .mono{font-family:'JetBrains Mono',monospace}
     .green{color:var(--green);font-weight:600}
     .blue{color:var(--blue);font-weight:600}
@@ -48,17 +49,17 @@
 
     /* TAGS */
     .tag{display:inline-flex;align-items:center;gap:0.25rem;font-size:0.78rem;font-weight:600;padding:0.15rem 0.55rem;border-radius:4px}
-    .tag-green{background:var(--green-bg);color:var(--green)}
-    .tag-blue{background:#E7F3FF;color:var(--blue)}
-    .tag-orange{background:var(--orange-bg);color:var(--orange)}
-    .tag-red{background:var(--red-bg);color:var(--red)}
-    .tag-purple{background:var(--purple-bg);color:var(--purple)}
+    .tag-green{background:rgba(63,185,80,0.15);color:var(--green)}
+    .tag-blue{background:rgba(88,166,255,0.15);color:var(--blue)}
+    .tag-orange{background:rgba(210,153,34,0.15);color:var(--orange)}
+    .tag-red{background:rgba(248,81,73,0.15);color:var(--red)}
+    .tag-purple{background:rgba(188,140,255,0.15);color:var(--purple)}
 
     /* QUOTE */
-    blockquote{border-left:3px solid var(--text);padding:0.75rem 1.25rem;margin:1rem 0;background:var(--bg-2);border-radius:0 var(--r) var(--r) 0;font-style:italic}
+    blockquote{border-left:3px solid var(--blue);padding:0.75rem 1.25rem;margin:1rem 0;background:var(--bg-2);border-radius:0 var(--r) var(--r) 0;font-style:italic;color:var(--text-2)}
 
     /* CODE */
-    code{font-family:'JetBrains Mono',monospace;background:var(--bg-code);padding:0.15rem 0.4rem;border-radius:3px;font-size:0.88em;color:var(--red)}
+    code{font-family:'JetBrains Mono',monospace;background:var(--bg-code);padding:0.15rem 0.4rem;border-radius:3px;font-size:0.88em;color:var(--orange)}
     pre{background:var(--bg-2);padding:1.25rem;border-radius:var(--r);overflow-x:auto;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:0.85rem;line-height:1.6;color:var(--text)}
 
     /* LIST */
@@ -68,8 +69,8 @@
 
     /* TOGGLE */
     details{border:1px solid var(--border);border-radius:var(--r);margin:0.75rem 0;overflow:hidden}
-    summary{padding:0.75rem 1rem;font-weight:600;cursor:pointer;background:var(--bg-2);font-size:0.95rem;display:flex;align-items:center;gap:0.5rem}
-    summary:hover{background:var(--bg-3)}
+    summary{padding:0.75rem 1rem;font-weight:600;cursor:pointer;background:var(--bg-2);font-size:0.95rem;display:flex;align-items:center;gap:0.5rem;color:var(--text)}
+    summary:hover{background:var(--bg-3);color:var(--blue)}
     details[open] summary{border-bottom:1px solid var(--border)}
     details .content{padding:1rem}
 
@@ -82,15 +83,15 @@
     .stat-label{font-size:0.82rem;color:var(--text-2)}
 
     /* PKG CARDS */
-    .pkg-card{border:1px solid var(--border);border-radius:8px;padding:1.5rem;position:relative}
-    .pkg-card.recommended{border-color:var(--blue);border-width:2px}
+    .pkg-card{border:1px solid var(--border);border-radius:8px;padding:1.5rem;position:relative;background:var(--bg-2)}
+    .pkg-card.recommended{border-color:var(--blue);border-width:2px;background:rgba(88,166,255,0.04)}
     .pkg-badge{position:absolute;top:-10px;right:12px;background:var(--blue);color:white;font-size:0.7rem;font-weight:700;padding:0.2rem 0.6rem;border-radius:4px}
     .pkg-name{font-size:1.1rem;font-weight:700;margin-bottom:0.2rem;display:flex;align-items:center;gap:0.5rem}
     .pkg-price{font-family:'JetBrains Mono',monospace;font-size:1.4rem;font-weight:700;color:var(--green);margin-bottom:0.1rem}
     .pkg-mrr{font-size:0.82rem;color:var(--text-2);margin-bottom:1rem}
     .pkg-feat{display:flex;align-items:center;gap:0.4rem;font-size:0.88rem;padding:0.2rem 0;color:var(--text-2)}
     .pkg-feat.yes{color:var(--text)}.pkg-feat.yes::before{content:'✓';color:var(--green);font-weight:700}
-    .pkg-feat.no{text-decoration:line-through;opacity:0.4}.pkg-feat.no::before{content:'✕';color:var(--red)}
+    .pkg-feat.no{text-decoration:line-through;opacity:0.3}.pkg-feat.no::before{content:'✕';color:var(--red)}
 
     /* TIMELINE */
     .process{display:flex;flex-direction:column;gap:0}
@@ -107,9 +108,9 @@
     a{color:var(--blue);text-decoration:underline;text-underline-offset:2px}
     a:hover{opacity:0.8}
 
-    .toc{background:var(--bg-2);border-radius:var(--r);padding:1.5rem 2rem;margin:2rem 0}
+    .toc{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem 2rem;margin:2rem 0}
     .toc-title{font-weight:700;margin-bottom:0.75rem;font-size:0.9rem;color:var(--text-2)}
-    .toc a{display:block;padding:0.25rem 0;color:var(--text);text-decoration:none;font-size:0.92rem}
+    .toc a{display:block;padding:0.25rem 0;color:var(--text-2);text-decoration:none;font-size:0.92rem}
     .toc a:hover{color:var(--blue)}
 
     @media(max-width:768px){
@@ -305,7 +306,7 @@
     <tr><td>Mes 4</td><td>8</td><td>26</td><td class="mono">$9.6M</td><td class="mono">$3.9M</td><td class="mono green"><strong>$13.5M</strong></td></tr>
     <tr><td>Mes 5</td><td>10</td><td>36</td><td class="mono">$12M</td><td class="mono">$5.4M</td><td class="mono green"><strong>$17.4M</strong></td></tr>
     <tr><td>Mes 6</td><td>10</td><td>46</td><td class="mono">$12M</td><td class="mono">$6.9M</td><td class="mono green"><strong>$18.9M</strong></td></tr>
-    <tr style="background:var(--green-bg)"><td colspan="3"><strong>TOTAL 6 MESES</strong></td><td class="mono"><strong>$55.2M</strong></td><td class="mono"><strong>$21M</strong></td><td class="mono green"><strong>$76.2M</strong></td></tr>
+    <tr style="background:rgba(63,185,80,0.08)"><td colspan="3"><strong>TOTAL 6 MESES</strong></td><td class="mono"><strong>$55.2M</strong></td><td class="mono"><strong>$21M</strong></td><td class="mono green"><strong>$76.2M</strong></td></tr>
   </table>
 
   <div class="callout callout-purple">
