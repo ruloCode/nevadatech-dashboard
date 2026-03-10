@@ -8,441 +8,244 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg-0: #060910;
-      --bg-1: #0B0F18;
-      --bg-2: #111827;
-      --bg-3: #1A2236;
-      --bg-hover: #1E2942;
-      --border: rgba(148,163,194,0.08);
-      --border-hover: rgba(148,163,194,0.16);
-      --text-1: #F0F4F8;
-      --text-2: #94A3B8;
-      --text-3: #475569;
-      --blue: #60A5FA;
-      --blue-dim: rgba(96,165,250,0.12);
-      --cyan: #22D3EE;
-      --cyan-dim: rgba(34,211,238,0.12);
-      --green: #4ADE80;
-      --green-dim: rgba(74,222,128,0.12);
-      --purple: #A78BFA;
-      --purple-dim: rgba(167,139,250,0.12);
-      --orange: #FB923C;
-      --orange-dim: rgba(251,146,60,0.12);
-      --pink: #F472B6;
-      --pink-dim: rgba(244,114,182,0.12);
-      --red: #F87171;
-      --red-dim: rgba(248,113,113,0.12);
-      --yellow: #FACC15;
-      --yellow-dim: rgba(250,204,21,0.12);
-      --r: 14px;
-      --r-sm: 10px;
-      --r-xs: 6px;
+    :root{
+      --bg-0:#060910;--bg-1:#0B0F18;--bg-2:#111827;--bg-3:#1A2236;--bg-hover:#1E2942;
+      --border:rgba(148,163,194,0.08);--border-h:rgba(148,163,194,0.16);
+      --t1:#F0F4F8;--t2:#94A3B8;--t3:#475569;
+      --blue:#60A5FA;--blue-d:rgba(96,165,250,0.12);
+      --cyan:#22D3EE;--cyan-d:rgba(34,211,238,0.12);
+      --green:#4ADE80;--green-d:rgba(74,222,128,0.12);
+      --purple:#A78BFA;--purple-d:rgba(167,139,250,0.12);
+      --orange:#FB923C;--orange-d:rgba(251,146,60,0.12);
+      --pink:#F472B6;--pink-d:rgba(244,114,182,0.12);
+      --red:#F87171;--red-d:rgba(248,113,113,0.12);
+      --yellow:#FACC15;--yellow-d:rgba(250,204,21,0.12);
+      --r:14px;--r-s:10px;--r-xs:6px;
     }
-
     *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Outfit',system-ui,sans-serif;background:var(--bg-0);color:var(--t1);-webkit-font-smoothing:antialiased;overflow-x:hidden;font-size:15px}
+    ::-webkit-scrollbar{width:5px;height:5px}
+    ::-webkit-scrollbar-track{background:transparent}
+    ::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.08);border-radius:3px}
+    .mono{font-family:'JetBrains Mono',monospace}
 
-    body{
-      font-family:'Outfit',system-ui,sans-serif;
-      background:var(--bg-0);
-      color:var(--text-1);
-      -webkit-font-smoothing:antialiased;
-      overflow-x:hidden;
-      font-size:15px;
-    }
-
-    /* ═══ TOPBAR ═══ */
-    .topbar{
-      position:sticky;top:0;z-index:100;
-      background:rgba(6,9,16,0.85);
-      backdrop-filter:blur(24px) saturate(180%);
-      border-bottom:1px solid var(--border);
-      padding:0 2rem;
-      height:64px;
-      display:flex;align-items:center;justify-content:space-between;
-    }
-
+    /* TOPBAR */
+    .topbar{position:sticky;top:0;z-index:100;background:rgba(6,9,16,0.88);backdrop-filter:blur(24px) saturate(180%);border-bottom:1px solid var(--border);padding:0 2rem;height:60px;display:flex;align-items:center;justify-content:space-between}
     .topbar-left{display:flex;align-items:center;gap:1.25rem}
-
-    .brand{
-      display:flex;align-items:center;gap:0.7rem;
-      text-decoration:none;color:var(--text-1);
-    }
-
-    .brand-mark{
-      width:36px;height:36px;
-      background:linear-gradient(135deg,var(--blue),var(--cyan));
-      border-radius:10px;
-      display:flex;align-items:center;justify-content:center;
-      font-weight:800;font-size:1rem;color:var(--bg-0);
-    }
-
-    .brand-text{font-weight:700;font-size:1.05rem;letter-spacing:-0.02em}
-    .brand-text span{font-weight:400;color:var(--text-3);font-size:0.75rem;display:block}
-
-    .topbar-nav{display:flex;gap:0.25rem;margin-left:2rem}
-
-    .topbar-nav a{
-      padding:0.45rem 1rem;border-radius:8px;
-      font-size:0.85rem;font-weight:500;
-      color:var(--text-2);text-decoration:none;
-      transition:all 0.15s;
-    }
-    .topbar-nav a:hover{background:var(--bg-2);color:var(--text-1)}
-    .topbar-nav a.active{background:var(--blue-dim);color:var(--blue)}
-
-    .topbar-right{display:flex;align-items:center;gap:1rem}
-
-    .team-pills{display:flex;gap:-4px}
-    .pill{
-      width:32px;height:32px;border-radius:50%;
-      display:flex;align-items:center;justify-content:center;
-      font-size:0.65rem;font-weight:700;color:var(--bg-0);
-      border:2px solid var(--bg-0);
-      margin-left:-8px;
-      position:relative;
-    }
+    .brand{display:flex;align-items:center;gap:0.7rem;text-decoration:none;color:var(--t1)}
+    .brand-mark{width:34px;height:34px;background:linear-gradient(135deg,var(--blue),var(--cyan));border-radius:9px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.95rem;color:var(--bg-0)}
+    .brand-text{font-weight:700;font-size:1rem;letter-spacing:-0.02em}
+    .brand-text span{font-weight:400;color:var(--t3);font-size:0.7rem;display:block}
+    .topbar-nav{display:flex;gap:0.2rem;margin-left:2rem}
+    .topbar-nav a{padding:0.4rem 0.9rem;border-radius:8px;font-size:0.82rem;font-weight:500;color:var(--t2);text-decoration:none;transition:all 0.15s;cursor:pointer}
+    .topbar-nav a:hover{background:var(--bg-2);color:var(--t1)}
+    .topbar-nav a.active{background:var(--blue-d);color:var(--blue)}
+    .topbar-right{display:flex;align-items:center;gap:0.85rem}
+    .pills{display:flex}
+    .pill{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:700;color:var(--bg-0);border:2px solid var(--bg-0);margin-left:-6px;position:relative}
     .pill:first-child{margin-left:0}
-    .pill::after{
-      content:'';position:absolute;bottom:0;right:0;
-      width:9px;height:9px;border-radius:50%;
-      background:var(--green);border:2px solid var(--bg-0);
-    }
+    .pill::after{content:'';position:absolute;bottom:-1px;right:-1px;width:8px;height:8px;border-radius:50%;background:var(--green);border:2px solid var(--bg-0)}
+    .btn{padding:0.5rem 1.1rem;border-radius:8px;font-family:'Outfit',sans-serif;font-size:0.82rem;font-weight:600;border:none;cursor:pointer;transition:all 0.2s;display:inline-flex;align-items:center;gap:0.4rem}
+    .btn-p{background:var(--blue);color:var(--bg-0)}
+    .btn-p:hover{filter:brightness(1.15);transform:translateY(-1px);box-shadow:0 6px 20px rgba(96,165,250,0.25)}
+    .btn-g{background:var(--bg-2);color:var(--t2);border:1px solid var(--border)}
+    .btn-g:hover{background:var(--bg-3);color:var(--t1)}
+    .btn-sm{padding:0.35rem 0.75rem;font-size:0.75rem}
+    .btn-green{background:var(--green);color:var(--bg-0)}
+    .btn-red{background:var(--red-d);color:var(--red);border:1px solid rgba(248,113,113,0.2)}
 
-    .btn{
-      padding:0.55rem 1.2rem;border-radius:9px;
-      font-family:'Outfit',sans-serif;font-size:0.85rem;font-weight:600;
-      border:none;cursor:pointer;transition:all 0.2s;
-      display:inline-flex;align-items:center;gap:0.4rem;
-    }
-    .btn-primary{background:var(--blue);color:var(--bg-0)}
-    .btn-primary:hover{filter:brightness(1.15);transform:translateY(-1px);box-shadow:0 8px 24px rgba(96,165,250,0.25)}
-    .btn-ghost{background:var(--bg-2);color:var(--text-2);border:1px solid var(--border)}
-    .btn-ghost:hover{background:var(--bg-3);color:var(--text-1)}
+    /* MAIN */
+    .main{max-width:1440px;margin:0 auto;padding:1.5rem 2rem 3rem}
 
-    /* ═══ MAIN ═══ */
-    .main{max-width:1440px;margin:0 auto;padding:1.75rem 2rem}
+    /* PAGES */
+    .page{display:none}
+    .page.active{display:block}
 
-    /* ═══ KPI ROW ═══ */
-    .kpi-row{
-      display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;
-      margin-bottom:1.75rem;
-    }
+    /* CARDS */
+    .card{background:var(--bg-1);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem 1.5rem}
+    .card-title{font-size:0.95rem;font-weight:700;margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem}
 
-    .kpi{
-      background:var(--bg-1);border:1px solid var(--border);border-radius:var(--r);
-      padding:1.25rem 1.5rem;
-      display:flex;justify-content:space-between;align-items:flex-start;
-      transition:all 0.2s;position:relative;overflow:hidden;
-    }
-    .kpi:hover{border-color:var(--border-hover);transform:translateY(-2px)}
-
-    .kpi::after{
-      content:'';position:absolute;top:0;left:0;right:0;height:2px;
-    }
+    /* KPI */
+    .kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.5rem}
+    .kpi{background:var(--bg-1);border:1px solid var(--border);border-radius:var(--r);padding:1.15rem 1.35rem;display:flex;justify-content:space-between;align-items:flex-start;transition:all 0.2s;position:relative;overflow:hidden}
+    .kpi:hover{border-color:var(--border-h);transform:translateY(-2px)}
+    .kpi::after{content:'';position:absolute;top:0;left:0;right:0;height:2px}
     .kpi:nth-child(1)::after{background:linear-gradient(90deg,var(--blue),transparent)}
     .kpi:nth-child(2)::after{background:linear-gradient(90deg,var(--green),transparent)}
     .kpi:nth-child(3)::after{background:linear-gradient(90deg,var(--purple),transparent)}
     .kpi:nth-child(4)::after{background:linear-gradient(90deg,var(--orange),transparent)}
+    .kpi-label{font-size:0.78rem;color:var(--t2);margin-bottom:0.5rem;font-weight:500}
+    .kpi-val{font-family:'JetBrains Mono',monospace;font-size:1.75rem;font-weight:700;letter-spacing:-0.03em;line-height:1;margin-bottom:0.45rem}
+    .kpi:nth-child(1) .kpi-val{color:var(--blue)}.kpi:nth-child(2) .kpi-val{color:var(--green)}.kpi:nth-child(3) .kpi-val{color:var(--purple)}.kpi:nth-child(4) .kpi-val{color:var(--orange)}
+    .kpi-icon{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+    .kpi:nth-child(1) .kpi-icon{background:var(--blue-d)}.kpi:nth-child(2) .kpi-icon{background:var(--green-d)}.kpi:nth-child(3) .kpi-icon{background:var(--purple-d)}.kpi:nth-child(4) .kpi-icon{background:var(--orange-d)}
+    .tag{display:inline-flex;align-items:center;gap:0.25rem;font-size:0.7rem;font-weight:600;padding:0.18rem 0.5rem;border-radius:5px}
+    .tag-up{background:var(--green-d);color:var(--green)}.tag-blue{background:var(--blue-d);color:var(--blue)}.tag-orange{background:var(--orange-d);color:var(--orange)}
 
-    .kpi-info{}
-    .kpi-label{font-size:0.8rem;color:var(--text-2);margin-bottom:0.6rem;font-weight:500}
-    .kpi-val{
-      font-family:'JetBrains Mono',monospace;font-size:1.9rem;font-weight:700;
-      letter-spacing:-0.03em;line-height:1;margin-bottom:0.5rem;
-    }
-    .kpi:nth-child(1) .kpi-val{color:var(--blue)}
-    .kpi:nth-child(2) .kpi-val{color:var(--green)}
-    .kpi:nth-child(3) .kpi-val{color:var(--purple)}
-    .kpi:nth-child(4) .kpi-val{color:var(--orange)}
+    /* ACTIONS ROW */
+    .actions{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.5rem}
+    .action{background:var(--bg-1);border:1px solid var(--border);border-radius:var(--r);padding:1.15rem;text-align:center;cursor:pointer;transition:all 0.2s}
+    .action:hover{border-color:var(--border-h);transform:translateY(-3px);box-shadow:0 10px 35px rgba(0,0,0,0.4)}
+    .action-icon{font-size:1.6rem;margin-bottom:0.5rem}
+    .action-label{font-size:0.85rem;font-weight:600;margin-bottom:0.1rem}
+    .action-hint{font-size:0.7rem;color:var(--t3)}
 
-    .kpi-tag{
-      display:inline-flex;align-items:center;gap:0.3rem;
-      font-size:0.72rem;font-weight:600;
-      padding:0.2rem 0.55rem;border-radius:5px;
-    }
-    .kpi-tag.up{background:var(--green-dim);color:var(--green)}
-    .kpi-tag.neutral{background:var(--blue-dim);color:var(--blue)}
+    /* SPLIT */
+    .split{display:grid;grid-template-columns:1fr 340px;gap:1.15rem;margin-bottom:1.5rem}
+    .split-full{display:grid;grid-template-columns:1fr;gap:1.15rem;margin-bottom:1.5rem}
+    .g2{display:grid;grid-template-columns:1fr 1fr;gap:1.15rem;margin-bottom:1.5rem}
+    .g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.15rem;margin-bottom:1.5rem}
+    .right-col{display:flex;flex-direction:column;gap:1.15rem}
 
-    .kpi-icon{
-      width:44px;height:44px;border-radius:12px;
-      display:flex;align-items:center;justify-content:center;
-      font-size:1.3rem;flex-shrink:0;
-    }
-    .kpi:nth-child(1) .kpi-icon{background:var(--blue-dim)}
-    .kpi:nth-child(2) .kpi-icon{background:var(--green-dim)}
-    .kpi:nth-child(3) .kpi-icon{background:var(--purple-dim)}
-    .kpi:nth-child(4) .kpi-icon{background:var(--orange-dim)}
-
-    /* ═══ SPLIT LAYOUT ═══ */
-    .split{display:grid;grid-template-columns:1fr 340px;gap:1.25rem;margin-bottom:1.75rem}
-
-    /* ═══ PIPELINE ═══ */
-    .pipeline-wrap{
-      background:var(--bg-1);border:1px solid var(--border);border-radius:var(--r);
-      overflow:hidden;
-    }
-
-    .panel-head{
-      padding:1.25rem 1.5rem;
-      display:flex;align-items:center;justify-content:space-between;
-      border-bottom:1px solid var(--border);
-    }
-
-    .panel-title{font-size:1.05rem;font-weight:700;display:flex;align-items:center;gap:0.5rem}
-
-    .pipeline-scroll{
-      display:flex;gap:0;overflow-x:auto;
-      scrollbar-width:none;
-    }
-    .pipeline-scroll::-webkit-scrollbar{display:none}
-
-    .pipe-col{
-      min-width:240px;flex:1;
-      border-right:1px solid var(--border);
-      padding:1rem;
-    }
+    /* PIPELINE */
+    .pipe-wrap{background:var(--bg-1);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+    .panel-head{padding:1.1rem 1.35rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
+    .panel-title{font-size:1rem;font-weight:700;display:flex;align-items:center;gap:0.5rem}
+    .pipe-scroll{display:flex;gap:0;overflow-x:auto;scrollbar-width:none}
+    .pipe-scroll::-webkit-scrollbar{display:none}
+    .pipe-col{min-width:230px;flex:1;border-right:1px solid var(--border);padding:0.9rem}
     .pipe-col:last-child{border-right:none}
+    .pipe-col-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.85rem;padding-bottom:0.65rem;border-bottom:1px solid var(--border)}
+    .pipe-col-label{display:flex;align-items:center;gap:0.45rem;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--t2)}
+    .dot{width:7px;height:7px;border-radius:50%}
+    .d-gray{background:var(--t3)}.d-blue{background:var(--blue)}.d-purple{background:var(--purple)}.d-orange{background:var(--orange)}.d-green{background:var(--green)}
+    .pipe-c{font-family:'JetBrains Mono',monospace;font-size:0.68rem;font-weight:600;background:var(--bg-3);padding:0.12rem 0.45rem;border-radius:5px;color:var(--t2)}
 
-    .pipe-col-head{
-      display:flex;align-items:center;justify-content:space-between;
-      margin-bottom:1rem;padding-bottom:0.75rem;
-      border-bottom:1px solid var(--border);
-    }
-
-    .pipe-col-label{
-      display:flex;align-items:center;gap:0.5rem;
-      font-size:0.75rem;font-weight:700;
-      text-transform:uppercase;letter-spacing:0.08em;
-      color:var(--text-2);
-    }
-
-    .dot{width:8px;height:8px;border-radius:50%}
-    .dot-gray{background:var(--text-3)}
-    .dot-blue{background:var(--blue)}
-    .dot-purple{background:var(--purple)}
-    .dot-orange{background:var(--orange)}
-    .dot-green{background:var(--green)}
-
-    .pipe-count{
-      font-family:'JetBrains Mono',monospace;
-      font-size:0.7rem;font-weight:600;
-      background:var(--bg-3);padding:0.15rem 0.5rem;border-radius:6px;
-      color:var(--text-2);
-    }
-
-    .lead{
-      background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r-sm);
-      padding:0.85rem 1rem;margin-bottom:0.5rem;
-      cursor:grab;transition:all 0.15s;
-    }
-    .lead:hover{border-color:var(--border-hover);background:var(--bg-hover);transform:translateY(-1px)}
-
-    .lead-type{
-      font-size:0.6rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
-      display:inline-block;padding:0.15rem 0.5rem;border-radius:4px;margin-bottom:0.4rem;
-    }
-    .t-pelu{background:var(--pink-dim);color:var(--pink)}
-    .t-odonto{background:var(--blue-dim);color:var(--blue)}
-    .t-spa{background:var(--purple-dim);color:var(--purple)}
-    .t-barber{background:var(--orange-dim);color:var(--orange)}
-    .t-vet{background:var(--green-dim);color:var(--green)}
-    .t-estet{background:var(--yellow-dim);color:var(--yellow)}
-
-    .lead-name{font-size:0.9rem;font-weight:600;margin-bottom:0.2rem}
-    .lead-addr{font-size:0.72rem;color:var(--text-3);margin-bottom:0.65rem}
-
-    .lead-foot{display:flex;align-items:center;justify-content:space-between}
-    .lead-val{font-family:'JetBrains Mono',monospace;font-size:0.78rem;font-weight:600;color:var(--green)}
-    .lead-mrr{font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:var(--text-3)}
-
-    .lead-owner{
-      width:24px;height:24px;border-radius:50%;
-      display:flex;align-items:center;justify-content:center;
-      font-size:0.55rem;font-weight:700;color:var(--bg-0);
-    }
-
-    /* ═══ RIGHT SIDEBAR ═══ */
-    .right-col{display:flex;flex-direction:column;gap:1.25rem}
-
-    .card{
-      background:var(--bg-1);border:1px solid var(--border);border-radius:var(--r);
-      padding:1.25rem 1.5rem;
-    }
-
-    .card-title{
-      font-size:0.95rem;font-weight:700;margin-bottom:1rem;
-      display:flex;align-items:center;gap:0.5rem;
-    }
+    /* LEAD CARD */
+    .lead{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r-s);padding:0.8rem 0.9rem;margin-bottom:0.45rem;cursor:grab;transition:all 0.15s}
+    .lead:hover{border-color:var(--border-h);background:var(--bg-hover);transform:translateY(-1px)}
+    .lead-t{font-size:0.58rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;display:inline-block;padding:0.12rem 0.45rem;border-radius:4px;margin-bottom:0.35rem}
+    .tp{background:var(--pink-d);color:var(--pink)}.to{background:var(--blue-d);color:var(--blue)}.ts{background:var(--purple-d);color:var(--purple)}.tb{background:var(--orange-d);color:var(--orange)}.tv{background:var(--green-d);color:var(--green)}.te{background:var(--yellow-d);color:var(--yellow)}.tf{background:var(--cyan-d);color:var(--cyan)}.tg{background:var(--red-d);color:var(--red)}
+    .lead-n{font-size:0.88rem;font-weight:600;margin-bottom:0.2rem}
+    .lead-a{font-size:0.7rem;color:var(--t3);margin-bottom:0.6rem}
+    .lead-f{display:flex;align-items:center;justify-content:space-between}
+    .lead-v{font-family:'JetBrains Mono',monospace;font-size:0.76rem;font-weight:600;color:var(--green)}
+    .lead-mrr{font-family:'JetBrains Mono',monospace;font-size:0.66rem;color:var(--t3)}
+    .lead-o{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.52rem;font-weight:700;color:var(--bg-0)}
+    .o-r{background:linear-gradient(135deg,var(--blue),var(--cyan))}.o-d{background:linear-gradient(135deg,var(--green),#059669)}.o-c{background:linear-gradient(135deg,var(--purple),#7C3AED)}
 
     /* MRR */
-    .mrr-big{
-      font-family:'JetBrains Mono',monospace;
-      font-size:2.2rem;font-weight:800;
-      text-align:center;margin:0.75rem 0 0.25rem;
-      background:linear-gradient(135deg,var(--green),var(--cyan));
-      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-    }
-
-    .mrr-sub{text-align:center;font-size:0.78rem;color:var(--text-3);margin-bottom:1.25rem}
-
-    .goal-bar-wrap{
-      background:var(--bg-2);border-radius:8px;padding:0.85rem 1rem;
-    }
-
-    .goal-labels{display:flex;justify-content:space-between;margin-bottom:0.4rem}
-    .goal-labels span{font-size:0.72rem;color:var(--text-2)}
-    .goal-labels strong{font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--blue);font-weight:600}
-
-    .goal-track{height:8px;background:var(--bg-3);border-radius:4px;overflow:hidden;margin-bottom:0.35rem}
+    .mrr-big{font-family:'JetBrains Mono',monospace;font-size:2rem;font-weight:800;text-align:center;margin:0.5rem 0 0.2rem;background:linear-gradient(135deg,var(--green),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .mrr-sub{text-align:center;font-size:0.75rem;color:var(--t3);margin-bottom:1rem}
+    .goal-w{background:var(--bg-2);border-radius:8px;padding:0.8rem 0.9rem}
+    .goal-l{display:flex;justify-content:space-between;margin-bottom:0.35rem}
+    .goal-l span{font-size:0.7rem;color:var(--t2)}
+    .goal-l strong{font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--blue);font-weight:600}
+    .goal-bar{height:7px;background:var(--bg-3);border-radius:4px;overflow:hidden;margin-bottom:0.3rem}
     .goal-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--green),var(--cyan));transition:width 1.5s cubic-bezier(.16,1,.3,1)}
+    .goal-h{font-size:0.65rem;color:var(--t3);text-align:right}
 
-    .goal-hint{font-size:0.68rem;color:var(--text-3);text-align:right}
-
-    /* PACKAGES */
-    .pkg{
-      display:flex;align-items:center;gap:0.85rem;
-      padding:0.85rem 0;border-bottom:1px solid var(--border);
-    }
+    /* PKG */
+    .pkg{display:flex;align-items:center;gap:0.8rem;padding:0.75rem 0;border-bottom:1px solid var(--border)}
     .pkg:last-child{border-bottom:none}
-
-    .pkg-icon{
-      width:38px;height:38px;border-radius:10px;
-      display:flex;align-items:center;justify-content:center;
-      font-size:1.1rem;flex-shrink:0;
-    }
-
-    .pkg-name{font-size:0.88rem;font-weight:600}
-    .pkg-desc{font-size:0.7rem;color:var(--text-3)}
-    .pkg-price{
-      margin-left:auto;text-align:right;
-      font-family:'JetBrains Mono',monospace;
-    }
-    .pkg-price .setup{font-size:0.82rem;font-weight:600;color:var(--green)}
-    .pkg-price .monthly{font-size:0.65rem;color:var(--text-3)}
+    .pkg-i{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+    .pkg-n{font-size:0.85rem;font-weight:600}
+    .pkg-d{font-size:0.68rem;color:var(--t3)}
+    .pkg-p{margin-left:auto;text-align:right;font-family:'JetBrains Mono',monospace}
+    .pkg-s{font-size:0.8rem;font-weight:600;color:var(--green)}.pkg-m{font-size:0.62rem;color:var(--t3)}
 
     /* ACTIVITY */
-    .act{display:flex;align-items:flex-start;gap:0.7rem;padding:0.6rem 0}
-
-    .act-dot{
-      width:28px;height:28px;border-radius:50%;
-      display:flex;align-items:center;justify-content:center;
-      font-size:0.6rem;font-weight:700;color:var(--bg-0);
-      flex-shrink:0;margin-top:2px;
-    }
-
-    .act-text{font-size:0.82rem;color:var(--text-2);line-height:1.4}
-    .act-text strong{color:var(--text-1);font-weight:600}
-    .act-time{font-size:0.65rem;color:var(--text-3);font-family:'JetBrains Mono',monospace;margin-top:0.15rem}
+    .act{display:flex;align-items:flex-start;gap:0.65rem;padding:0.55rem 0}
+    .act-dot{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.55rem;font-weight:700;color:var(--bg-0);flex-shrink:0;margin-top:2px}
+    .act-text{font-size:0.8rem;color:var(--t2);line-height:1.4}
+    .act-text strong{color:var(--t1);font-weight:600}
+    .act-time{font-size:0.63rem;color:var(--t3);font-family:'JetBrains Mono',monospace;margin-top:0.1rem}
 
     /* ZONES */
-    .zone{
-      display:flex;align-items:center;gap:0.85rem;
-      padding:0.65rem 0;
-    }
-
-    .zone-name{font-size:0.85rem;font-weight:600;min-width:90px}
-
-    .zone-track{flex:1;height:6px;background:var(--bg-3);border-radius:3px;overflow:hidden}
+    .zone{display:flex;align-items:center;gap:0.8rem;padding:0.6rem 0}
+    .zone-n{font-size:0.83rem;font-weight:600;min-width:85px}
+    .zone-track{flex:1;height:5px;background:var(--bg-3);border-radius:3px;overflow:hidden}
     .zone-fill{height:100%;border-radius:3px;transition:width 1.2s cubic-bezier(.16,1,.3,1)}
+    .zone-num{font-family:'JetBrains Mono',monospace;font-size:0.76rem;font-weight:600;min-width:26px;text-align:right}
+    .zone-w{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.48rem;font-weight:700;color:var(--bg-0)}
 
-    .zone-num{
-      font-family:'JetBrains Mono',monospace;font-size:0.78rem;font-weight:600;
-      min-width:28px;text-align:right;
-    }
+    /* TABLE */
+    .tbl{width:100%;border-collapse:collapse}
+    .tbl th{text-align:left;font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--t3);padding:0.7rem 0.9rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--bg-1)}
+    .tbl td{padding:0.7rem 0.9rem;border-bottom:1px solid var(--border);font-size:0.85rem;vertical-align:middle}
+    .tbl tr:hover td{background:var(--bg-2)}
+    .tbl-wrap{overflow-x:auto;max-height:600px;overflow-y:auto}
+    .status{display:inline-flex;align-items:center;gap:0.3rem;font-size:0.72rem;font-weight:600;padding:0.2rem 0.6rem;border-radius:5px}
+    .s-id{background:rgba(71,85,105,0.2);color:var(--t2)}
+    .s-con{background:var(--blue-d);color:var(--blue)}
+    .s-demo{background:var(--purple-d);color:var(--purple)}
+    .s-neg{background:var(--orange-d);color:var(--orange)}
+    .s-win{background:var(--green-d);color:var(--green)}
+    .s-lost{background:var(--red-d);color:var(--red)}
 
-    .zone-who{
-      width:22px;height:22px;border-radius:50%;
-      display:flex;align-items:center;justify-content:center;
-      font-size:0.5rem;font-weight:700;color:var(--bg-0);
-    }
+    /* CHARTS (CSS only) */
+    .bar-chart{display:flex;align-items:flex-end;gap:0.5rem;height:160px;padding:0.5rem 0}
+    .bar-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:0.3rem}
+    .bar{width:100%;border-radius:4px 4px 0 0;transition:height 1s cubic-bezier(.16,1,.3,1);min-height:2px}
+    .bar-label{font-size:0.62rem;color:var(--t3);font-weight:500}
+    .bar-val{font-family:'JetBrains Mono',monospace;font-size:0.65rem;font-weight:600;color:var(--t2)}
 
-    /* ═══ BOTTOM ROW ═══ */
-    .bottom{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:2rem}
+    .donut-wrap{display:flex;align-items:center;gap:2rem;padding:1rem 0}
+    .donut{width:140px;height:140px;border-radius:50%;position:relative;flex-shrink:0}
+    .donut-center{position:absolute;inset:30px;border-radius:50%;background:var(--bg-1);display:flex;flex-direction:column;align-items:center;justify-content:center}
+    .donut-val{font-family:'JetBrains Mono',monospace;font-size:1.3rem;font-weight:700;color:var(--t1)}
+    .donut-label{font-size:0.65rem;color:var(--t3)}
+    .legend{display:flex;flex-direction:column;gap:0.5rem}
+    .legend-item{display:flex;align-items:center;gap:0.5rem;font-size:0.82rem}
+    .legend-dot{width:10px;height:10px;border-radius:3px;flex-shrink:0}
+    .legend-val{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:0.78rem;font-weight:600;color:var(--t2)}
 
-    /* ═══ QUICK ACTIONS ═══ */
-    .actions-row{
-      display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;
-      margin-bottom:1.75rem;
-    }
+    /* REPORT STAT */
+    .stat-row{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 0;border-bottom:1px solid var(--border)}
+    .stat-row:last-child{border-bottom:none}
+    .stat-label{font-size:0.85rem;color:var(--t2)}
+    .stat-val{font-family:'JetBrains Mono',monospace;font-size:0.95rem;font-weight:600}
 
-    .action{
-      background:var(--bg-1);border:1px solid var(--border);border-radius:var(--r);
-      padding:1.25rem;text-align:center;cursor:pointer;transition:all 0.2s;
-    }
-    .action:hover{border-color:var(--border-hover);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,0.4)}
-
-    .action-icon{font-size:1.8rem;margin-bottom:0.6rem}
-    .action-label{font-size:0.88rem;font-weight:600;margin-bottom:0.15rem}
-    .action-hint{font-size:0.72rem;color:var(--text-3)}
-
-    /* ═══ MODAL ═══ */
-    .overlay{
-      position:fixed;inset:0;background:rgba(6,9,16,0.88);backdrop-filter:blur(12px);
-      z-index:200;display:none;align-items:center;justify-content:center;
-    }
+    /* MODAL */
+    .overlay{position:fixed;inset:0;background:rgba(6,9,16,0.88);backdrop-filter:blur(12px);z-index:200;display:none;align-items:center;justify-content:center}
     .overlay.open{display:flex}
-
-    .modal{
-      background:var(--bg-1);border:1px solid var(--border);border-radius:var(--r);
-      padding:2rem;width:520px;max-width:92vw;max-height:88vh;overflow-y:auto;
-      animation:modalIn 0.25s ease;
-    }
-
-    @keyframes modalIn{from{opacity:0;transform:scale(0.96) translateY(12px)}to{opacity:1;transform:none}}
-
-    .modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem}
-    .modal-head h2{font-size:1.15rem;font-weight:700}
-    .modal-close{background:none;border:none;color:var(--text-3);font-size:1.5rem;cursor:pointer}
-
-    .field{margin-bottom:1rem}
-    .field label{
-      display:block;font-size:0.7rem;font-weight:600;
-      letter-spacing:0.1em;text-transform:uppercase;
-      color:var(--text-2);margin-bottom:0.35rem;
-    }
-    .field input,.field select,.field textarea{
-      width:100%;padding:0.65rem 0.85rem;
-      background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r-xs);
-      color:var(--text-1);font-family:'Outfit',sans-serif;font-size:0.9rem;outline:none;
-      transition:border-color 0.15s;
-    }
+    .modal{background:var(--bg-1);border:1px solid var(--border);border-radius:var(--r);padding:1.75rem;width:520px;max-width:92vw;max-height:88vh;overflow-y:auto;animation:modIn 0.25s ease}
+    @keyframes modIn{from{opacity:0;transform:scale(0.96) translateY(12px)}to{opacity:1;transform:none}}
+    .modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem}
+    .modal-head h2{font-size:1.1rem;font-weight:700}
+    .modal-close{background:none;border:none;color:var(--t3);font-size:1.4rem;cursor:pointer}
+    .field{margin-bottom:0.9rem}
+    .field label{display:block;font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--t2);margin-bottom:0.3rem}
+    .field input,.field select,.field textarea{width:100%;padding:0.6rem 0.8rem;background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r-xs);color:var(--t1);font-family:'Outfit',sans-serif;font-size:0.88rem;outline:none;transition:border-color 0.15s}
     .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--blue)}
     .field select option{background:var(--bg-2)}
+    .f-row{display:grid;grid-template-columns:1fr 1fr;gap:0.7rem}
 
-    .field-row{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}
+    /* RESPONSIVE */
+    @media(max-width:1100px){.split{grid-template-columns:1fr}.right-col{flex-direction:row;flex-wrap:wrap}.right-col .card{flex:1;min-width:260px}}
+    @media(max-width:768px){.kpi-row{grid-template-columns:1fr 1fr}.actions{grid-template-columns:1fr 1fr}.g2,.g3{grid-template-columns:1fr}.topbar-nav{display:none}.topbar{padding:0 1rem}.main{padding:1rem}}
+    @media(max-width:480px){.kpi-row{grid-template-columns:1fr}.actions{grid-template-columns:1fr}}
 
-    /* ═══ RESPONSIVE ═══ */
-    @media(max-width:1100px){
-      .split{grid-template-columns:1fr}
-      .right-col{flex-direction:row;flex-wrap:wrap}
-      .right-col .card{flex:1;min-width:280px}
-    }
-    @media(max-width:768px){
-      .kpi-row{grid-template-columns:1fr 1fr}
-      .actions-row{grid-template-columns:1fr 1fr}
-      .bottom{grid-template-columns:1fr}
-      .topbar-nav{display:none}
-      .topbar{padding:0 1rem}
-      .main{padding:1.25rem 1rem}
-    }
-    @media(max-width:480px){
-      .kpi-row{grid-template-columns:1fr}
-      .actions-row{grid-template-columns:1fr}
-    }
+    .fade{opacity:0;transform:translateY(14px);animation:fadeU 0.45s ease forwards}
+    @keyframes fadeU{to{opacity:1;transform:translateY(0)}}
+    .fade:nth-child(1){animation-delay:.03s}.fade:nth-child(2){animation-delay:.06s}.fade:nth-child(3){animation-delay:.09s}.fade:nth-child(4){animation-delay:.12s}.fade:nth-child(5){animation-delay:.15s}
 
-    /* ═══ SCROLLBAR ═══ */
-    ::-webkit-scrollbar{width:5px;height:5px}
-    ::-webkit-scrollbar-track{background:transparent}
-    ::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.08);border-radius:3px}
+    /* PROSPECT DETAIL */
+    .detail-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem}
+    .detail-avatar{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem}
+    .detail-name{font-size:1.25rem;font-weight:700}
+    .detail-sub{font-size:0.82rem;color:var(--t2)}
+    .detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem}
+    .detail-field{padding:0.65rem 0;border-bottom:1px solid var(--border)}
+    .detail-field label{font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--t3);display:block;margin-bottom:0.2rem}
+    .detail-field span{font-size:0.88rem}
 
-    /* ═══ ANIM ═══ */
-    .fade{opacity:0;transform:translateY(16px);animation:fadeUp 0.5s ease forwards}
-    @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
-    .fade:nth-child(1){animation-delay:.05s}
-    .fade:nth-child(2){animation-delay:.1s}
-    .fade:nth-child(3){animation-delay:.15s}
-    .fade:nth-child(4){animation-delay:.2s}
+    .timeline{position:relative;padding-left:1.5rem}
+    .timeline::before{content:'';position:absolute;left:5px;top:0;bottom:0;width:1px;background:var(--border)}
+    .tl-item{position:relative;padding:0.5rem 0 0.5rem 0.8rem;font-size:0.82rem;color:var(--t2)}
+    .tl-item::before{content:'';position:absolute;left:-1.5rem;top:0.75rem;width:9px;height:9px;border-radius:50%;border:2px solid var(--blue);background:var(--bg-1)}
+    .tl-item strong{color:var(--t1)}
+    .tl-time{font-size:0.65rem;color:var(--t3);font-family:'JetBrains Mono',monospace}
+
+    .search-box{display:flex;gap:0.5rem;margin-bottom:1.25rem}
+    .search-box input{flex:1;padding:0.55rem 0.9rem;background:var(--bg-2);border:1px solid var(--border);border-radius:8px;color:var(--t1);font-family:'Outfit',sans-serif;font-size:0.88rem;outline:none}
+    .search-box input:focus{border-color:var(--blue)}
+    .search-box input::placeholder{color:var(--t3)}
+
+    .tab-row{display:flex;gap:0.25rem;margin-bottom:1.25rem;border-bottom:1px solid var(--border);padding-bottom:0}
+    .tab{padding:0.55rem 1rem;font-size:0.82rem;font-weight:500;color:var(--t2);cursor:pointer;border-bottom:2px solid transparent;transition:all 0.15s;margin-bottom:-1px}
+    .tab:hover{color:var(--t1)}
+    .tab.active{color:var(--blue);border-bottom-color:var(--blue)}
   </style>
 </head>
 <body>
@@ -450,502 +253,391 @@
 <!-- TOPBAR -->
 <header class="topbar">
   <div class="topbar-left">
-    <a class="brand" href="#">
+    <a class="brand" href="#" onclick="goPage('dashboard')">
       <div class="brand-mark">N</div>
       <div class="brand-text">NevadaTech<span>Command Center</span></div>
     </a>
-    <nav class="topbar-nav">
-      <a class="active" href="#">Dashboard</a>
-      <a href="#">Pipeline</a>
-      <a href="#">Prospectos</a>
-      <a href="#">Reportes</a>
+    <nav class="topbar-nav" id="topNav">
+      <a class="active" data-page="dashboard" onclick="goPage('dashboard')">Dashboard</a>
+      <a data-page="pipeline" onclick="goPage('pipeline')">Pipeline</a>
+      <a data-page="prospectos" onclick="goPage('prospectos')">Prospectos</a>
+      <a data-page="clientes" onclick="goPage('clientes')">Clientes</a>
+      <a data-page="reportes" onclick="goPage('reportes')">Reportes</a>
     </nav>
   </div>
   <div class="topbar-right">
-    <div class="team-pills">
-      <div class="pill" style="background:linear-gradient(135deg,var(--blue),var(--cyan))" title="Rulo">RS</div>
-      <div class="pill" style="background:linear-gradient(135deg,var(--green),#059669)" title="David">DV</div>
-      <div class="pill" style="background:linear-gradient(135deg,var(--purple),#7C3AED)" title="Camilo">CM</div>
+    <div class="pills">
+      <div class="pill o-r" title="Rulo">RS</div>
+      <div class="pill o-d" title="David">DV</div>
+      <div class="pill o-c" title="Camilo">CM</div>
     </div>
-    <button class="btn btn-ghost" onclick="exportCSV()">📥 Exportar</button>
-    <button class="btn btn-primary" onclick="openModal()">+ Prospecto</button>
+    <button class="btn btn-g btn-sm">📥 Exportar</button>
+    <button class="btn btn-p" onclick="openModal()">+ Prospecto</button>
   </div>
 </header>
 
-<!-- MAIN -->
 <main class="main">
 
-  <!-- KPIs -->
+<!-- ════════════════════ DASHBOARD ════════════════════ -->
+<div class="page active" id="page-dashboard">
   <section class="kpi-row">
-    <div class="kpi fade">
-      <div class="kpi-info">
-        <div class="kpi-label">Total Prospectos</div>
-        <div class="kpi-val">47</div>
-        <span class="kpi-tag up">↑ 12 esta semana</span>
-      </div>
-      <div class="kpi-icon">🎯</div>
-    </div>
-    <div class="kpi fade">
-      <div class="kpi-info">
-        <div class="kpi-label">Demos Agendadas</div>
-        <div class="kpi-val">8</div>
-        <span class="kpi-tag up">↑ 3 nuevas</span>
-      </div>
-      <div class="kpi-icon">🖥️</div>
-    </div>
-    <div class="kpi fade">
-      <div class="kpi-info">
-        <div class="kpi-label">Tasa Conversión</div>
-        <div class="kpi-val">23%</div>
-        <span class="kpi-tag up">↑ 5pp vs anterior</span>
-      </div>
-      <div class="kpi-icon">📈</div>
-    </div>
-    <div class="kpi fade">
-      <div class="kpi-info">
-        <div class="kpi-label">Pipeline Total</div>
-        <div class="kpi-val">$14.2M</div>
-        <span class="kpi-tag neutral">💰 en negociación</span>
-      </div>
-      <div class="kpi-icon">💎</div>
-    </div>
+    <div class="kpi fade"><div><div class="kpi-label">Total Prospectos</div><div class="kpi-val">63</div><span class="tag tag-up">↑ 18 esta semana</span></div><div class="kpi-icon">🎯</div></div>
+    <div class="kpi fade"><div><div class="kpi-label">Demos Agendadas</div><div class="kpi-val">12</div><span class="tag tag-up">↑ 5 nuevas</span></div><div class="kpi-icon">🖥️</div></div>
+    <div class="kpi fade"><div><div class="kpi-label">Tasa Conversión</div><div class="kpi-val">27%</div><span class="tag tag-up">↑ 8pp vs anterior</span></div><div class="kpi-icon">📈</div></div>
+    <div class="kpi fade"><div><div class="kpi-label">Pipeline Total</div><div class="kpi-val">$21.8M</div><span class="tag tag-blue">💰 en negociación</span></div><div class="kpi-icon">💎</div></div>
   </section>
 
-  <!-- QUICK ACTIONS -->
-  <section class="actions-row">
-    <div class="action fade" onclick="openModal()">
-      <div class="action-icon">🎯</div>
-      <div class="action-label">Nuevo Prospecto</div>
-      <div class="action-hint">Agregar lead al pipeline</div>
-    </div>
-    <div class="action fade">
-      <div class="action-icon">🗺️</div>
-      <div class="action-label">Buscar en Maps</div>
-      <div class="action-hint">Encontrar negocios por zona</div>
-    </div>
-    <div class="action fade">
-      <div class="action-icon">📄</div>
-      <div class="action-label">Cotización</div>
-      <div class="action-hint">Generar propuesta PDF</div>
-    </div>
-    <div class="action fade">
-      <div class="action-icon">🌐</div>
-      <div class="action-label">Crear Demo</div>
-      <div class="action-hint">Landing page para prospecto</div>
-    </div>
+  <section class="actions">
+    <div class="action fade" onclick="openModal()"><div class="action-icon">🎯</div><div class="action-label">Nuevo Prospecto</div><div class="action-hint">Agregar lead al pipeline</div></div>
+    <div class="action fade"><div class="action-icon">🗺️</div><div class="action-label">Buscar en Maps</div><div class="action-hint">Encontrar negocios por zona</div></div>
+    <div class="action fade"><div class="action-icon">📄</div><div class="action-label">Cotización</div><div class="action-hint">Generar propuesta PDF</div></div>
+    <div class="action fade"><div class="action-icon">🌐</div><div class="action-label">Crear Demo</div><div class="action-hint">Landing page para prospecto</div></div>
   </section>
 
-  <!-- PIPELINE + SIDEBAR -->
   <section class="split">
-    <div class="pipeline-wrap fade">
-      <div class="panel-head">
-        <div class="panel-title">🔄 Pipeline de Ventas</div>
-        <button class="btn btn-ghost" style="font-size:0.78rem;padding:0.4rem 0.85rem">Filtrar ▾</button>
-      </div>
-      <div class="pipeline-scroll">
-        <!-- IDENTIFIED -->
-        <div class="pipe-col">
-          <div class="pipe-col-head">
-            <div class="pipe-col-label"><div class="dot dot-gray"></div>Identificados</div>
-            <span class="pipe-count">24</span>
-          </div>
-          <div class="lead">
-            <span class="lead-type t-pelu">Peluquería</span>
-            <div class="lead-name">Joss Peluquería</div>
-            <div class="lead-addr">📍 Villas de Granada, Engativá</div>
-            <div class="lead-foot">
-              <span class="lead-val">$900K</span>
-              <div class="lead-owner" style="background:linear-gradient(135deg,var(--blue),var(--cyan))" title="Rulo">RS</div>
-            </div>
-          </div>
-          <div class="lead">
-            <span class="lead-type t-pelu">Peluquería</span>
-            <div class="lead-name">Rochell Peluquería</div>
-            <div class="lead-addr">📍 Villas de Granada I</div>
-            <div class="lead-foot">
-              <span class="lead-val">$900K</span>
-              <div class="lead-owner" style="background:linear-gradient(135deg,var(--green),#059669)" title="David">DV</div>
-            </div>
-          </div>
-          <div class="lead">
-            <span class="lead-type t-estet">Estética</span>
-            <div class="lead-name">Stella Durán</div>
-            <div class="lead-addr">📍 Villas de Granada I</div>
-            <div class="lead-foot">
-              <span class="lead-val">$1.5M</span>
-              <div class="lead-owner" style="background:linear-gradient(135deg,var(--purple),#7C3AED)" title="Camilo">CM</div>
-            </div>
-          </div>
-          <div class="lead">
-            <span class="lead-type t-pelu">Peluquería</span>
-            <div class="lead-name">Valeria Torres</div>
-            <div class="lead-addr">📍 Villas de Granada</div>
-            <div class="lead-foot">
-              <span class="lead-val">$900K</span>
-              <div class="lead-owner" style="background:linear-gradient(135deg,var(--blue),var(--cyan))" title="Rulo">RS</div>
-            </div>
-          </div>
+    <div class="pipe-wrap fade">
+      <div class="panel-head"><div class="panel-title">🔄 Pipeline de Ventas</div><button class="btn btn-g btn-sm">Filtrar ▾</button></div>
+      <div class="pipe-scroll">
+        <div class="pipe-col"><div class="pipe-col-head"><div class="pipe-col-label"><div class="dot d-gray"></div>Identificados</div><span class="pipe-c">28</span></div>
+          <div class="lead"><span class="lead-t tp">Peluquería</span><div class="lead-n">Joss Peluquería</div><div class="lead-a">📍 Villas de Granada</div><div class="lead-f"><span class="lead-v">$900K</span><div class="lead-o o-r">RS</div></div></div>
+          <div class="lead"><span class="lead-t tp">Peluquería</span><div class="lead-n">Rochell Peluquería</div><div class="lead-a">📍 Villas de Granada I</div><div class="lead-f"><span class="lead-v">$900K</span><div class="lead-o o-d">DV</div></div></div>
+          <div class="lead"><span class="lead-t te">Estética</span><div class="lead-n">Stella Durán</div><div class="lead-a">📍 Villas de Granada I</div><div class="lead-f"><span class="lead-v">$1.5M</span><div class="lead-o o-c">CM</div></div></div>
+          <div class="lead"><span class="lead-t tp">Peluquería</span><div class="lead-n">Valeria Torres</div><div class="lead-a">📍 Villas de Granada</div><div class="lead-f"><span class="lead-v">$900K</span><div class="lead-o o-r">RS</div></div></div>
+          <div class="lead"><span class="lead-t to">Odontología</span><div class="lead-n">OralMed Center</div><div class="lead-a">📍 Garcés Navas</div><div class="lead-f"><span class="lead-v">$2M</span><div class="lead-o o-d">DV</div></div></div>
         </div>
-
-        <!-- CONTACTED -->
-        <div class="pipe-col">
-          <div class="pipe-col-head">
-            <div class="pipe-col-label"><div class="dot dot-blue"></div>Contactados</div>
-            <span class="pipe-count">11</span>
-          </div>
-          <div class="lead">
-            <span class="lead-type t-pelu">Peluquería</span>
-            <div class="lead-name">Amazing Peluquería</div>
-            <div class="lead-addr">📍 Villas de Granada</div>
-            <div class="lead-foot">
-              <span class="lead-val">$900K</span>
-              <div class="lead-owner" style="background:linear-gradient(135deg,var(--green),#059669)" title="David">DV</div>
-            </div>
-          </div>
-          <div class="lead">
-            <span class="lead-type t-barber">Barbería</span>
-            <div class="lead-name">Edward y Charly</div>
-            <div class="lead-addr">📍 Cra 112A #79B-27</div>
-            <div class="lead-foot">
-              <span class="lead-val">$900K</span>
-              <div class="lead-owner" style="background:linear-gradient(135deg,var(--purple),#7C3AED)" title="Camilo">CM</div>
-            </div>
-          </div>
-          <div class="lead">
-            <span class="lead-type t-odonto">Odontología</span>
-            <div class="lead-name">Dental Plus</div>
-            <div class="lead-addr">📍 Bolivia, Engativá</div>
-            <div class="lead-foot">
-              <span class="lead-val">$2M</span>
-              <div class="lead-owner" style="background:linear-gradient(135deg,var(--blue),var(--cyan))" title="Rulo">RS</div>
-            </div>
-          </div>
+        <div class="pipe-col"><div class="pipe-col-head"><div class="pipe-col-label"><div class="dot d-blue"></div>Contactados</div><span class="pipe-c">15</span></div>
+          <div class="lead"><span class="lead-t tp">Peluquería</span><div class="lead-n">Amazing Peluquería</div><div class="lead-a">📍 Villas de Granada</div><div class="lead-f"><span class="lead-v">$900K</span><div class="lead-o o-d">DV</div></div></div>
+          <div class="lead"><span class="lead-t tb">Barbería</span><div class="lead-n">Edward y Charly</div><div class="lead-a">📍 Cra 112A #79B-27</div><div class="lead-f"><span class="lead-v">$900K</span><div class="lead-o o-c">CM</div></div></div>
+          <div class="lead"><span class="lead-t to">Odontología</span><div class="lead-n">Dental Plus</div><div class="lead-a">📍 Bolivia, Engativá</div><div class="lead-f"><span class="lead-v">$2M</span><div class="lead-o o-r">RS</div></div></div>
+          <div class="lead"><span class="lead-t tf">Fisioterapia</span><div class="lead-n">FisioVida</div><div class="lead-a">📍 Suba, Rincón</div><div class="lead-f"><span class="lead-v">$1.5M</span><div class="lead-o o-d">DV</div></div></div>
         </div>
-
-        <!-- DEMO -->
-        <div class="pipe-col">
-          <div class="pipe-col-head">
-            <div class="pipe-col-label"><div class="dot dot-purple"></div>Demo</div>
-            <span class="pipe-count">6</span>
-          </div>
-          <div class="lead">
-            <span class="lead-type t-spa">Spa</span>
-            <div class="lead-name">Spa Renacer</div>
-            <div class="lead-addr">📍 Álamos, Engativá</div>
-            <div class="lead-foot">
-              <span class="lead-val">$1.5M</span>
-              <div class="lead-owner" style="background:linear-gradient(135deg,var(--green),#059669)" title="David">DV</div>
-            </div>
-          </div>
-          <div class="lead">
-            <span class="lead-type t-pelu">Peluquería</span>
-            <div class="lead-name">Sala Wesly</div>
-            <div class="lead-addr">📍 Villas de Granada</div>
-            <div class="lead-foot">
-              <span class="lead-val">$900K</span>
-              <div class="lead-owner" style="background:linear-gradient(135deg,var(--blue),var(--cyan))" title="Rulo">RS</div>
-            </div>
-          </div>
+        <div class="pipe-col"><div class="pipe-col-head"><div class="pipe-col-label"><div class="dot d-purple"></div>Demo</div><span class="pipe-c">9</span></div>
+          <div class="lead"><span class="lead-t ts">Spa</span><div class="lead-n">Spa Renacer</div><div class="lead-a">📍 Álamos, Engativá</div><div class="lead-f"><span class="lead-v">$1.5M</span><div class="lead-o o-d">DV</div></div></div>
+          <div class="lead"><span class="lead-t tp">Peluquería</span><div class="lead-n">Sala Wesly</div><div class="lead-a">📍 Villas de Granada</div><div class="lead-f"><span class="lead-v">$900K</span><div class="lead-o o-r">RS</div></div></div>
+          <div class="lead"><span class="lead-t tg">Gimnasio</span><div class="lead-n">PowerFit Gym</div><div class="lead-a">📍 Suba, Tibabuyes</div><div class="lead-f"><span class="lead-v">$3M</span><div class="lead-o o-c">CM</div></div></div>
         </div>
-
-        <!-- NEGOTIATING -->
-        <div class="pipe-col">
-          <div class="pipe-col-head">
-            <div class="pipe-col-label"><div class="dot dot-orange"></div>Negociando</div>
-            <span class="pipe-count">4</span>
-          </div>
-          <div class="lead">
-            <span class="lead-type t-vet">Veterinaria</span>
-            <div class="lead-name">VetPaws</div>
-            <div class="lead-addr">📍 Garcés Navas</div>
-            <div class="lead-foot">
-              <span class="lead-val">$2M</span>
-              <div class="lead-owner" style="background:linear-gradient(135deg,var(--purple),#7C3AED)" title="Camilo">CM</div>
-            </div>
-          </div>
-          <div class="lead">
-            <span class="lead-type t-pelu">Peluquería</span>
-            <div class="lead-name">Theos Peluquería</div>
-            <div class="lead-addr">📍 Cra 113 #72f-17</div>
-            <div class="lead-foot">
-              <span class="lead-val">$1.2M</span>
-              <div class="lead-owner" style="background:linear-gradient(135deg,var(--green),#059669)" title="David">DV</div>
-            </div>
-          </div>
+        <div class="pipe-col"><div class="pipe-col-head"><div class="pipe-col-label"><div class="dot d-orange"></div>Negociando</div><span class="pipe-c">7</span></div>
+          <div class="lead"><span class="lead-t tv">Veterinaria</span><div class="lead-n">VetPaws</div><div class="lead-a">📍 Garcés Navas</div><div class="lead-f"><span class="lead-v">$2M</span><div class="lead-o o-c">CM</div></div></div>
+          <div class="lead"><span class="lead-t tp">Peluquería</span><div class="lead-n">Theos Peluquería</div><div class="lead-a">📍 Cra 113 #72f-17</div><div class="lead-f"><span class="lead-v">$1.2M</span><div class="lead-o o-d">DV</div></div></div>
+          <div class="lead"><span class="lead-t to">Odontología</span><div class="lead-n">SmilePro</div><div class="lead-a">📍 Kennedy Central</div><div class="lead-f"><span class="lead-v">$3M</span><div class="lead-o o-r">RS</div></div></div>
         </div>
-
-        <!-- CLOSED -->
-        <div class="pipe-col">
-          <div class="pipe-col-head">
-            <div class="pipe-col-label"><div class="dot dot-green"></div>Cerrados ✓</div>
-            <span class="pipe-count">2</span>
-          </div>
-          <div class="lead" style="border-color:rgba(74,222,128,0.15)">
-            <span class="lead-type t-pelu">Peluquería</span>
-            <div class="lead-name">D'yineli</div>
-            <div class="lead-addr">📍 Villas de Granada</div>
-            <div class="lead-foot">
-              <span class="lead-val">$900K ✓</span>
-              <span class="lead-mrr">+$100K/mes</span>
-            </div>
-          </div>
-          <div class="lead" style="border-color:rgba(74,222,128,0.15)">
-            <span class="lead-type t-odonto">Odontología</span>
-            <div class="lead-name">Sonría Dental</div>
-            <div class="lead-addr">📍 Normandía</div>
-            <div class="lead-foot">
-              <span class="lead-val">$2M ✓</span>
-              <span class="lead-mrr">+$200K/mes</span>
-            </div>
-          </div>
+        <div class="pipe-col"><div class="pipe-col-head"><div class="pipe-col-label"><div class="dot d-green"></div>Cerrados ✓</div><span class="pipe-c">4</span></div>
+          <div class="lead" style="border-color:rgba(74,222,128,0.15)"><span class="lead-t tp">Peluquería</span><div class="lead-n">D'yineli</div><div class="lead-a">📍 Villas de Granada</div><div class="lead-f"><span class="lead-v">$900K ✓</span><span class="lead-mrr">+$100K/m</span></div></div>
+          <div class="lead" style="border-color:rgba(74,222,128,0.15)"><span class="lead-t to">Odontología</span><div class="lead-n">Sonría Dental</div><div class="lead-a">📍 Normandía</div><div class="lead-f"><span class="lead-v">$2M ✓</span><span class="lead-mrr">+$200K/m</span></div></div>
+          <div class="lead" style="border-color:rgba(74,222,128,0.15)"><span class="lead-t ts">Spa</span><div class="lead-n">Zenith Spa</div><div class="lead-a">📍 Chapinero</div><div class="lead-f"><span class="lead-v">$1.5M ✓</span><span class="lead-mrr">+$200K/m</span></div></div>
+          <div class="lead" style="border-color:rgba(74,222,128,0.15)"><span class="lead-t tb">Barbería</span><div class="lead-n">The Barber House</div><div class="lead-a">📍 Suba</div><div class="lead-f"><span class="lead-v">$900K ✓</span><span class="lead-mrr">+$100K/m</span></div></div>
         </div>
       </div>
     </div>
-
-    <!-- RIGHT COL -->
     <div class="right-col">
-      <!-- MRR -->
-      <div class="card fade">
-        <div class="card-title">💰 MRR</div>
-        <div class="mrr-big">$300K</div>
-        <div class="mrr-sub">COP / mes recurrente</div>
-        <div class="goal-bar-wrap">
-          <div class="goal-labels">
-            <span>Meta mensual</span>
-            <strong>$2.000.000</strong>
-          </div>
-          <div class="goal-track">
-            <div class="goal-fill" id="goalFill" style="width:0%"></div>
-          </div>
-          <div class="goal-hint">15% — Faltan $1.7M</div>
-        </div>
-      </div>
-
-      <!-- PACKAGES -->
-      <div class="card fade">
-        <div class="card-title">📦 Paquetes</div>
-        <div class="pkg">
-          <div class="pkg-icon" style="background:var(--blue-dim)">🌐</div>
-          <div>
-            <div class="pkg-name">Básico</div>
-            <div class="pkg-desc">Landing + agendamiento</div>
-          </div>
-          <div class="pkg-price">
-            <div class="setup">$900K</div>
-            <div class="monthly">+$100K/mes</div>
-          </div>
-        </div>
-        <div class="pkg">
-          <div class="pkg-icon" style="background:var(--purple-dim)">🤖</div>
-          <div>
-            <div class="pkg-name">Pro</div>
-            <div class="pkg-desc">+ Chatbot IA + recordatorios</div>
-          </div>
-          <div class="pkg-price">
-            <div class="setup">$1.5M</div>
-            <div class="monthly">+$200K/mes</div>
-          </div>
-        </div>
-        <div class="pkg">
-          <div class="pkg-icon" style="background:var(--orange-dim)">🚀</div>
-          <div>
-            <div class="pkg-name">Enterprise</div>
-            <div class="pkg-desc">+ Redes IA + Ads + CRM</div>
-          </div>
-          <div class="pkg-price">
-            <div class="setup">$3M</div>
-            <div class="monthly">+$400K/mes</div>
-          </div>
-        </div>
+      <div class="card fade"><div class="card-title">💰 MRR</div><div class="mrr-big">$600K</div><div class="mrr-sub">COP / mes recurrente</div><div class="goal-w"><div class="goal-l"><span>Meta</span><strong>$3.000.000</strong></div><div class="goal-bar"><div class="goal-fill" id="goalFill" style="width:0%"></div></div><div class="goal-h">20% — Faltan $2.4M</div></div></div>
+      <div class="card fade"><div class="card-title">📦 Paquetes</div>
+        <div class="pkg"><div class="pkg-i" style="background:var(--blue-d)">🌐</div><div><div class="pkg-n">Básico</div><div class="pkg-d">Landing + agendamiento</div></div><div class="pkg-p"><div class="pkg-s">$900K</div><div class="pkg-m">+$100K/m</div></div></div>
+        <div class="pkg"><div class="pkg-i" style="background:var(--purple-d)">🤖</div><div><div class="pkg-n">Pro</div><div class="pkg-d">+ Chatbot IA + recordatorios</div></div><div class="pkg-p"><div class="pkg-s">$1.5M</div><div class="pkg-m">+$200K/m</div></div></div>
+        <div class="pkg"><div class="pkg-i" style="background:var(--orange-d)">🚀</div><div><div class="pkg-n">Enterprise</div><div class="pkg-d">+ Redes IA + Ads + CRM</div></div><div class="pkg-p"><div class="pkg-s">$3M</div><div class="pkg-m">+$400K/m</div></div></div>
       </div>
     </div>
   </section>
 
-  <!-- BOTTOM -->
-  <section class="bottom">
-    <!-- ACTIVITY -->
-    <div class="card fade">
-      <div class="card-title">🔔 Actividad Reciente</div>
-      <div class="act">
-        <div class="act-dot" style="background:linear-gradient(135deg,var(--blue),var(--cyan))">RS</div>
-        <div>
-          <div class="act-text"><strong>Rulo</strong> identificó <strong>Joss Peluquería</strong> como prospecto</div>
-          <div class="act-time">Hace 5 min</div>
+  <section class="g2">
+    <div class="card fade"><div class="card-title">🔔 Actividad Reciente</div>
+      <div class="act"><div class="act-dot o-r">RS</div><div><div class="act-text"><strong>Rulo</strong> identificó <strong>Joss Peluquería</strong></div><div class="act-time">Hace 5 min</div></div></div>
+      <div class="act"><div class="act-dot o-d">DV</div><div><div class="act-text"><strong>David</strong> contactó <strong>Amazing Peluquería</strong> por WhatsApp</div><div class="act-time">Hace 1h</div></div></div>
+      <div class="act"><div class="act-dot o-c">CM</div><div><div class="act-text"><strong>Camilo</strong> mostró demo a <strong>VetPaws</strong> — interesados 🎯</div><div class="act-time">Hace 2h</div></div></div>
+      <div class="act"><div class="act-dot o-d">DV</div><div><div class="act-text"><strong>David</strong> cerró venta con <strong>The Barber House</strong> 🎉</div><div class="act-time">Ayer 4:30pm</div></div></div>
+      <div class="act"><div class="act-dot o-r">RS</div><div><div class="act-text"><strong>Rulo</strong> generó landing para <strong>SmilePro</strong></div><div class="act-time">Ayer 2:15pm</div></div></div>
+      <div class="act"><div class="act-dot o-c">CM</div><div><div class="act-text"><strong>Camilo</strong> agendó demo con <strong>PowerFit Gym</strong></div><div class="act-time">Ayer 11am</div></div></div>
+    </div>
+    <div class="card fade"><div class="card-title">🗺️ Zonas de Bogotá</div>
+      <div class="zone"><div class="zone-n">Engativá</div><div class="zone-track"><div class="zone-fill" data-w="82%" style="width:0%;background:linear-gradient(90deg,var(--blue),var(--cyan))"></div></div><div class="zone-num" style="color:var(--blue)">31</div><div class="zone-w o-r">RS</div></div>
+      <div class="zone"><div class="zone-n">Suba</div><div class="zone-track"><div class="zone-fill" data-w="48%" style="width:0%;background:linear-gradient(90deg,var(--green),#059669)"></div></div><div class="zone-num" style="color:var(--green)">15</div><div class="zone-w o-d">DV</div></div>
+      <div class="zone"><div class="zone-n">Kennedy</div><div class="zone-track"><div class="zone-fill" data-w="30%" style="width:0%;background:linear-gradient(90deg,var(--purple),#7C3AED)"></div></div><div class="zone-num" style="color:var(--purple)">9</div><div class="zone-w o-c">CM</div></div>
+      <div class="zone"><div class="zone-n">Chapinero</div><div class="zone-track"><div class="zone-fill" data-w="14%" style="width:0%;background:linear-gradient(90deg,var(--orange),#EA580C)"></div></div><div class="zone-num" style="color:var(--orange)">5</div><div class="zone-w o-r">RS</div></div>
+      <div class="zone"><div class="zone-n">Fontibón</div><div class="zone-track"><div class="zone-fill" data-w="8%" style="width:0%;background:var(--t3)"></div></div><div class="zone-num" style="color:var(--t3)">3</div><div class="zone-w o-d">DV</div></div>
+      <div class="zone"><div class="zone-n">Usaquén</div><div class="zone-track"><div class="zone-fill" data-w="0%" style="width:0%"></div></div><div class="zone-num" style="color:var(--t3)">0</div><div class="zone-w" style="background:var(--bg-3)">—</div></div>
+    </div>
+  </section>
+</div>
+
+<!-- ════════════════════ PIPELINE FULL ════════════════════ -->
+<div class="page" id="page-pipeline">
+  <h2 style="font-size:1.4rem;font-weight:700;margin-bottom:1.25rem">🔄 Pipeline Completo</h2>
+  <section class="kpi-row">
+    <div class="kpi"><div><div class="kpi-label">Identificados</div><div class="kpi-val">28</div><span class="tag" style="background:rgba(71,85,105,0.2);color:var(--t2)">44%</span></div><div class="kpi-icon">🔍</div></div>
+    <div class="kpi"><div><div class="kpi-label">En Contacto</div><div class="kpi-val">15</div><span class="tag tag-blue">24%</span></div><div class="kpi-icon">📞</div></div>
+    <div class="kpi"><div><div class="kpi-label">Demo / Negociando</div><div class="kpi-val">16</div><span class="tag tag-orange">25%</span></div><div class="kpi-icon">🎯</div></div>
+    <div class="kpi"><div><div class="kpi-label">Cerrados</div><div class="kpi-val">4</div><span class="tag tag-up">$5.3M vendidos</span></div><div class="kpi-icon">🏆</div></div>
+  </section>
+  <div class="card" style="margin-bottom:1.5rem">
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Negocio</th><th>Tipo</th><th>Zona</th><th>Estado</th><th>Valor</th><th>MRR</th><th>Owner</th><th>Último contacto</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Joss Peluquería</strong></td><td><span class="lead-t tp">Peluquería</span></td><td>Engativá</td><td><span class="status s-id">Identificado</span></td><td class="mono" style="color:var(--green)">$900K</td><td class="mono" style="color:var(--t3)">$100K</td><td><span class="lead-o o-r" style="display:inline-flex">RS</span></td><td class="mono" style="color:var(--t3)">Hoy</td></tr>
+          <tr><td><strong>Rochell Peluquería</strong></td><td><span class="lead-t tp">Peluquería</span></td><td>Engativá</td><td><span class="status s-id">Identificado</span></td><td class="mono" style="color:var(--green)">$900K</td><td class="mono" style="color:var(--t3)">$100K</td><td><span class="lead-o o-d" style="display:inline-flex">DV</span></td><td class="mono" style="color:var(--t3)">Hoy</td></tr>
+          <tr><td><strong>Stella Durán</strong></td><td><span class="lead-t te">Estética</span></td><td>Engativá</td><td><span class="status s-id">Identificado</span></td><td class="mono" style="color:var(--green)">$1.5M</td><td class="mono" style="color:var(--t3)">$200K</td><td><span class="lead-o o-c" style="display:inline-flex">CM</span></td><td class="mono" style="color:var(--t3)">Hoy</td></tr>
+          <tr><td><strong>OralMed Center</strong></td><td><span class="lead-t to">Odontología</span></td><td>Engativá</td><td><span class="status s-id">Identificado</span></td><td class="mono" style="color:var(--green)">$2M</td><td class="mono" style="color:var(--t3)">$200K</td><td><span class="lead-o o-d" style="display:inline-flex">DV</span></td><td class="mono" style="color:var(--t3)">Ayer</td></tr>
+          <tr><td><strong>Amazing Peluquería</strong></td><td><span class="lead-t tp">Peluquería</span></td><td>Engativá</td><td><span class="status s-con">Contactado</span></td><td class="mono" style="color:var(--green)">$900K</td><td class="mono" style="color:var(--t3)">$100K</td><td><span class="lead-o o-d" style="display:inline-flex">DV</span></td><td class="mono" style="color:var(--t3)">Hoy</td></tr>
+          <tr><td><strong>Edward y Charly</strong></td><td><span class="lead-t tb">Barbería</span></td><td>Engativá</td><td><span class="status s-con">Contactado</span></td><td class="mono" style="color:var(--green)">$900K</td><td class="mono" style="color:var(--t3)">$100K</td><td><span class="lead-o o-c" style="display:inline-flex">CM</span></td><td class="mono" style="color:var(--t3)">Ayer</td></tr>
+          <tr><td><strong>Dental Plus</strong></td><td><span class="lead-t to">Odontología</span></td><td>Engativá</td><td><span class="status s-con">Contactado</span></td><td class="mono" style="color:var(--green)">$2M</td><td class="mono" style="color:var(--t3)">$200K</td><td><span class="lead-o o-r" style="display:inline-flex">RS</span></td><td class="mono" style="color:var(--t3)">Mar 8</td></tr>
+          <tr><td><strong>FisioVida</strong></td><td><span class="lead-t tf">Fisioterapia</span></td><td>Suba</td><td><span class="status s-con">Contactado</span></td><td class="mono" style="color:var(--green)">$1.5M</td><td class="mono" style="color:var(--t3)">$200K</td><td><span class="lead-o o-d" style="display:inline-flex">DV</span></td><td class="mono" style="color:var(--t3)">Mar 7</td></tr>
+          <tr><td><strong>Spa Renacer</strong></td><td><span class="lead-t ts">Spa</span></td><td>Engativá</td><td><span class="status s-demo">Demo</span></td><td class="mono" style="color:var(--green)">$1.5M</td><td class="mono" style="color:var(--t3)">$200K</td><td><span class="lead-o o-d" style="display:inline-flex">DV</span></td><td class="mono" style="color:var(--t3)">Mar 8</td></tr>
+          <tr><td><strong>Sala Wesly</strong></td><td><span class="lead-t tp">Peluquería</span></td><td>Engativá</td><td><span class="status s-demo">Demo</span></td><td class="mono" style="color:var(--green)">$900K</td><td class="mono" style="color:var(--t3)">$100K</td><td><span class="lead-o o-r" style="display:inline-flex">RS</span></td><td class="mono" style="color:var(--t3)">Mar 7</td></tr>
+          <tr><td><strong>PowerFit Gym</strong></td><td><span class="lead-t tg">Gimnasio</span></td><td>Suba</td><td><span class="status s-demo">Demo</span></td><td class="mono" style="color:var(--green)">$3M</td><td class="mono" style="color:var(--t3)">$400K</td><td><span class="lead-o o-c" style="display:inline-flex">CM</span></td><td class="mono" style="color:var(--t3)">Mar 6</td></tr>
+          <tr><td><strong>VetPaws</strong></td><td><span class="lead-t tv">Veterinaria</span></td><td>Engativá</td><td><span class="status s-neg">Negociando</span></td><td class="mono" style="color:var(--green)">$2M</td><td class="mono" style="color:var(--t3)">$200K</td><td><span class="lead-o o-c" style="display:inline-flex">CM</span></td><td class="mono" style="color:var(--t3)">Hoy</td></tr>
+          <tr><td><strong>Theos Peluquería</strong></td><td><span class="lead-t tp">Peluquería</span></td><td>Engativá</td><td><span class="status s-neg">Negociando</span></td><td class="mono" style="color:var(--green)">$1.2M</td><td class="mono" style="color:var(--t3)">$150K</td><td><span class="lead-o o-d" style="display:inline-flex">DV</span></td><td class="mono" style="color:var(--t3)">Hoy</td></tr>
+          <tr><td><strong>SmilePro</strong></td><td><span class="lead-t to">Odontología</span></td><td>Kennedy</td><td><span class="status s-neg">Negociando</span></td><td class="mono" style="color:var(--green)">$3M</td><td class="mono" style="color:var(--t3)">$400K</td><td><span class="lead-o o-r" style="display:inline-flex">RS</span></td><td class="mono" style="color:var(--t3)">Mar 8</td></tr>
+          <tr><td><strong>D'yineli</strong></td><td><span class="lead-t tp">Peluquería</span></td><td>Engativá</td><td><span class="status s-win">Cerrado ✓</span></td><td class="mono" style="color:var(--green)">$900K</td><td class="mono" style="color:var(--green)">$100K</td><td><span class="lead-o o-d" style="display:inline-flex">DV</span></td><td class="mono" style="color:var(--t3)">Mar 1</td></tr>
+          <tr><td><strong>Sonría Dental</strong></td><td><span class="lead-t to">Odontología</span></td><td>Engativá</td><td><span class="status s-win">Cerrado ✓</span></td><td class="mono" style="color:var(--green)">$2M</td><td class="mono" style="color:var(--green)">$200K</td><td><span class="lead-o o-r" style="display:inline-flex">RS</span></td><td class="mono" style="color:var(--t3)">Feb 25</td></tr>
+          <tr><td><strong>Zenith Spa</strong></td><td><span class="lead-t ts">Spa</span></td><td>Chapinero</td><td><span class="status s-win">Cerrado ✓</span></td><td class="mono" style="color:var(--green)">$1.5M</td><td class="mono" style="color:var(--green)">$200K</td><td><span class="lead-o o-c" style="display:inline-flex">CM</span></td><td class="mono" style="color:var(--t3)">Mar 3</td></tr>
+          <tr><td><strong>The Barber House</strong></td><td><span class="lead-t tb">Barbería</span></td><td>Suba</td><td><span class="status s-win">Cerrado ✓</span></td><td class="mono" style="color:var(--green)">$900K</td><td class="mono" style="color:var(--green)">$100K</td><td><span class="lead-o o-d" style="display:inline-flex">DV</span></td><td class="mono" style="color:var(--t3)">Mar 6</td></tr>
+          <tr><td><strong>Beauty Lab</strong></td><td><span class="lead-t tp">Peluquería</span></td><td>Suba</td><td><span class="status s-lost">Perdido</span></td><td class="mono" style="color:var(--t3)">$1.5M</td><td class="mono" style="color:var(--t3)">—</td><td><span class="lead-o o-c" style="display:inline-flex">CM</span></td><td class="mono" style="color:var(--t3)">Feb 20</td></tr>
+          <tr><td><strong>CliniDent</strong></td><td><span class="lead-t to">Odontología</span></td><td>Kennedy</td><td><span class="status s-lost">Perdido</span></td><td class="mono" style="color:var(--t3)">$2M</td><td class="mono" style="color:var(--t3)">—</td><td><span class="lead-o o-r" style="display:inline-flex">RS</span></td><td class="mono" style="color:var(--t3)">Feb 18</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════ PROSPECTOS ════════════════════ -->
+<div class="page" id="page-prospectos">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem">
+    <h2 style="font-size:1.4rem;font-weight:700">👥 Prospectos</h2>
+    <button class="btn btn-p" onclick="openModal()">+ Nuevo Prospecto</button>
+  </div>
+  <div class="search-box">
+    <input type="text" placeholder="🔍 Buscar por nombre, zona, tipo..." id="searchInput" oninput="filterProspects()">
+    <button class="btn btn-g btn-sm">Filtrar ▾</button>
+  </div>
+  <div class="tab-row">
+    <div class="tab active">Todos (63)</div>
+    <div class="tab">Peluquerías (22)</div>
+    <div class="tab">Odontología (14)</div>
+    <div class="tab">Spa/Estética (10)</div>
+    <div class="tab">Barberías (7)</div>
+    <div class="tab">Otros (10)</div>
+  </div>
+  <div class="card">
+    <div class="tbl-wrap" style="max-height:700px">
+      <table class="tbl" id="prospectsTable">
+        <thead><tr><th>Negocio</th><th>Dueño</th><th>Tipo</th><th>Zona / Barrio</th><th>WhatsApp</th><th>Estado</th><th>Paquete</th><th>Valor</th><th>Owner</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Joss Peluquería</strong></td><td>Por confirmar</td><td><span class="lead-t tp">Peluquería</span></td><td>Engativá / V. Granada</td><td class="mono">—</td><td><span class="status s-id">Identificado</span></td><td>Básico</td><td class="mono" style="color:var(--green)">$900K</td><td><span class="lead-o o-r" style="display:inline-flex">RS</span></td></tr>
+          <tr><td><strong>Rochell Peluquería</strong></td><td>Por confirmar</td><td><span class="lead-t tp">Peluquería</span></td><td>Engativá / V. Granada I</td><td class="mono">—</td><td><span class="status s-id">Identificado</span></td><td>Básico</td><td class="mono" style="color:var(--green)">$900K</td><td><span class="lead-o o-d" style="display:inline-flex">DV</span></td></tr>
+          <tr><td><strong>Stella Durán</strong></td><td>Stella Durán</td><td><span class="lead-t te">Estética</span></td><td>Engativá / V. Granada I</td><td class="mono">310 555 1234</td><td><span class="status s-id">Identificado</span></td><td>Pro</td><td class="mono" style="color:var(--green)">$1.5M</td><td><span class="lead-o o-c" style="display:inline-flex">CM</span></td></tr>
+          <tr><td><strong>Valeria Torres</strong></td><td>Valeria Torres</td><td><span class="lead-t tp">Peluquería</span></td><td>Engativá / V. Granada</td><td class="mono">312 444 5678</td><td><span class="status s-id">Identificado</span></td><td>Básico</td><td class="mono" style="color:var(--green)">$900K</td><td><span class="lead-o o-r" style="display:inline-flex">RS</span></td></tr>
+          <tr><td><strong>OralMed Center</strong></td><td>Dr. Martínez</td><td><span class="lead-t to">Odontología</span></td><td>Engativá / Garcés Navas</td><td class="mono">315 222 8901</td><td><span class="status s-id">Identificado</span></td><td>Pro</td><td class="mono" style="color:var(--green)">$2M</td><td><span class="lead-o o-d" style="display:inline-flex">DV</span></td></tr>
+          <tr><td><strong>Amazing Peluquería</strong></td><td>Carlos R.</td><td><span class="lead-t tp">Peluquería</span></td><td>Engativá / V. Granada</td><td class="mono">310 888 3456</td><td><span class="status s-con">Contactado</span></td><td>Básico</td><td class="mono" style="color:var(--green)">$900K</td><td><span class="lead-o o-d" style="display:inline-flex">DV</span></td></tr>
+          <tr><td><strong>Edward y Charly</strong></td><td>Edward M.</td><td><span class="lead-t tb">Barbería</span></td><td>Engativá / V. Granada I</td><td class="mono">311 777 2345</td><td><span class="status s-con">Contactado</span></td><td>Básico</td><td class="mono" style="color:var(--green)">$900K</td><td><span class="lead-o o-c" style="display:inline-flex">CM</span></td></tr>
+          <tr><td><strong>Dental Plus</strong></td><td>Dra. López</td><td><span class="lead-t to">Odontología</span></td><td>Engativá / Bolivia</td><td class="mono">300 123 4567</td><td><span class="status s-con">Contactado</span></td><td>Pro</td><td class="mono" style="color:var(--green)">$2M</td><td><span class="lead-o o-r" style="display:inline-flex">RS</span></td></tr>
+          <tr><td><strong>FisioVida</strong></td><td>Andrea G.</td><td><span class="lead-t tf">Fisioterapia</span></td><td>Suba / Rincón</td><td class="mono">318 999 7654</td><td><span class="status s-con">Contactado</span></td><td>Pro</td><td class="mono" style="color:var(--green)">$1.5M</td><td><span class="lead-o o-d" style="display:inline-flex">DV</span></td></tr>
+          <tr><td><strong>Spa Renacer</strong></td><td>María P.</td><td><span class="lead-t ts">Spa</span></td><td>Engativá / Álamos</td><td class="mono">316 444 1234</td><td><span class="status s-demo">Demo</span></td><td>Pro</td><td class="mono" style="color:var(--green)">$1.5M</td><td><span class="lead-o o-d" style="display:inline-flex">DV</span></td></tr>
+          <tr><td><strong>Sala Wesly</strong></td><td>Wesly A.</td><td><span class="lead-t tp">Peluquería</span></td><td>Engativá / V. Granada</td><td class="mono">310 333 5555</td><td><span class="status s-demo">Demo</span></td><td>Básico</td><td class="mono" style="color:var(--green)">$900K</td><td><span class="lead-o o-r" style="display:inline-flex">RS</span></td></tr>
+          <tr><td><strong>PowerFit Gym</strong></td><td>Jhon S.</td><td><span class="lead-t tg">Gimnasio</span></td><td>Suba / Tibabuyes</td><td class="mono">321 666 7890</td><td><span class="status s-demo">Demo</span></td><td>Enterprise</td><td class="mono" style="color:var(--green)">$3M</td><td><span class="lead-o o-c" style="display:inline-flex">CM</span></td></tr>
+          <tr><td><strong>VetPaws</strong></td><td>Diana R.</td><td><span class="lead-t tv">Veterinaria</span></td><td>Engativá / Garcés Navas</td><td class="mono">314 555 3333</td><td><span class="status s-neg">Negociando</span></td><td>Pro</td><td class="mono" style="color:var(--green)">$2M</td><td><span class="lead-o o-c" style="display:inline-flex">CM</span></td></tr>
+          <tr><td><strong>Theos Peluquería</strong></td><td>Theo G.</td><td><span class="lead-t tp">Peluquería</span></td><td>Engativá / La Rivera</td><td class="mono">310 111 2222</td><td><span class="status s-neg">Negociando</span></td><td>Pro</td><td class="mono" style="color:var(--green)">$1.2M</td><td><span class="lead-o o-d" style="display:inline-flex">DV</span></td></tr>
+          <tr><td><strong>SmilePro</strong></td><td>Dr. Ramírez</td><td><span class="lead-t to">Odontología</span></td><td>Kennedy / Central</td><td class="mono">300 999 1111</td><td><span class="status s-neg">Negociando</span></td><td>Enterprise</td><td class="mono" style="color:var(--green)">$3M</td><td><span class="lead-o o-r" style="display:inline-flex">RS</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════ CLIENTES ════════════════════ -->
+<div class="page" id="page-clientes">
+  <h2 style="font-size:1.4rem;font-weight:700;margin-bottom:1.25rem">💰 Clientes Activos</h2>
+  <section class="kpi-row">
+    <div class="kpi"><div><div class="kpi-label">Clientes Activos</div><div class="kpi-val">4</div><span class="tag tag-up">↑ 2 este mes</span></div><div class="kpi-icon">🏆</div></div>
+    <div class="kpi"><div><div class="kpi-label">MRR Total</div><div class="kpi-val">$600K</div><span class="tag tag-up">↑ $300K nuevo</span></div><div class="kpi-icon">💰</div></div>
+    <div class="kpi"><div><div class="kpi-label">Ingresos Setup</div><div class="kpi-val">$5.3M</div><span class="tag tag-blue">cobrados</span></div><div class="kpi-icon">📈</div></div>
+    <div class="kpi"><div><div class="kpi-label">ARR Proyectado</div><div class="kpi-val">$7.2M</div><span class="tag tag-orange">anual</span></div><div class="kpi-icon">🚀</div></div>
+  </section>
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-title">🏆 Portafolio de Clientes</div>
+      <div style="margin-bottom:1rem">
+        <div class="lead" style="border-color:rgba(74,222,128,0.15);margin-bottom:0.75rem">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem"><span class="lead-t tp">Peluquería</span><span class="tag tag-up">Activo</span></div>
+          <div class="lead-n">D'yineli Peluquería</div>
+          <div class="lead-a">📍 Villas de Granada · Dueña: Yineli M. · 📱 310 222 4444</div>
+          <div class="lead-f" style="margin-top:0.5rem"><span class="lead-v">Setup: $900K</span><span class="mono" style="color:var(--green);font-size:0.82rem;font-weight:600">MRR: $100K/m</span></div>
+          <div style="margin-top:0.5rem;font-size:0.72rem;color:var(--t3)">Paquete Básico · Desde Mar 1 · Entregado por David</div>
         </div>
-      </div>
-      <div class="act">
-        <div class="act-dot" style="background:linear-gradient(135deg,var(--green),#059669)">DV</div>
-        <div>
-          <div class="act-text"><strong>David</strong> contactó a <strong>Amazing Peluquería</strong> por WhatsApp</div>
-          <div class="act-time">Hace 1h</div>
+        <div class="lead" style="border-color:rgba(74,222,128,0.15);margin-bottom:0.75rem">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem"><span class="lead-t to">Odontología</span><span class="tag tag-up">Activo</span></div>
+          <div class="lead-n">Sonría Dental</div>
+          <div class="lead-a">📍 Normandía, Engativá · Dr. Pérez · 📱 300 333 5555</div>
+          <div class="lead-f" style="margin-top:0.5rem"><span class="lead-v">Setup: $2M</span><span class="mono" style="color:var(--green);font-size:0.82rem;font-weight:600">MRR: $200K/m</span></div>
+          <div style="margin-top:0.5rem;font-size:0.72rem;color:var(--t3)">Paquete Pro · Desde Feb 25 · Entregado por Rulo</div>
         </div>
-      </div>
-      <div class="act">
-        <div class="act-dot" style="background:linear-gradient(135deg,var(--purple),#7C3AED)">CM</div>
-        <div>
-          <div class="act-text"><strong>Camilo</strong> mostró demo a <strong>VetPaws</strong> — interesados 🎯</div>
-          <div class="act-time">Hace 2h</div>
+        <div class="lead" style="border-color:rgba(74,222,128,0.15);margin-bottom:0.75rem">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem"><span class="lead-t ts">Spa</span><span class="tag tag-up">Activo</span></div>
+          <div class="lead-n">Zenith Spa</div>
+          <div class="lead-a">📍 Chapinero · Sandra L. · 📱 318 777 8888</div>
+          <div class="lead-f" style="margin-top:0.5rem"><span class="lead-v">Setup: $1.5M</span><span class="mono" style="color:var(--green);font-size:0.82rem;font-weight:600">MRR: $200K/m</span></div>
+          <div style="margin-top:0.5rem;font-size:0.72rem;color:var(--t3)">Paquete Pro · Desde Mar 3 · Entregado por Camilo</div>
         </div>
-      </div>
-      <div class="act">
-        <div class="act-dot" style="background:linear-gradient(135deg,var(--green),#059669)">DV</div>
-        <div>
-          <div class="act-text"><strong>David</strong> cerró venta con <strong>D'yineli</strong> 🎉</div>
-          <div class="act-time">Ayer 4:30pm</div>
-        </div>
-      </div>
-      <div class="act">
-        <div class="act-dot" style="background:linear-gradient(135deg,var(--blue),var(--cyan))">RS</div>
-        <div>
-          <div class="act-text"><strong>Rulo</strong> generó landing demo para <strong>Sala Wesly</strong></div>
-          <div class="act-time">Ayer 2:15pm</div>
+        <div class="lead" style="border-color:rgba(74,222,128,0.15)">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem"><span class="lead-t tb">Barbería</span><span class="tag tag-up">Activo</span></div>
+          <div class="lead-n">The Barber House</div>
+          <div class="lead-a">📍 Suba · Andrés V. · 📱 312 999 0000</div>
+          <div class="lead-f" style="margin-top:0.5rem"><span class="lead-v">Setup: $900K</span><span class="mono" style="color:var(--green);font-size:0.82rem;font-weight:600">MRR: $100K/m</span></div>
+          <div style="margin-top:0.5rem;font-size:0.72rem;color:var(--t3)">Paquete Básico · Desde Mar 6 · Entregado por David</div>
         </div>
       </div>
     </div>
+    <div class="card">
+      <div class="card-title">📊 Resumen Financiero</div>
+      <div class="stat-row"><span class="stat-label">Ingresos por setup (total)</span><span class="stat-val" style="color:var(--green)">$5.300.000</span></div>
+      <div class="stat-row"><span class="stat-label">MRR actual</span><span class="stat-val" style="color:var(--green)">$600.000</span></div>
+      <div class="stat-row"><span class="stat-label">Proyección 12 meses</span><span class="stat-val" style="color:var(--blue)">$7.200.000</span></div>
+      <div class="stat-row"><span class="stat-label">Ticket promedio setup</span><span class="stat-val">$1.325.000</span></div>
+      <div class="stat-row"><span class="stat-label">Ticket promedio MRR</span><span class="stat-val">$150.000</span></div>
+      <div class="stat-row"><span class="stat-label">Churn rate</span><span class="stat-val" style="color:var(--green)">0%</span></div>
+      <div style="margin-top:1.5rem">
+        <div class="card-title">📅 Próximos Pagos</div>
+        <div class="stat-row"><span class="stat-label">D'yineli — Mensualidad</span><span class="stat-val" style="color:var(--orange)">Abr 1</span></div>
+        <div class="stat-row"><span class="stat-label">Sonría Dental — Mensualidad</span><span class="stat-val" style="color:var(--orange)">Mar 25</span></div>
+        <div class="stat-row"><span class="stat-label">Zenith Spa — Mensualidad</span><span class="stat-val" style="color:var(--orange)">Abr 3</span></div>
+        <div class="stat-row"><span class="stat-label">The Barber House — Mensualidad</span><span class="stat-val" style="color:var(--orange)">Abr 6</span></div>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <!-- ZONES -->
-    <div class="card fade">
-      <div class="card-title">🗺️ Zonas de Bogotá</div>
-      <div class="zone">
-        <div class="zone-name">Engativá</div>
-        <div class="zone-track"><div class="zone-fill" data-w="78%" style="width:0%;background:linear-gradient(90deg,var(--blue),var(--cyan))"></div></div>
-        <div class="zone-num" style="color:var(--blue)">28</div>
-        <div class="zone-who" style="background:linear-gradient(135deg,var(--blue),var(--cyan))">RS</div>
+<!-- ════════════════════ REPORTES ════════════════════ -->
+<div class="page" id="page-reportes">
+  <h2 style="font-size:1.4rem;font-weight:700;margin-bottom:1.25rem">📈 Reportes & Analytics</h2>
+
+  <section class="g3">
+    <div class="card">
+      <div class="card-title">📊 Leads por Semana</div>
+      <div class="bar-chart">
+        <div class="bar-col"><div class="bar-val">5</div><div class="bar" style="height:25%;background:var(--blue)"></div><div class="bar-label">Sem 1</div></div>
+        <div class="bar-col"><div class="bar-val">9</div><div class="bar" style="height:45%;background:var(--blue)"></div><div class="bar-label">Sem 2</div></div>
+        <div class="bar-col"><div class="bar-val">14</div><div class="bar" style="height:65%;background:var(--blue)"></div><div class="bar-label">Sem 3</div></div>
+        <div class="bar-col"><div class="bar-val">18</div><div class="bar" style="height:85%;background:linear-gradient(var(--blue),var(--cyan))"></div><div class="bar-label">Sem 4</div></div>
+        <div class="bar-col"><div class="bar-val">17</div><div class="bar" style="height:80%;background:linear-gradient(var(--blue),var(--cyan))"></div><div class="bar-label">Actual</div></div>
       </div>
-      <div class="zone">
-        <div class="zone-name">Suba</div>
-        <div class="zone-track"><div class="zone-fill" data-w="42%" style="width:0%;background:linear-gradient(90deg,var(--green),#059669)"></div></div>
-        <div class="zone-num" style="color:var(--green)">12</div>
-        <div class="zone-who" style="background:linear-gradient(135deg,var(--green),#059669)">DV</div>
+    </div>
+    <div class="card">
+      <div class="card-title">🏆 Conversiones por Semana</div>
+      <div class="bar-chart">
+        <div class="bar-col"><div class="bar-val">0</div><div class="bar" style="height:2%;background:var(--green)"></div><div class="bar-label">Sem 1</div></div>
+        <div class="bar-col"><div class="bar-val">1</div><div class="bar" style="height:25%;background:var(--green)"></div><div class="bar-label">Sem 2</div></div>
+        <div class="bar-col"><div class="bar-val">1</div><div class="bar" style="height:25%;background:var(--green)"></div><div class="bar-label">Sem 3</div></div>
+        <div class="bar-col"><div class="bar-val">2</div><div class="bar" style="height:50%;background:linear-gradient(var(--green),var(--cyan))"></div><div class="bar-label">Sem 4</div></div>
+        <div class="bar-col"><div class="bar-val">—</div><div class="bar" style="height:2%;background:var(--t3)"></div><div class="bar-label">Actual</div></div>
       </div>
-      <div class="zone">
-        <div class="zone-name">Kennedy</div>
-        <div class="zone-track"><div class="zone-fill" data-w="22%" style="width:0%;background:linear-gradient(90deg,var(--purple),#7C3AED)"></div></div>
-        <div class="zone-num" style="color:var(--purple)">7</div>
-        <div class="zone-who" style="background:linear-gradient(135deg,var(--purple),#7C3AED)">CM</div>
-      </div>
-      <div class="zone">
-        <div class="zone-name">Fontibón</div>
-        <div class="zone-track"><div class="zone-fill" data-w="0%" style="width:0%;background:var(--text-3)"></div></div>
-        <div class="zone-num" style="color:var(--text-3)">0</div>
-        <div class="zone-who" style="background:var(--bg-3)">—</div>
-      </div>
-      <div class="zone">
-        <div class="zone-name">Chapinero</div>
-        <div class="zone-track"><div class="zone-fill" data-w="0%" style="width:0%;background:var(--text-3)"></div></div>
-        <div class="zone-num" style="color:var(--text-3)">0</div>
-        <div class="zone-who" style="background:var(--bg-3)">—</div>
+    </div>
+    <div class="card">
+      <div class="card-title">💰 Revenue Acumulado</div>
+      <div class="bar-chart">
+        <div class="bar-col"><div class="bar-val">$0</div><div class="bar" style="height:2%;background:var(--orange)"></div><div class="bar-label">Sem 1</div></div>
+        <div class="bar-col"><div class="bar-val">$0.9M</div><div class="bar" style="height:17%;background:var(--orange)"></div><div class="bar-label">Sem 2</div></div>
+        <div class="bar-col"><div class="bar-val">$2.9M</div><div class="bar" style="height:45%;background:var(--orange)"></div><div class="bar-label">Sem 3</div></div>
+        <div class="bar-col"><div class="bar-val">$5.3M</div><div class="bar" style="height:85%;background:linear-gradient(var(--orange),var(--yellow))"></div><div class="bar-label">Sem 4</div></div>
+        <div class="bar-col"><div class="bar-val">$5.9M</div><div class="bar" style="height:95%;background:linear-gradient(var(--orange),var(--yellow))"></div><div class="bar-label">Actual</div></div>
       </div>
     </div>
   </section>
+
+  <section class="g2">
+    <div class="card">
+      <div class="card-title">🎯 Por Tipo de Negocio</div>
+      <div class="donut-wrap">
+        <div class="donut" style="background:conic-gradient(var(--pink) 0% 35%, var(--blue) 35% 57%, var(--purple) 57% 73%, var(--orange) 73% 84%, var(--green) 84% 92%, var(--cyan) 92% 100%)">
+          <div class="donut-center"><div class="donut-val">63</div><div class="donut-label">total</div></div>
+        </div>
+        <div class="legend">
+          <div class="legend-item"><div class="legend-dot" style="background:var(--pink)"></div>Peluquerías<div class="legend-val">22</div></div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--blue)"></div>Odontología<div class="legend-val">14</div></div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--purple)"></div>Spa / Estética<div class="legend-val">10</div></div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--orange)"></div>Barberías<div class="legend-val">7</div></div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div>Veterinarias<div class="legend-val">5</div></div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--cyan)"></div>Otros<div class="legend-val">5</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">👤 Performance por Vendedor</div>
+      <div style="margin-bottom:1rem">
+        <div style="display:flex;align-items:center;gap:0.75rem;padding:0.8rem 0;border-bottom:1px solid var(--border)">
+          <div class="lead-o o-r" style="width:34px;height:34px;font-size:0.65rem">RS</div>
+          <div style="flex:1"><div style="font-weight:600">Rulo</div><div style="font-size:0.72rem;color:var(--t3)">22 prospectos · 1 cerrado · $2M vendido</div></div>
+          <div class="mono" style="color:var(--green);font-weight:600">$200K MRR</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:0.75rem;padding:0.8rem 0;border-bottom:1px solid var(--border)">
+          <div class="lead-o o-d" style="width:34px;height:34px;font-size:0.65rem">DV</div>
+          <div style="flex:1"><div style="font-weight:600">David</div><div style="font-size:0.72rem;color:var(--t3)">23 prospectos · 2 cerrados · $1.8M vendido</div></div>
+          <div class="mono" style="color:var(--green);font-weight:600">$200K MRR</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:0.75rem;padding:0.8rem 0">
+          <div class="lead-o o-c" style="width:34px;height:34px;font-size:0.65rem">CM</div>
+          <div style="flex:1"><div style="font-weight:600">Camilo</div><div style="font-size:0.72rem;color:var(--t3)">18 prospectos · 1 cerrado · $1.5M vendido</div></div>
+          <div class="mono" style="color:var(--green);font-weight:600">$200K MRR</div>
+        </div>
+      </div>
+      <div style="margin-top:1rem">
+        <div class="card-title">📌 Métricas Clave</div>
+        <div class="stat-row"><span class="stat-label">Días promedio para cerrar</span><span class="stat-val">12 días</span></div>
+        <div class="stat-row"><span class="stat-label">Tasa de cierre general</span><span class="stat-val" style="color:var(--green)">27%</span></div>
+        <div class="stat-row"><span class="stat-label">Demos → Cierre</span><span class="stat-val" style="color:var(--blue)">44%</span></div>
+        <div class="stat-row"><span class="stat-label">Leads perdidos</span><span class="stat-val" style="color:var(--red)">2 (3%)</span></div>
+        <div class="stat-row"><span class="stat-label">Mejor zona</span><span class="stat-val" style="color:var(--blue)">Engativá</span></div>
+        <div class="stat-row"><span class="stat-label">Mejor nicho</span><span class="stat-val" style="color:var(--pink)">Odontología ($)</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+
 </main>
 
 <!-- MODAL -->
 <div class="overlay" id="modal">
   <div class="modal">
-    <div class="modal-head">
-      <h2>🎯 Nuevo Prospecto</h2>
-      <button class="modal-close" onclick="closeModal()">&times;</button>
-    </div>
+    <div class="modal-head"><h2>🎯 Nuevo Prospecto</h2><button class="modal-close" onclick="closeModal()">&times;</button></div>
     <form onsubmit="addLead(event)">
-      <div class="field">
-        <label>Nombre del negocio</label>
-        <input type="text" placeholder="Ej: Joss Peluquería" required>
-      </div>
-      <div class="field-row">
-        <div class="field">
-          <label>Tipo</label>
-          <select required>
-            <option value="">Seleccionar...</option>
-            <option>Peluquería</option><option>Barbería</option>
-            <option>Spa / Estética</option><option>Odontología</option>
-            <option>Veterinaria</option><option>Consultorio Médico</option>
-            <option>Fisioterapia</option><option>Psicología</option>
-            <option>Gimnasio</option><option>Otro</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>Zona</label>
-          <select required>
-            <option value="">Seleccionar...</option>
-            <option>Engativá</option><option>Suba</option>
-            <option>Kennedy</option><option>Fontibón</option>
-            <option>Chapinero</option><option>Usaquén</option>
-            <option>Teusaquillo</option><option>Otra</option>
-          </select>
-        </div>
-      </div>
-      <div class="field">
-        <label>Dirección / Barrio</label>
-        <input type="text" placeholder="Ej: Villas de Granada, Cra 112A #79B-27">
-      </div>
-      <div class="field-row">
-        <div class="field">
-          <label>Dueño / Contacto</label>
-          <input type="text" placeholder="Ej: María García">
-        </div>
-        <div class="field">
-          <label>WhatsApp</label>
-          <input type="tel" placeholder="310 123 4567">
-        </div>
-      </div>
-      <div class="field-row">
-        <div class="field">
-          <label>Google Maps</label>
-          <input type="url" placeholder="https://maps.google.com/...">
-        </div>
-        <div class="field">
-          <label>Instagram / Facebook</label>
-          <input type="text" placeholder="@negocio">
-        </div>
-      </div>
-      <div class="field-row">
-        <div class="field">
-          <label>Paquete</label>
-          <select>
-            <option value="">Sin definir</option>
-            <option>Básico — $900K</option>
-            <option>Pro — $1.5M</option>
-            <option>Enterprise — $3M</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>Asignado a</label>
-          <select required>
-            <option value="">Seleccionar...</option>
-            <option>Rulo</option><option>David</option><option>Camilo</option>
-          </select>
-        </div>
-      </div>
-      <div class="field">
-        <label>Notas</label>
-        <textarea rows="2" placeholder="¿Tienen web? ¿Cómo agendan? ¿Qué dolor tienen?"></textarea>
-      </div>
-      <div style="display:flex;gap:0.75rem;margin-top:0.5rem">
-        <button type="button" class="btn btn-ghost" style="flex:1" onclick="closeModal()">Cancelar</button>
-        <button type="submit" class="btn btn-primary" style="flex:1">Agregar</button>
-      </div>
+      <div class="field"><label>Nombre del negocio</label><input type="text" placeholder="Ej: Joss Peluquería" required></div>
+      <div class="f-row"><div class="field"><label>Tipo</label><select required><option value="">Seleccionar...</option><option>Peluquería</option><option>Barbería</option><option>Spa / Estética</option><option>Odontología</option><option>Veterinaria</option><option>Consultorio Médico</option><option>Fisioterapia</option><option>Psicología</option><option>Gimnasio</option><option>Otro</option></select></div><div class="field"><label>Zona</label><select required><option value="">Seleccionar...</option><option>Engativá</option><option>Suba</option><option>Kennedy</option><option>Fontibón</option><option>Chapinero</option><option>Usaquén</option><option>Teusaquillo</option><option>Otra</option></select></div></div>
+      <div class="field"><label>Dirección / Barrio</label><input type="text" placeholder="Ej: Villas de Granada, Cra 112A #79B-27"></div>
+      <div class="f-row"><div class="field"><label>Dueño / Contacto</label><input type="text" placeholder="Ej: María García"></div><div class="field"><label>WhatsApp</label><input type="tel" placeholder="310 123 4567"></div></div>
+      <div class="f-row"><div class="field"><label>Google Maps</label><input type="url" placeholder="https://maps.google.com/..."></div><div class="field"><label>Instagram / Facebook</label><input type="text" placeholder="@negocio"></div></div>
+      <div class="f-row"><div class="field"><label>Paquete</label><select><option value="">Sin definir</option><option>Básico — $900K</option><option>Pro — $1.5M</option><option>Enterprise — $3M</option></select></div><div class="field"><label>Asignado a</label><select required><option value="">Seleccionar...</option><option>Rulo</option><option>David</option><option>Camilo</option></select></div></div>
+      <div class="field"><label>Notas</label><textarea rows="2" placeholder="¿Tienen web? ¿Cómo agendan?"></textarea></div>
+      <div style="display:flex;gap:0.7rem;margin-top:0.4rem"><button type="button" class="btn btn-g" style="flex:1" onclick="closeModal()">Cancelar</button><button type="submit" class="btn btn-p" style="flex:1">Agregar</button></div>
     </form>
   </div>
 </div>
 
 <script>
-  function openModal(){document.getElementById('modal').classList.add('open')}
-  function closeModal(){document.getElementById('modal').classList.remove('open')}
-  function addLead(e){e.preventDefault();alert('✅ Prospecto agregado');closeModal()}
-  function exportCSV(){alert('📥 Exportando CSV...')}
-
-  document.getElementById('modal').addEventListener('click',e=>{if(e.target===e.currentTarget)closeModal()});
-  document.addEventListener('keydown',e=>{
-    if(e.key==='Escape')closeModal();
-    if(e.key==='n'&&(e.metaKey||e.ctrlKey)){e.preventDefault();openModal()}
+function goPage(name){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+name).classList.add('active');
+  document.querySelectorAll('.topbar-nav a').forEach(a=>{
+    a.classList.toggle('active',a.dataset.page===name);
   });
-
-  // Animate bars
-  setTimeout(()=>{
-    document.getElementById('goalFill').style.width='15%';
-    document.querySelectorAll('.zone-fill').forEach(b=>{b.style.width=b.dataset.w});
-  },400);
+  window.scrollTo(0,0);
+}
+function openModal(){document.getElementById('modal').classList.add('open')}
+function closeModal(){document.getElementById('modal').classList.remove('open')}
+function addLead(e){e.preventDefault();alert('✅ Prospecto agregado');closeModal()}
+function filterProspects(){
+  const q=document.getElementById('searchInput').value.toLowerCase();
+  document.querySelectorAll('#prospectsTable tbody tr').forEach(r=>{
+    r.style.display=r.textContent.toLowerCase().includes(q)?'':'none';
+  });
+}
+document.getElementById('modal').addEventListener('click',e=>{if(e.target===e.currentTarget)closeModal()});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape')closeModal();
+  if(e.key==='n'&&(e.metaKey||e.ctrlKey)){e.preventDefault();openModal()}
+});
+setTimeout(()=>{
+  document.getElementById('goalFill').style.width='20%';
+  document.querySelectorAll('.zone-fill').forEach(b=>{b.style.width=b.dataset.w});
+},400);
 </script>
 </body>
 </html>
