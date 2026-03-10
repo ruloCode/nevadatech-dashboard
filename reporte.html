@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NevadaTech — Reporte Ejecutivo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#FFFFFF;--bg-2:#F7F6F3;--bg-3:#F1F1EF;--bg-code:#F7F6F3;--text:#37352F;--text-2:#6B6B6B;--text-3:#9B9A97;--blue:#2F80ED;--green:#0F7B6C;--green-bg:#DBEDDB;--red:#E03E3E;--red-bg:#FBE4E4;--orange:#D9730D;--orange-bg:#FADEC9;--purple:#6940A5;--purple-bg:#E8DEEE;--yellow:#DFAB01;--yellow-bg:#FFF3BF;--pink:#AD1A72;--cyan:#0B6E99;--border:#E9E9E7;--r:6px}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);font-size:16px;line-height:1.7}
+    .page{max-width:900px;margin:0 auto;padding:4rem 2rem 6rem}
+
+    /* COVER */
+    .cover{background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);padding:4rem 3rem;border-radius:12px;color:white;margin-bottom:3rem;position:relative;overflow:hidden}
+    .cover::after{content:'';position:absolute;top:-50%;right:-20%;width:60%;height:200%;background:radial-gradient(circle,rgba(47,128,237,0.15),transparent 70%);pointer-events:none}
+    .cover-tag{font-size:0.8rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:1rem}
+    .cover h1{font-size:2.8rem;font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:0.75rem}
+    .cover h1 span{background:linear-gradient(135deg,#60A5FA,#22D3EE);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .cover-sub{font-size:1.1rem;color:rgba(255,255,255,0.6);max-width:600px;margin-bottom:2rem}
+    .cover-meta{display:flex;gap:2rem;font-size:0.85rem;color:rgba(255,255,255,0.4)}
+    .cover-meta strong{color:rgba(255,255,255,0.7)}
+
+    /* HEADINGS */
+    h2{font-size:1.6rem;font-weight:700;margin:3rem 0 1rem;padding-top:1.5rem;border-top:1px solid var(--border);letter-spacing:-0.02em}
+    h2:first-of-type{border-top:none;padding-top:0}
+    h3{font-size:1.15rem;font-weight:700;margin:2rem 0 0.75rem;color:var(--text)}
+    h4{font-size:1rem;font-weight:600;margin:1.25rem 0 0.5rem}
+
+    p{margin-bottom:1rem;color:var(--text)}
+
+    /* CALLOUT */
+    .callout{display:flex;gap:0.85rem;padding:1rem 1.25rem;border-radius:var(--r);margin:1.25rem 0}
+    .callout-icon{font-size:1.3rem;flex-shrink:0;margin-top:2px}
+    .callout-text{font-size:0.95rem;line-height:1.6}
+    .callout-blue{background:#E7F3FF}.callout-green{background:var(--green-bg)}.callout-orange{background:var(--orange-bg)}.callout-red{background:var(--red-bg)}.callout-purple{background:var(--purple-bg)}.callout-yellow{background:var(--yellow-bg)}
+
+    /* TABLE */
+    table{width:100%;border-collapse:collapse;margin:1rem 0 1.5rem;font-size:0.9rem}
+    th{text-align:left;padding:0.6rem 0.85rem;background:var(--bg-2);font-weight:600;font-size:0.8rem;color:var(--text-2);border-bottom:1px solid var(--border)}
+    td{padding:0.6rem 0.85rem;border-bottom:1px solid var(--border);vertical-align:top}
+    tr:hover td{background:var(--bg-3)}
+    .mono{font-family:'JetBrains Mono',monospace}
+    .green{color:var(--green);font-weight:600}
+    .blue{color:var(--blue);font-weight:600}
+    .orange{color:var(--orange);font-weight:600}
+    .red{color:var(--red)}.purple{color:var(--purple)}
+
+    /* TAGS */
+    .tag{display:inline-flex;align-items:center;gap:0.25rem;font-size:0.78rem;font-weight:600;padding:0.15rem 0.55rem;border-radius:4px}
+    .tag-green{background:var(--green-bg);color:var(--green)}
+    .tag-blue{background:#E7F3FF;color:var(--blue)}
+    .tag-orange{background:var(--orange-bg);color:var(--orange)}
+    .tag-red{background:var(--red-bg);color:var(--red)}
+    .tag-purple{background:var(--purple-bg);color:var(--purple)}
+
+    /* QUOTE */
+    blockquote{border-left:3px solid var(--text);padding:0.75rem 1.25rem;margin:1rem 0;background:var(--bg-2);border-radius:0 var(--r) var(--r) 0;font-style:italic}
+
+    /* CODE */
+    code{font-family:'JetBrains Mono',monospace;background:var(--bg-code);padding:0.15rem 0.4rem;border-radius:3px;font-size:0.88em;color:var(--red)}
+    pre{background:var(--bg-2);padding:1.25rem;border-radius:var(--r);overflow-x:auto;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:0.85rem;line-height:1.6;color:var(--text)}
+
+    /* LIST */
+    ul,ol{margin:0.5rem 0 1rem 1.5rem}
+    li{margin-bottom:0.3rem}
+    li::marker{color:var(--text-3)}
+
+    /* TOGGLE */
+    details{border:1px solid var(--border);border-radius:var(--r);margin:0.75rem 0;overflow:hidden}
+    summary{padding:0.75rem 1rem;font-weight:600;cursor:pointer;background:var(--bg-2);font-size:0.95rem;display:flex;align-items:center;gap:0.5rem}
+    summary:hover{background:var(--bg-3)}
+    details[open] summary{border-bottom:1px solid var(--border)}
+    details .content{padding:1rem}
+
+    /* GRID */
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1rem 0}
+    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin:1rem 0}
+
+    .stat-card{background:var(--bg-2);border-radius:var(--r);padding:1.25rem;text-align:center}
+    .stat-val{font-family:'JetBrains Mono',monospace;font-size:1.8rem;font-weight:700;margin-bottom:0.2rem}
+    .stat-label{font-size:0.82rem;color:var(--text-2)}
+
+    /* PKG CARDS */
+    .pkg-card{border:1px solid var(--border);border-radius:8px;padding:1.5rem;position:relative}
+    .pkg-card.recommended{border-color:var(--blue);border-width:2px}
+    .pkg-badge{position:absolute;top:-10px;right:12px;background:var(--blue);color:white;font-size:0.7rem;font-weight:700;padding:0.2rem 0.6rem;border-radius:4px}
+    .pkg-name{font-size:1.1rem;font-weight:700;margin-bottom:0.2rem;display:flex;align-items:center;gap:0.5rem}
+    .pkg-price{font-family:'JetBrains Mono',monospace;font-size:1.4rem;font-weight:700;color:var(--green);margin-bottom:0.1rem}
+    .pkg-mrr{font-size:0.82rem;color:var(--text-2);margin-bottom:1rem}
+    .pkg-feat{display:flex;align-items:center;gap:0.4rem;font-size:0.88rem;padding:0.2rem 0;color:var(--text-2)}
+    .pkg-feat.yes{color:var(--text)}.pkg-feat.yes::before{content:'✓';color:var(--green);font-weight:700}
+    .pkg-feat.no{text-decoration:line-through;opacity:0.4}.pkg-feat.no::before{content:'✕';color:var(--red)}
+
+    /* TIMELINE */
+    .process{display:flex;flex-direction:column;gap:0}
+    .process-step{display:flex;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--border)}
+    .process-step:last-child{border-bottom:none}
+    .process-num{width:32px;height:32px;border-radius:50%;background:var(--blue);color:white;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700;flex-shrink:0}
+    .process-label{font-weight:700;margin-bottom:0.15rem}
+    .process-desc{font-size:0.88rem;color:var(--text-2)}
+
+    /* DIVIDER */
+    hr{border:none;border-top:1px solid var(--border);margin:2rem 0}
+
+    /* LINKS */
+    a{color:var(--blue);text-decoration:underline;text-underline-offset:2px}
+    a:hover{opacity:0.8}
+
+    .toc{background:var(--bg-2);border-radius:var(--r);padding:1.5rem 2rem;margin:2rem 0}
+    .toc-title{font-weight:700;margin-bottom:0.75rem;font-size:0.9rem;color:var(--text-2)}
+    .toc a{display:block;padding:0.25rem 0;color:var(--text);text-decoration:none;font-size:0.92rem}
+    .toc a:hover{color:var(--blue)}
+
+    @media(max-width:768px){
+      .cover{padding:2rem 1.5rem}.cover h1{font-size:2rem}
+      .grid-3{grid-template-columns:1fr}.grid-2{grid-template-columns:1fr}
+      .page{padding:2rem 1rem 4rem}
+      .cover-meta{flex-direction:column;gap:0.5rem}
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="cover-tag">Reporte Ejecutivo — Confidencial</div>
+    <h1>NevadaTech<br><span>Agendamiento Digital</span><br>para Negocios Locales</h1>
+    <div class="cover-sub">Plan de negocio, márgenes, estrategia y roadmap para digitalizar miles de negocios en Bogotá.</div>
+    <div class="cover-meta">
+      <span><strong>Equipo:</strong> Rulo, David, Camilo</span>
+      <span><strong>Fecha:</strong> Marzo 2026</span>
+      <span><strong>Estado:</strong> Listo para ejecutar</span>
+    </div>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc">
+    <div class="toc-title">📑 Contenido</div>
+    <a href="#resumen">1. Resumen Ejecutivo</a>
+    <a href="#equipo">2. El Equipo</a>
+    <a href="#problema">3. El Problema</a>
+    <a href="#paquetes">4. Paquetes y Precios</a>
+    <a href="#margenes">5. Márgenes de Ganancia</a>
+    <a href="#proyeccion">6. Proyección Financiera</a>
+    <a href="#zonas">7. Estrategia de Zonas</a>
+    <a href="#stack">8. Stack Técnico</a>
+    <a href="#proceso">9. Proceso de Venta</a>
+    <a href="#pitch">10. El Pitch</a>
+    <a href="#riesgos">11. Riesgos</a>
+    <a href="#plan">12. Plan de Acción</a>
+    <a href="#acuerdos">13. Acuerdos del Equipo</a>
+    <a href="#recursos">14. Recursos y Links</a>
+  </div>
+
+  <!-- 1. RESUMEN -->
+  <h2 id="resumen">📌 1. Resumen Ejecutivo</h2>
+
+  <div class="callout callout-blue">
+    <div class="callout-icon">💡</div>
+    <div class="callout-text"><strong>La oportunidad:</strong> Miles de peluquerías, consultorios, spas y barberías en Bogotá agendan por WhatsApp o llamada. No tienen web. Pierden citas. No tienen presencia digital. Nosotros resolvemos eso con un paquete completo: página web + agendamiento + chatbot IA + automatización.</div>
+  </div>
+
+  <div class="grid-3">
+    <div class="stat-card"><div class="stat-val green">$3M</div><div class="stat-label">MRR Meta (20 clientes)</div></div>
+    <div class="stat-card"><div class="stat-val blue">80%+</div><div class="stat-label">Margen bruto</div></div>
+    <div class="stat-card"><div class="stat-val orange">12 días</div><div class="stat-label">Tiempo promedio de cierre</div></div>
+  </div>
+
+  <!-- 2. EQUIPO -->
+  <h2 id="equipo">👥 2. El Equipo</h2>
+
+  <table>
+    <tr><th>Rol</th><th>Nombre</th><th>Responsabilidad</th></tr>
+    <tr><td><span class="tag tag-blue">CEO / CTO</span></td><td><strong>Rulo</strong> (Andrés Santana)</td><td>Estrategia, desarrollo técnico, demos, cierre de deals grandes</td></tr>
+    <tr><td><span class="tag tag-green">Sales / Ops</span></td><td><strong>David</strong></td><td>Prospección de campo, visitas, cierre, entrega</td></tr>
+    <tr><td><span class="tag tag-purple">Sales / Ops</span></td><td><strong>Camilo</strong></td><td>Prospección de campo, visitas, cierre, entrega</td></tr>
+  </table>
+
+  <div class="callout callout-green">
+    <div class="callout-icon">✅</div>
+    <div class="callout-text"><strong>Todos son admin.</strong> Cada uno puede prospectar, vender, entregar y cobrar. Sin burocracia.</div>
+  </div>
+
+  <!-- 3. PROBLEMA -->
+  <h2 id="problema">😤 3. El Problema que Resolvemos</h2>
+
+  <h3>Lo que vemos en CADA negocio:</h3>
+  <ol>
+    <li><strong>Agendan por WhatsApp/llamada</strong> → Pierden citas, se cruzan horarios</li>
+    <li><strong>No tienen web</strong> o tienen una página muerta sin funcionalidad</li>
+    <li><strong>No envían recordatorios</strong> → No-shows del 15-30%</li>
+    <li><strong>No capturan datos</strong> → No pueden fidelizar</li>
+    <li><strong>No aparecen en Google</strong> → Pierden clientes que buscan en Maps</li>
+  </ol>
+
+  <div class="callout callout-orange">
+    <div class="callout-icon">🔥</div>
+    <div class="callout-text"><strong>Dato real:</strong> En Villas de Granada (Engativá) encontramos +10 negocios de belleza y NINGUNO tiene web con agendamiento. Joss Peluquería tiene 741 likes en Facebook pero cero web. Este es el patrón en toda Bogotá.</div>
+  </div>
+
+  <h3>Negocios identificados en Villas de Granada:</h3>
+  <table>
+    <tr><th>Negocio</th><th>Tipo</th><th>¿Tiene web?</th><th>¿Agendamiento online?</th></tr>
+    <tr><td>Joss Peluquería</td><td>Peluquería</td><td class="red">❌ No</td><td class="red">❌ No</td></tr>
+    <tr><td>Rochell Peluquería</td><td>Peluquería</td><td class="red">❌ No</td><td class="red">❌ No</td></tr>
+    <tr><td>Amazing Peluquería</td><td>Peluquería</td><td class="red">❌ No</td><td class="red">❌ No</td></tr>
+    <tr><td>Stella Durán</td><td>Estética</td><td class="red">❌ No</td><td class="red">❌ No</td></tr>
+    <tr><td>Sala de Belleza Wesly</td><td>Peluquería</td><td class="red">❌ No</td><td class="red">❌ No</td></tr>
+    <tr><td>Theos Peluquería</td><td>Peluquería</td><td class="red">❌ No</td><td class="red">❌ No</td></tr>
+    <tr><td>Edward y Charly</td><td>Barbería</td><td class="red">❌ No</td><td class="red">❌ No</td></tr>
+    <tr><td>Valeria Torres</td><td>Peluquería</td><td class="red">❌ No</td><td class="red">❌ No</td></tr>
+    <tr><td>D'yineli</td><td>Peluquería</td><td class="red">❌ No</td><td class="red">❌ No</td></tr>
+  </table>
+
+  <!-- 4. PAQUETES -->
+  <h2 id="paquetes">📦 4. Paquetes y Precios</h2>
+
+  <div class="grid-3">
+    <div class="pkg-card">
+      <div class="pkg-name">🌐 Básico</div>
+      <div class="pkg-price">$900.000</div>
+      <div class="pkg-mrr">+ $100.000/mes</div>
+      <div class="pkg-feat yes">Página web responsive</div>
+      <div class="pkg-feat yes">Agendamiento online</div>
+      <div class="pkg-feat yes">Google Maps</div>
+      <div class="pkg-feat yes">Botón WhatsApp</div>
+      <div class="pkg-feat yes">Google Business</div>
+      <div class="pkg-feat yes">Hosting + dominio</div>
+      <div class="pkg-feat no">Chatbot IA</div>
+      <div class="pkg-feat no">Recordatorios auto</div>
+      <div class="pkg-feat no">Redes sociales IA</div>
+      <div class="pkg-feat no">Google Ads</div>
+    </div>
+    <div class="pkg-card recommended">
+      <div class="pkg-badge">⭐ MÁS POPULAR</div>
+      <div class="pkg-name">🤖 Pro</div>
+      <div class="pkg-price">$1.500.000</div>
+      <div class="pkg-mrr">+ $200.000/mes</div>
+      <div class="pkg-feat yes">Todo lo del Básico</div>
+      <div class="pkg-feat yes">Chatbot IA WhatsApp 24/7</div>
+      <div class="pkg-feat yes">Recordatorios (24h + 1h)</div>
+      <div class="pkg-feat yes">Confirmación automática</div>
+      <div class="pkg-feat yes">Dashboard de citas</div>
+      <div class="pkg-feat no">Redes sociales IA</div>
+      <div class="pkg-feat no">Google Ads</div>
+      <div class="pkg-feat no">CRM avanzado</div>
+    </div>
+    <div class="pkg-card">
+      <div class="pkg-name">🚀 Enterprise</div>
+      <div class="pkg-price">$3.000.000</div>
+      <div class="pkg-mrr">+ $400.000/mes</div>
+      <div class="pkg-feat yes">Todo lo del Pro</div>
+      <div class="pkg-feat yes">Posts IA Instagram (8/mes)</div>
+      <div class="pkg-feat yes">Google Ads management</div>
+      <div class="pkg-feat yes">CRM completo</div>
+      <div class="pkg-feat yes">Dashboard métricas</div>
+      <div class="pkg-feat yes">Soporte prioritario</div>
+    </div>
+  </div>
+
+  <!-- 5. MÁRGENES -->
+  <h2 id="margenes">💰 5. Márgenes de Ganancia</h2>
+
+  <h3>Margen por Setup (una vez)</h3>
+  <table>
+    <tr><th>Paquete</th><th>Precio</th><th>Costo real</th><th>Margen bruto</th><th>% Margen</th></tr>
+    <tr><td>🌐 Básico</td><td class="mono">$900.000</td><td class="mono">~$150.000</td><td class="mono green">$750.000</td><td><span class="tag tag-green">83%</span></td></tr>
+    <tr><td>🤖 Pro</td><td class="mono">$1.500.000</td><td class="mono">~$300.000</td><td class="mono green">$1.200.000</td><td><span class="tag tag-green">80%</span></td></tr>
+    <tr><td>🚀 Enterprise</td><td class="mono">$3.000.000</td><td class="mono">~$600.000</td><td class="mono green">$2.400.000</td><td><span class="tag tag-green">80%</span></td></tr>
+  </table>
+
+  <h3>Margen Recurrente Mensual (MRR)</h3>
+  <table>
+    <tr><th>Paquete</th><th>MRR</th><th>Costo/mes</th><th>Margen neto</th><th>% Margen</th></tr>
+    <tr><td>🌐 Básico</td><td class="mono">$100.000</td><td class="mono">~$15.000</td><td class="mono green">$85.000</td><td><span class="tag tag-green">85%</span></td></tr>
+    <tr><td>🤖 Pro</td><td class="mono">$200.000</td><td class="mono">~$65.000</td><td class="mono green">$135.000</td><td><span class="tag tag-green">68%</span></td></tr>
+    <tr><td>🚀 Enterprise</td><td class="mono">$400.000</td><td class="mono">~$120.000</td><td class="mono green">$280.000</td><td><span class="tag tag-green">70%</span></td></tr>
+  </table>
+
+  <div class="callout callout-green">
+    <div class="callout-icon">🔑</div>
+    <div class="callout-text"><strong>El negocio real es el MRR.</strong> Con 20 clientes a $150K promedio = <strong>$3.000.000 COP/mes recurrente</strong>. Eso es $1M por persona, automático, cada mes. Sin volver a vender.</div>
+  </div>
+
+  <h3>Tabla de escalamiento MRR</h3>
+  <table>
+    <tr><th>Clientes</th><th>MRR/mes</th><th>ARR (anual)</th><th>Por persona (÷3)</th></tr>
+    <tr><td>5</td><td class="mono">$750.000</td><td class="mono">$9.000.000</td><td class="mono">$250.000/mes</td></tr>
+    <tr><td>10</td><td class="mono">$1.500.000</td><td class="mono">$18.000.000</td><td class="mono">$500.000/mes</td></tr>
+    <tr><td>20</td><td class="mono green">$3.000.000</td><td class="mono green">$36.000.000</td><td class="mono green">$1.000.000/mes</td></tr>
+    <tr><td>50</td><td class="mono blue">$7.500.000</td><td class="mono blue">$90.000.000</td><td class="mono blue">$2.500.000/mes</td></tr>
+  </table>
+
+  <!-- 6. PROYECCIÓN -->
+  <h2 id="proyeccion">📈 6. Proyección Financiera — 6 Meses</h2>
+
+  <h3>Escenario conservador (2 ventas/semana entre los 3)</h3>
+  <table>
+    <tr><th>Mes</th><th>Nuevos</th><th>Total clientes</th><th>Setup</th><th>MRR</th><th>Total mes</th></tr>
+    <tr><td>Mes 1</td><td>4</td><td>4</td><td class="mono">$4.8M</td><td class="mono">$600K</td><td class="mono green"><strong>$5.4M</strong></td></tr>
+    <tr><td>Mes 2</td><td>6</td><td>10</td><td class="mono">$7.2M</td><td class="mono">$1.5M</td><td class="mono green"><strong>$8.7M</strong></td></tr>
+    <tr><td>Mes 3</td><td>8</td><td>18</td><td class="mono">$9.6M</td><td class="mono">$2.7M</td><td class="mono green"><strong>$12.3M</strong></td></tr>
+    <tr><td>Mes 4</td><td>8</td><td>26</td><td class="mono">$9.6M</td><td class="mono">$3.9M</td><td class="mono green"><strong>$13.5M</strong></td></tr>
+    <tr><td>Mes 5</td><td>10</td><td>36</td><td class="mono">$12M</td><td class="mono">$5.4M</td><td class="mono green"><strong>$17.4M</strong></td></tr>
+    <tr><td>Mes 6</td><td>10</td><td>46</td><td class="mono">$12M</td><td class="mono">$6.9M</td><td class="mono green"><strong>$18.9M</strong></td></tr>
+    <tr style="background:var(--green-bg)"><td colspan="3"><strong>TOTAL 6 MESES</strong></td><td class="mono"><strong>$55.2M</strong></td><td class="mono"><strong>$21M</strong></td><td class="mono green"><strong>$76.2M</strong></td></tr>
+  </table>
+
+  <div class="callout callout-purple">
+    <div class="callout-icon">👤</div>
+    <div class="callout-text"><strong>Por persona en 6 meses:</strong> ~$25.400.000 COP = <strong>~$4.233.000/mes promedio</strong> (conservador)</div>
+  </div>
+
+  <!-- 7. ZONAS -->
+  <h2 id="zonas">🗺️ 7. Estrategia de Zonas</h2>
+
+  <table>
+    <tr><th>Fase</th><th>Zona</th><th>Timeline</th><th>Responsable</th><th>Potencial</th></tr>
+    <tr><td><span class="tag tag-green">Fase 1</span></td><td><strong>Engativá</strong> (V. Granada, Garcés Navas, Álamos)</td><td>Semana 1-4</td><td>Todos</td><td>30+ negocios</td></tr>
+    <tr><td><span class="tag tag-blue">Fase 2</span></td><td><strong>Suba + Kennedy</strong></td><td>Mes 2-3</td><td>David + Camilo</td><td>35+ negocios</td></tr>
+    <tr><td><span class="tag tag-purple">Fase 3</span></td><td><strong>Chapinero, Usaquén, Fontibón</strong></td><td>Mes 4+</td><td>Todos</td><td>Ilimitado</td></tr>
+  </table>
+
+  <!-- 8. STACK -->
+  <h2 id="stack">🛠️ 8. Stack Técnico</h2>
+
+  <table>
+    <tr><th>Herramienta</th><th>Uso</th><th>Costo</th></tr>
+    <tr><td>Vercel / Netlify</td><td>Hosting</td><td class="green">GRATIS</td></tr>
+    <tr><td>Dominio .com.co</td><td>Dominio del cliente</td><td class="mono">~$40K/año</td></tr>
+    <tr><td>Cal.com (self-hosted)</td><td>Agendamiento</td><td class="green">GRATIS</td></tr>
+    <tr><td>Twilio WhatsApp API</td><td>Mensajes automáticos</td><td class="mono">~$50K/mes (pool)</td></tr>
+    <tr><td>OpenAI API</td><td>Chatbot IA</td><td class="mono">~$30K/mes (pool)</td></tr>
+    <tr><td>Google Sheets + Apps Script</td><td>CRM simple</td><td class="green">GRATIS</td></tr>
+  </table>
+
+  <div class="callout callout-green">
+    <div class="callout-icon">💡</div>
+    <div class="callout-text"><strong>Costo fijo total:</strong> ~$80-120K COP/mes. Con 10 clientes generando $1.5M MRR, el costo es el 8%. <strong>Margen operativo: 92%.</strong></div>
+  </div>
+
+  <!-- 9. PROCESO -->
+  <h2 id="proceso">📋 9. Proceso de Venta</h2>
+
+  <div class="process">
+    <div class="process-step"><div class="process-num">1</div><div><div class="process-label">IDENTIFICAR</div><div class="process-desc">Buscar en Google Maps, Civico, o caminando la zona. Registrar en el dashboard.</div></div></div>
+    <div class="process-step"><div class="process-num">2</div><div><div class="process-label">CONTACTAR</div><div class="process-desc">Visita presencial (preferido) o WhatsApp. Presentarse y generar interés.</div></div></div>
+    <div class="process-step"><div class="process-num">3</div><div><div class="process-label">DEMO</div><div class="process-desc">Mostrar la página demo en el celular del dueño. "Mire cómo se vería su negocio."</div></div></div>
+    <div class="process-step"><div class="process-num">4</div><div><div class="process-label">COTIZAR</div><div class="process-desc">Enviar propuesta formal con el paquete recomendado. Usar el pitch del dashboard.</div></div></div>
+    <div class="process-step"><div class="process-num">5</div><div><div class="process-label">CERRAR</div><div class="process-desc">Cobrar setup (efectivo, Nequi, o transferencia). Firmar acuerdo simple.</div></div></div>
+    <div class="process-step"><div class="process-num">6</div><div><div class="process-label">ENTREGAR</div><div class="process-desc">Rulo monta la página en 3-5 días. Configurar automatizaciones.</div></div></div>
+    <div class="process-step"><div class="process-num">7</div><div><div class="process-label">ACTIVAR</div><div class="process-desc">Capacitar al dueño (15 min). Mostrar cómo ver citas en el celular.</div></div></div>
+    <div class="process-step"><div class="process-num">8</div><div><div class="process-label">COBRAR MRR</div><div class="process-desc">Mensualidad automática. Soporte mínimo (~1h/mes por cliente).</div></div></div>
+  </div>
+
+  <!-- 10. PITCH -->
+  <h2 id="pitch">🎤 10. El Pitch (Versión Corta)</h2>
+
+  <blockquote>"Somos NevadaTech. Hacemos que su negocio reciba citas 24/7 sin que usted tenga que contestar WhatsApp. Le montamos una página web profesional con agendamiento online, le mandamos recordatorio automático a sus clientes para que no falten, y usted solo se preocupa por atender. Setup desde $900.000 y mensualidad desde $100.000. Se paga solo con las citas que deja de perder."</blockquote>
+
+  <details>
+    <summary>🛡️ Respuestas a objeciones comunes</summary>
+    <div class="content">
+      <h4>💬 "Está muy caro"</h4>
+      <p><em>"¿Cuánto pagan de arriendo al mes? Esta página trabaja para ustedes 24 horas, 7 días. Es como tener una recepcionista que nunca falta y cobra $100.000 al mes."</em></p>
+      <h4>💬 "Ya tenemos Facebook"</h4>
+      <p><em>"Facebook es excelente para mostrar fotos, pero no agenda citas. ¿Cuántas personas les escriben por Messenger y nunca vuelven? Con esto capturan el dato y la cita en un solo paso."</em></p>
+      <h4>💬 "Déjeme pensarlo"</h4>
+      <p><em>"Perfecto, sin presión. Pero solo trabajo con un negocio por zona para no hacerme competencia entre mis propios clientes. Si el salón de la esquina me dice que sí primero..."</em></p>
+      <h4>💬 "No sabemos de tecnología"</h4>
+      <p><em>"Ese es exactamente el punto — ustedes no tienen que saber NADA. Yo les monto todo, les enseño a ver las citas en el celular, y si algo falla me llaman."</em></p>
+    </div>
+  </details>
+
+  <!-- 11. RIESGOS -->
+  <h2 id="riesgos">⚠️ 11. Riesgos y Mitigación</h2>
+
+  <table>
+    <tr><th>Riesgo</th><th>Prob.</th><th>Mitigación</th></tr>
+    <tr><td>Clientes no pagan mensualidad</td><td><span class="tag tag-orange">Media</span></td><td>Cobro anticipado. Primer mes incluido en setup.</td></tr>
+    <tr><td>Competencia (otras agencias)</td><td><span class="tag tag-green">Baja</span></td><td>Diferencial: chatbot IA + precio accesible + velocidad</td></tr>
+    <tr><td>Clientes no usan la página</td><td><span class="tag tag-orange">Media</span></td><td>Capacitación incluida + soporte WhatsApp</td></tr>
+    <tr><td>Churn alto</td><td><span class="tag tag-green">Baja</span></td><td>Si ven resultados en mes 1, no cancelan</td></tr>
+    <tr><td>No conseguimos prospectos</td><td><span class="tag tag-green">Muy baja</span></td><td>Hay miles de negocios. El problema es seleccionar.</td></tr>
+  </table>
+
+  <!-- 12. PLAN -->
+  <h2 id="plan">🎯 12. Plan de Acción — Próximas 4 Semanas</h2>
+
+  <h3>Semana 1: Validación</h3>
+  <table>
+    <tr><th>Día</th><th>Actividad</th><th>Quién</th></tr>
+    <tr><td>Lun-Mar</td><td>Visitar 3 peluquerías en Villas de Granada con demo</td><td><span class="tag tag-blue">Rulo</span></td></tr>
+    <tr><td>Lun-Mar</td><td>Visitar 3 negocios en Garcés Navas</td><td><span class="tag tag-green">David</span></td></tr>
+    <tr><td>Mié-Jue</td><td>Visitar 3 negocios en Álamos/Bolivia</td><td><span class="tag tag-purple">Camilo</span></td></tr>
+    <tr><td>Viernes</td><td>Reunión equipo: resultados y ajustes</td><td>Todos</td></tr>
+  </table>
+  <p><strong>Meta semana 1:</strong> 9 demos mostradas, 2 pilotos cerrados.</p>
+
+  <h3>Semana 2: Primeras entregas</h3>
+  <p>Entregar páginas de los 2 pilotos (Rulo). Seguimiento prospectos semana 1 (David + Camilo). 6 visitas nuevas.</p>
+
+  <h3>Semana 3: Escalamiento</h3>
+  <p>Usar caso de éxito para vender. Crear templates por nicho. 8 visitas nuevas.</p>
+
+  <h3>Semana 4: Consolidación</h3>
+  <p>Entregar páginas pendientes. Pipeline review. Empezar Suba y Kennedy.</p>
+
+  <div class="callout callout-orange">
+    <div class="callout-icon">🎯</div>
+    <div class="callout-text"><strong>Meta mes 1:</strong> 6-8 clientes cerrados, $600K-$1.2M en MRR, $5-10M en setup cobrado.</div>
+  </div>
+
+  <!-- 13. ACUERDOS -->
+  <h2 id="acuerdos">🤝 13. Acuerdos del Equipo</h2>
+
+  <h3>División de ingresos (propuesta)</h3>
+  <table>
+    <tr><th>Concepto</th><th>Distribución</th></tr>
+    <tr><td><strong>Setup</strong></td><td>40% quien cierra + 40% quien desarrolla + 20% fondo NevadaTech</td></tr>
+    <tr><td><strong>MRR</strong></td><td>33.3% cada uno (equitativo)</td></tr>
+    <tr><td><strong>Revisión</strong></td><td>Ajustar después del mes 3 según resultados</td></tr>
+  </table>
+
+  <h3>Reglas de operación</h3>
+  <ol>
+    <li>Cada zona tiene responsable principal — no pisarse leads</li>
+    <li>Reunión semanal viernes 30 min — revisar pipeline</li>
+    <li>Todo prospecto se registra en el dashboard al momento</li>
+    <li>Mínimo 3 visitas por persona por semana</li>
+    <li>Si un prospecto dice "no", se marca como perdido y se sigue</li>
+  </ol>
+
+  <!-- 14. RECURSOS -->
+  <h2 id="recursos">🔗 14. Recursos y Links</h2>
+
+  <table>
+    <tr><th>Recurso</th><th>Link</th></tr>
+    <tr><td>📊 Dashboard (CRM)</td><td><a href="https://rulocode.github.io/nevadatech-dashboard/" target="_blank">rulocode.github.io/nevadatech-dashboard</a></td></tr>
+    <tr><td>🌐 Demo Joss Peluquería</td><td><a href="https://rulocode.github.io/joss-peluqueria-demo/" target="_blank">rulocode.github.io/joss-peluqueria-demo</a></td></tr>
+    <tr><td>💻 Repo Dashboard</td><td><a href="https://github.com/ruloCode/nevadatech-dashboard" target="_blank">github.com/ruloCode/nevadatech-dashboard</a></td></tr>
+    <tr><td>💻 Repo Demo</td><td><a href="https://github.com/ruloCode/joss-peluqueria-demo" target="_blank">github.com/ruloCode/joss-peluqueria-demo</a></td></tr>
+    <tr><td>🎯 Pitches personalizados</td><td>En el dashboard → click en cualquier prospecto</td></tr>
+  </table>
+
+  <hr>
+
+  <div class="callout callout-blue" style="margin-top:2rem">
+    <div class="callout-icon">🚀</div>
+    <div class="callout-text"><strong>Siguiente paso:</strong> ESTA SEMANA cada uno visita 3 negocios con la demo en el celular. El viernes nos reunimos con resultados. La demo existe. El pitch está escrito. El dashboard está listo. <strong>Lo único que falta es salir a tocar puertas.</strong></div>
+  </div>
+
+  <div style="text-align:center;margin-top:3rem;color:var(--text-3);font-size:0.85rem">
+    <p><strong>NevadaTech.co</strong> — Soluciones digitales para negocios locales</p>
+    <p>Documento generado por Zylen 🧠 para el equipo fundador · Marzo 2026</p>
+  </div>
+
+</div>
+</body>
+</html>
